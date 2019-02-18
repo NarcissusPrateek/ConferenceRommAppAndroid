@@ -58,7 +58,8 @@ public class BookingActivity: AppCompatActivity() {
         txv_toTime.text = totime
         txvDate.text = date
         txvConfName.text = roomname
-        //txvBildingname.text = buildingname
+        txvBildingname.text = buildingname
+
         //txv_capacity.text = capacity
 
 

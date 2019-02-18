@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 //import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.conferencerommapp.Model.Employee
@@ -44,12 +46,22 @@ class RegistrationActivity : AppCompatActivity() {
 
         val employee = Employee()
         employee.EmployeeId = edittext_id.text.toString()
-        employee.Role = edittext_Role.text.toString()
+        //employee.Role = edittext_Role.text.toString()
         employee.ActivationCode = "xxx"
         employee.Name = acct.displayName
         employee.Email = acct.email
         employee.Verified = false
 
+        var options = arrayOf("Intern","SDE-1", "SDE-2", "SDE-3", "Principal Engineer", "Project Manager","HR", "CEO","CTO", "COO")
+        spinner.adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,options)
+        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                employee.Role = "Intern"
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                employee.Role = options.get(position)
+            }
+        }
         button_add.setOnClickListener(View.OnClickListener {
             addEmployee(employee)
         })

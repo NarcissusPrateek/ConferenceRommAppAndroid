@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.conferencerommapp.R
+import com.example.conferencerommapp.RegistrationActivity
 import com.example.conferencerommapp.SignIn
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 
