@@ -6,7 +6,7 @@ data class Employee (
 
     var Email: String? = null,
 
-    var EmployeeId: String? = null,
+    var EmpId: String? = null,
 
     var Name: String? = null,
 

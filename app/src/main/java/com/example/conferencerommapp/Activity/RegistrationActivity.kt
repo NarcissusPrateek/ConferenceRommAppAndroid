@@ -46,7 +46,7 @@ class RegistrationActivity : AppCompatActivity() {
         textView_email.text = acct!!.email
 
         val employee = Employee()
-        employee.EmployeeId = edittext_id.text.toString()
+
         //employee.Role = edittext_Role.text.toString()
         employee.ActivationCode = "xxx"
         employee.Name = acct.displayName
@@ -64,23 +64,20 @@ class RegistrationActivity : AppCompatActivity() {
             }
         }
         button_add.setOnClickListener(View.OnClickListener {
+            employee.EmpId = edittext_id.text.toString()
             addEmployee(employee)
         })
 
     }
     fun addEmployee(employee: Employee) {
-            val service = Servicebuilder11.buildService(ConferenceService::class.java)
-            val requestCall: Call<Int> = service.addEmployee(employee)/*employee.Email,
-                                                             employee.EmployeeId,
-                                                             employee.Name,
-                                                             employee.Role,
-                                                             employee.Verified,
-                                                             employee.ActivationCode)*/
+            val service = Servicebuilder.buildService(ConferenceService::class.java)
+            val requestCall: Call<Int> = service.addEmployee(employee)
         requestCall.enqueue(object: Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
                 Toast.makeText(applicationContext,"on failure in registration ${t.message}",Toast.LENGTH_LONG).show()
             }
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
+
                 if(response.isSuccessful) {
                     Toast.makeText(applicationContext,"Information added Successfully",Toast.LENGTH_LONG).show()
                     startActivity(Intent(this@RegistrationActivity, DashBoardActivity::class.java))

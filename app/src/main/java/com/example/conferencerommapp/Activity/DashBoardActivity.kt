@@ -61,15 +61,10 @@ class DashBoardActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<Dashboard>>, response: Response<List<Dashboard>>) {
                 if(response.isSuccessful) {
                     val dashboardItemList: List<Dashboard>? = response.body()
-                    Log.i("--------$$$$----",dashboardItemList!!.isEmpty().toString())
-                    Log.i("--------$$$$----",response.body().toString())
                     if(dashboardItemList!!.isEmpty()) {
-                        val builder = AlertDialog.Builder(this@DashBoardActivity)
-                        //FromTime=1900-01-01T12:00:00, ToTime=1900-01-01T12:00:00, BName=ThinkHub, CId=3, CName=NewRoom15, Purpose=Purpose
-                        // Set the alert dialog title
-                        builder.setTitle("BBooking Details")
 
-                        // Display a message on alert dialog
+                        val builder = AlertDialog.Builder(this@DashBoardActivity)
+                        builder.setTitle("Booking Details")
                         builder.setMessage("No Booking Found!!!")
                     }
                     else {

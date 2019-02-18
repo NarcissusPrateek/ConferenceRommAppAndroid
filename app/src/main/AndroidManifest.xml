@@ -11,36 +11,37 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-
-        <activity android:name=".Activity.SplashScreen" android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".Activity.HRActivity">
+        </activity>
+        <activity
+                android:name=".Activity.SplashScreen"
+                android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.UserInputActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
+        <activity
+                android:name=".Activity.UserInputActivity"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".Activity.BuildingsActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
+        <activity
+                android:name=".Activity.BuildingsActivity"
+                android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.ConferenceRoomActivity"></activity>
-        <activity android:name=".HRActivity"></activity>
-        <activity android:name=".InputActivity"></activity>
-        <activity android:name=".SignIn"></activity>
-        <activity android:name=".Activity.BookingActivity"></activity>
-        <activity android:name=".SignOut"></activity>
-        <activity android:name=".RegistrationActivity"></activity>
-        <activity android:name=".Activity.DashBoardActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
+        <activity android:name=".Activity.ConferenceRoomActivity"/>
+        <activity android:name=".InputActivity"/>
+        <activity android:name=".SignIn"/>
+        <activity android:name=".Activity.BookingActivity"/>
+        <activity android:name=".SignOut"/>
+        <activity android:name=".RegistrationActivity"/>
+        <activity android:name=".Activity.DashBoardActivity"/>
     </application>
 
 </manifest>

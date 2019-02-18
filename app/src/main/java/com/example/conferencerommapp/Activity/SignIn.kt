@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.conferencerommapp.Activity.DashBoardActivity
+import com.example.conferencerommapp.Activity.HRActivity
 import com.example.conferencerommapp.Activity.UserInputActivity
 import com.example.conferencerommapp.R
 import com.example.conferencerommapp.services.ConferenceService
@@ -58,7 +59,6 @@ class SignIn : AppCompatActivity() {
         try {
             val account = completedTask.getResult(ApiException::class.java)
             connectTOBackend(account.email)
-            //startActivity(Intent(applicationContext, SignOut::class.java))
             finish()
         } catch (e: ApiException) {
             Log.w("Google Sign In Error", "signInResult:failed code=" + e.statusCode)
@@ -73,23 +73,13 @@ class SignIn : AppCompatActivity() {
 
             connectTOBackend(account.email)
             //startActivity(Intent(applicationContext, SignOut::class.java))
-            //finish()
+//            finish()
             //goAction(code)
         }
     }
     fun goAction(code: Int?) {
         Log.i("--------------", "heyeye ${code}")
         when(code) {
-//            0 -> {
-//                startActivity(Intent(this@SignIn, RegistrationActivity::class.java))
-//                finish()
-//            }
-//            else ->  {
-//                var intent = Intent(this@SignIn, MainActivity::class.java)
-//                intent.putExtra("code",code)
-//                startActivity(intent)
-//                finish()
-//            }
             11 -> {
                 startActivity(Intent(this@SignIn, HRActivity::class.java))
                 finish()
@@ -111,12 +101,11 @@ class SignIn : AppCompatActivity() {
                 finish()
             }
 
-
         }
     }
     fun connectTOBackend(email:String?) {
 
-        val service = Servicebuilder11.buildService(ConferenceService::class.java)
+        val service = Servicebuilder.buildService(ConferenceService::class.java)
         val requestCall : Call<Int> = service.getRequestCode(email)
         requestCall.enqueue(object: Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {

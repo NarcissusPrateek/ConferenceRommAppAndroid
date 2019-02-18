@@ -15,18 +15,18 @@ interface ConferenceService  {
     //fun getConferenceRoomList(@Path("id")id: Int) : Call<List<ConferenceRoom>>
     fun getConferenceRoomList(@Body availableRoom: FetchConferenceRoom) : Call<List<ConferenceRoom>>
 
-    @GET("values")
+    @GET("api/UserLogin")
     fun getRequestCode(@Query( "email") email : String?) : Call<Int>
 
 
     @GET("api/UserDashboard")
     fun getDashboard(@Query( "email") email : String?) : Call<List<Dashboard>>
 
-    @POST("Values")
+    @POST("api/UserLogin")
     fun addEmployee(@Body newEmoployee: Employee) : Call<Int>
 
-    @POST("values")
-    fun addBookingDetails(@Body Booking: Booking) : Call<Int>
+    @POST("api/BookMeeting")
+    fun addBookingDetails(@Body booking: Booking) : Call<Int>
 
     //@GET("destination")
     //fun getDestinationList(@Query( "country") country : String?, @Query("counnt") count: Int) : Call<List<Destination>>
