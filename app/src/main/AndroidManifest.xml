@@ -35,6 +35,12 @@
         <activity android:name=".Activity.BookingActivity"></activity>
         <activity android:name=".SignOut"></activity>
         <activity android:name=".RegistrationActivity"></activity>
+        <activity android:name=".Activity.DashBoardActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

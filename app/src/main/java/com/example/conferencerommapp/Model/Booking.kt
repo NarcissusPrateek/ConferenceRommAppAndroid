@@ -10,7 +10,7 @@ data class Booking (
 
     var FromTime: String? = null,
 
-    var Date: String? = null,
+    //var Date: String? = null,
 
     var ToTime: String? = null,
 

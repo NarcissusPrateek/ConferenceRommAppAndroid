@@ -12,6 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.conferencerommapp.Activity.DashBoardActivity
 import com.example.conferencerommapp.Activity.UserInputActivity
 import com.example.conferencerommapp.R
 import com.example.conferencerommapp.services.ConferenceService
@@ -71,20 +72,30 @@ class SignIn : AppCompatActivity() {
         if (account != null) {
 
             connectTOBackend(account.email)
-            ///startActivity(Intent(applicationContext, SignOut::class.java))
-            finish()
+            //startActivity(Intent(applicationContext, SignOut::class.java))
+            //finish()
             //goAction(code)
         }
     }
     fun goAction(code: Int?) {
         Log.i("--------------", "heyeye ${code}")
         when(code) {
+//            0 -> {
+//                startActivity(Intent(this@SignIn, RegistrationActivity::class.java))
+//                finish()
+//            }
+//            else ->  {
+//                var intent = Intent(this@SignIn, MainActivity::class.java)
+//                intent.putExtra("code",code)
+//                startActivity(intent)
+//                finish()
+//            }
             11 -> {
                 startActivity(Intent(this@SignIn, HRActivity::class.java))
                 finish()
             }
             10 -> {
-                startActivity(Intent(this@SignIn, UserInputActivity::class.java))
+                startActivity(Intent(this@SignIn, DashBoardActivity::class.java))
                 finish()
             }
             0 -> {
@@ -92,13 +103,15 @@ class SignIn : AppCompatActivity() {
                 finish()
             }
             2 -> {
-                startActivity(Intent(this@SignIn, UserInputActivity::class.java))
+                startActivity(Intent(this@SignIn, DashBoardActivity::class.java))
                 finish()
             }
             else -> {
                 Toast.makeText(applicationContext,"Something went Wrong",Toast.LENGTH_LONG).show()
                 finish()
             }
+
+
         }
     }
     fun connectTOBackend(email:String?) {

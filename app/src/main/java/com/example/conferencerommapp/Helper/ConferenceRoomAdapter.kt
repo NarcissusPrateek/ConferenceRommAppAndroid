@@ -38,7 +38,7 @@ class ConferenceRoomAdapter(private val conferenceRoomList: List<ConferenceRoom>
 		holder.itemView.setOnClickListener { v ->
 			val context = v.context
 			Toast.makeText(context,"Hello", Toast.LENGTH_LONG).show()
-			val roomId = conferenceRoomList[position].conf_id;
+			val roomId = conferenceRoomList[position].conf_id
 			val roomname = conferenceRoomList[position].conf_name
 			mClickListener?.onBtnClick(roomId.toString(),roomname)
 		}

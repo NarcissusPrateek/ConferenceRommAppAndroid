@@ -2,8 +2,10 @@ package com.example.conferencerommapp.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.conferencerommapp.Helper.BuildingAdapter
 import com.example.conferencerommapp.Model.Building
 import com.example.conferencerommapp.R
@@ -54,23 +56,36 @@ public class BuildingsActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<Building>>, response: Response<List<Building>>) {
                 if(response.isSuccessful) {
                     val buildingList: List<Building>? = response.body()
-                    building_recycler_view.adapter = BuildingAdapter(buildingList!!,
-                        object : BuildingAdapter.BtnClickListener{
-                            override fun onBtnClick(buildingId: String?, buildingname: String?) {
-                                val intent = Intent(this@BuildingsActivity, ConferenceRoomActivity::class.java)
-                        		intent.putExtra("BuildingId", buildingId)
-                                intent.putExtra("FromTime",DateFromTime)
-                                intent.putExtra("ToTime", DateToTime)
-                                intent.putExtra("Date",date)
-                                intent.putExtra("Capacity",capacity)
-                                intent.putExtra("BuildingName", buildingname)
-                                startActivity(intent)
+                    Log.i("--------$$$$----",buildingList!!.isEmpty().toString())
+                    if(buildingList!!.isEmpty()) {
+                        val builder = AlertDialog.Builder(this@BuildingsActivity)
+
+                        // Set the alert dialog title
+                        builder.setTitle("Available Room Status")
+
+                        // Display a message on alert dialog
+                        builder.setMessage("Sorry! No Rooms Available")
+                    }
+                    else {
+                        building_recycler_view.adapter = BuildingAdapter(buildingList!!,
+                            object : BuildingAdapter.BtnClickListener{
+                                override fun onBtnClick(buildingId: String?, buildingname: String?) {
+                                    val intent = Intent(this@BuildingsActivity, ConferenceRoomActivity::class.java)
+                                    intent.putExtra("BuildingId", buildingId)
+                                    intent.putExtra("FromTime",DateFromTime)
+                                    intent.putExtra("ToTime", DateToTime)
+                                    intent.putExtra("Date",date)
+                                    intent.putExtra("Capacity",capacity)
+                                    intent.putExtra("BuildingName", buildingname)
+                                    startActivity(intent)
 
 
-                               // Toast.makeText(this@BuildingsActivity, buildingId, Toast.LENGTH_LONG)
-                            }
+                                    // Toast.makeText(this@BuildingsActivity, buildingId, Toast.LENGTH_LONG)
+                                }
 
-                        })
+                            })
+                    }
+
                 }
                 else {
                     Toast.makeText(applicationContext,"Unable to Load Buildings",Toast.LENGTH_LONG).show()

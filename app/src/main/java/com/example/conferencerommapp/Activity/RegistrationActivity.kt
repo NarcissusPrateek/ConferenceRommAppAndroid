@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.conferencerommapp.Activity.DashBoardActivity
 import com.example.conferencerommapp.Model.Employee
 import com.example.conferencerommapp.R
 import com.example.conferencerommapp.services.ConferenceService
@@ -82,7 +83,7 @@ class RegistrationActivity : AppCompatActivity() {
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 if(response.isSuccessful) {
                     Toast.makeText(applicationContext,"Information added Successfully",Toast.LENGTH_LONG).show()
-                    startActivity(Intent(this@RegistrationActivity, SignOut::class.java))
+                    startActivity(Intent(this@RegistrationActivity, DashBoardActivity::class.java))
                     finish()
                 }
                 else {

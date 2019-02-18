@@ -86,11 +86,11 @@ public class BookingActivity: AppCompatActivity() {
         booking.BId = bid.toInt()
         booking.FromTime = fromtime
         booking.ToTime = totime
-        booking.Date = date
+        //booking.Date = date
         booking.Status = "abc"
         booking.purpose = purpose
         txvemployeename.text = acct.displayName
-        //addBookingDetails(booking)
+       // addBookingDetails(booking)
     }
     private fun addBookingDetails(booking: Booking)  {
         val service = Servicebuilder.buildService(ConferenceService::class.java )

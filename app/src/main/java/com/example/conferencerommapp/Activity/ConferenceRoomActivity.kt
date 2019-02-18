@@ -2,6 +2,7 @@ package com.example.conferencerommapp.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import com.example.conferencerommapp.Helper.ConferenceRoomAdapter
@@ -60,6 +61,7 @@ public class ConferenceRoomActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<List<ConferenceRoom>>, response: Response<List<ConferenceRoom>>) {
+                Log.i("-3-3-3-3-3----",response.body().toString())
                 if(response.isSuccessful) {
                    var conferenceRoomList =  response.body()
                     conference_recycler_view.adapter = ConferenceRoomAdapter(conferenceRoomList!!,
@@ -77,7 +79,6 @@ public class ConferenceRoomActivity : AppCompatActivity() {
                                 intent.putExtra("BuildingName", building_name)
                                 startActivity(intent)
                                // finish()
-
 
                             }
                         })

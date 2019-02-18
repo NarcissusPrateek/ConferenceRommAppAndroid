@@ -36,7 +36,6 @@ class UserInputActivity : AppCompatActivity() {
 
         fromtime.setOnClickListener {
             val now = Calendar.getInstance()
-            //now.set(0,0,0,2,0)
             val timePickerDialog = TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
                 val selectedTime = Calendar.getInstance()
                 selectedTime.set(Calendar.HOUR_OF_DAY,hourOfDay)
@@ -97,9 +96,7 @@ class UserInputActivity : AppCompatActivity() {
             }
             else {
 
-                //Toast.makeText(applicationContext,fromtime.text,Toast.LENGTH_LONG).show()
-               //var bundle = Bundle()
-                val buildingintent = Intent(this@UserInputActivity, BuildingsActivity::class.java)
+               val buildingintent = Intent(this@UserInputActivity, BuildingsActivity::class.java)
 
                 buildingintent.putExtra("FromTime", fromtime.text.toString())
                 buildingintent.putExtra("ToTime", totime.text.toString())
