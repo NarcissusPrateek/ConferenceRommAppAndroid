@@ -29,7 +29,7 @@
             android:layout_marginTop="70dp"
             android:id="@+id/dashbord_recyclerview"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/blocked_list"/>
+            tools:listitem="@layout/dashboard_list"/>
 
 
         <com.github.clans.fab.FloatingActionButton

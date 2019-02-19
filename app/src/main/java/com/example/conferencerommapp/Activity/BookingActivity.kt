@@ -1,6 +1,7 @@
 package com.example.conferencerommapp.Activity
 
 import android.app.AppComponentFactory
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -16,7 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import kotlinx.android.synthetic.main.activity_booking.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.blocked_list.*
+import kotlinx.android.synthetic.main.dashboard_list.*
 import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,17 +30,13 @@ public class BookingActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_booking)
 
-
-
-        //Toast.makeText(applicationContext, "Hey It's Booking Activity",Toast.LENGTH_LONG).show()
-
         val txv_fromTime : TextView = findViewById(R.id.textView_from_time)
         val txv_toTime : TextView = findViewById(R.id.textView_to_time)
         val txvDate : TextView = findViewById(R.id.textView_date)
         val txvConfName : TextView = findViewById(R.id.textView_conf_name)
         val txvemployeename: TextView = findViewById(R.id.textView_name)
         var edittextPurpose  = findViewById(R.id.editText_purpose) as EditText
-         val txvBildingname : TextView = findViewById(R.id.textView_buildingname)
+        val txvBildingname : TextView = findViewById(R.id.textView_buildingname)
 
         val bundle: Bundle? = intent.extras
         var fromtime  = bundle!!.get("FromTime").toString()
@@ -85,11 +82,12 @@ public class BookingActivity: AppCompatActivity() {
             override fun onFailure(call: Call<Int>, t: Throwable) {
                 Toast.makeText(this@BookingActivity,"Error on Failure",Toast.LENGTH_LONG).show()
             }
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                Log.i("-------#####-----",booking.Purpose)
+            override fun onResponse(call: Call<Int>, response: Response<Int>) { Log.i("-------#####-----",booking.Purpose)
                 if(response.isSuccessful) {
                     val code = response.body()
                     Toast.makeText(this@BookingActivity,"Successully Booked with code ${code}",Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this@BookingActivity, DashBoardActivity::class.java))
+                    finish()
                 }
                 else {
                     Toast.makeText(this@BookingActivity,"Response Error",Toast.LENGTH_LONG).show()

@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.conferencerommapp.Model.Building
 import com.example.conferencerommapp.Model.Dashboard
 import com.example.conferencerommapp.R
 
@@ -13,7 +12,7 @@ class DashBoardAdapter(val dashboardItemList: List<Dashboard>) : androidx.recycl
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-		val view = LayoutInflater.from(parent.context).inflate(R.layout.blocked_list, parent, false)
+		val view = LayoutInflater.from(parent.context).inflate(R.layout.dashboard_list, parent, false)
 		return ViewHolder(view)
 	}
 
@@ -24,7 +23,7 @@ class DashBoardAdapter(val dashboardItemList: List<Dashboard>) : androidx.recycl
         holder.txvRoomName.text = dashboardItemList[position].CName
 		holder.txvToTime.text = dashboardItemList[position].ToTime
 		//holder.txvFrom.text = dashboardItemList[position].FromTime
-		//holder.txvPurpose.text = dashboardItemList[position].Purpose
+		holder.txvPurpose.text = dashboardItemList[position].Purpose
 
 		var fromtime = dashboardItemList[position].FromTime
 		var totime = dashboardItemList[position].ToTime

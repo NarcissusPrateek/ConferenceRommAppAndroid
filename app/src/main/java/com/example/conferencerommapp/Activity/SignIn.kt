@@ -72,8 +72,8 @@ class SignIn : AppCompatActivity() {
         if (account != null) {
 
             connectTOBackend(account.email)
+            finish()
             //startActivity(Intent(applicationContext, SignOut::class.java))
-//            finish()
             //goAction(code)
         }
     }
@@ -81,24 +81,24 @@ class SignIn : AppCompatActivity() {
         Log.i("--------------", "heyeye ${code}")
         when(code) {
             11 -> {
-                startActivity(Intent(this@SignIn, HRActivity::class.java))
-                finish()
+                startActivity(Intent(this@SignIn, BlockedDashboard::class.java))
+                //finish()
             }
             10 -> {
                 startActivity(Intent(this@SignIn, DashBoardActivity::class.java))
-                finish()
+               // finish()
             }
             0 -> {
                 startActivity(Intent(this@SignIn, RegistrationActivity::class.java))
-                finish()
+               // finish()
             }
             2 -> {
                 startActivity(Intent(this@SignIn, DashBoardActivity::class.java))
-                finish()
+                //finish()
             }
             else -> {
                 Toast.makeText(applicationContext,"Something went Wrong",Toast.LENGTH_LONG).show()
-                finish()
+                //finish()
             }
 
         }

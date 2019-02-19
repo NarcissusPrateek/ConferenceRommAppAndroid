@@ -42,16 +42,12 @@ class RegistrationActivity : AppCompatActivity() {
 
         val acct = GoogleSignIn.getLastSignedInAccount(applicationContext)
 
-        textView_name.text = acct!!.displayName
+
         textView_email.text = acct!!.email
 
         val employee = Employee()
 
-        //employee.Role = edittext_Role.text.toString()
-        employee.ActivationCode = "xxx"
-        employee.Name = acct.displayName
-        employee.Email = acct.email
-        employee.Verified = false
+
 
         var options = arrayOf("Intern","SDE-1", "SDE-2", "SDE-3", "Principal Engineer", "Project Manager","HR", "CEO","CTO", "COO")
         spinner.adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,options)
@@ -65,6 +61,10 @@ class RegistrationActivity : AppCompatActivity() {
         }
         button_add.setOnClickListener(View.OnClickListener {
             employee.EmpId = edittext_id.text.toString()
+            employee.Name = textView_name.text.toString()
+            employee.ActivationCode = "xxx"
+            employee.Email = acct.email
+            employee.Verified = false
             addEmployee(employee)
         })
 

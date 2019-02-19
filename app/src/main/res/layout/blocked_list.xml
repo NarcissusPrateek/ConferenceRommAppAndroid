@@ -11,63 +11,63 @@
                 app:cardBackgroundColor="@android:color/white"
                 app:cardCornerRadius="20dp">
 
-    <LinearLayout
-            android:layout_width="match_parent"
+    <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
         <TextView
-                android:id="@+id/building_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Building Name"
-                android:layout_margin="10dp"
-                android:textColor="#303030"
-                android:textSize="20sp" />
-        <TextView
+                android:layout_marginTop="20dp"
                 android:id="@+id/conferenceRoomName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint=" Name"
-                android:layout_margin="10dp"
-                android:textColor="#303030"
-                android:textSize="20sp" />
-        <TextView
-                android:id="@+id/from_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint=" From-time"
-                android:layout_margin="10dp"
-                android:textColor="#303030"
-                android:textSize="20sp" />
-
-        <TextView
-                android:id="@+id/to_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="To Time"
-                android:layout_margin="10dp"
-                android:textColor="#303030"
-                android:textSize="20sp" />
-        <TextView
-                android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Date"
-                android:layout_margin="10dp"
-                android:textColor="#303030"
-                android:textSize="20sp" />
-
-
-        <TextView
-                android:id="@+id/purpose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Purpose"
-                android:layout_margin="10dp"
+                android:text="Conference Name"
+                android:layout_marginLeft="30dp"
                 android:textColor="#303030"
                 android:textSize="20sp"/>
 
-    </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+        <TextView
+                android:paddingTop="30dp"
+                android:id="@+id/buildingname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Building Name"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:textColor="#303030"
+                android:textSize="20sp"
+                android:paddingBottom="20dp"
+        />
+        <Button
+                android:text="Unblock"
+                android:layout_width="wrap_content"
+                android:id="@+id/unblock"
+                android:layout_alignLeft="@+id/buildingname"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="265dp"/>
+
+    </RelativeLayout>
+
+        <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+               <!---->
+                <!--android:layout_marginLeft="300dp">-->
+
+          <!---->
+        <!--</LinearLayout>-->
+
+
+
+    <!--</LinearLayout>-->
 
 </androidx.cardview.widget.CardView>

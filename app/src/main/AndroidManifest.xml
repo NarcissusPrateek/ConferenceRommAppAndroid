@@ -24,11 +24,11 @@
         </activity>
         <activity
                 android:name=".Activity.UserInputActivity"
-                android:theme="@style/AppTheme.NoActionBar">
+                android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
         <activity
                 android:name=".Activity.BuildingsActivity"
-                android:theme="@style/AppTheme.NoActionBar">
+                android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -42,6 +42,10 @@
         <activity android:name=".SignOut"/>
         <activity android:name=".RegistrationActivity"/>
         <activity android:name=".Activity.DashBoardActivity"/>
+        <activity android:name=".AddingConference"></activity>
+        <activity android:name=".BlockedDashboard"></activity>
+        <activity android:name=".Spinner"></activity>
+        <activity android:name=".ConferenceDashBoard"></activity>
     </application>
 
 </manifest>

@@ -7,12 +7,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.conferencerommapp.R
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_registration.*
+import kotlinx.android.synthetic.main.activity_user_inputs.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
@@ -21,7 +22,7 @@ class UserInputActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_user_inputs)
 
 
         var timeFormat = SimpleDateFormat("HH:mm ", Locale.CHINA)
@@ -30,8 +31,20 @@ class UserInputActivity : AppCompatActivity() {
         var date_text: EditText =findViewById(R.id.date)
         var fromtime : EditText =findViewById(R.id.fromTime)
         var totime: EditText = findViewById(R.id.toTime)
-        var capcity: EditText = findViewById(R.id.capcity)
+        var capcity: EditText = findViewById(R.id.capacity)
         var building_avtivity_button: Button = findViewById(R.id.next)
+        var capacity = 0
+
+        var options = arrayOf(2,4,8,10,12)
+        spinner2.adapter = ArrayAdapter<Int>(this,android.R.layout.simple_list_item_1,options)
+        spinner2.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                 capacity = 4
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                capacity = options.get(position)
+            }
+        }
 
 
         fromtime.setOnClickListener {
@@ -97,11 +110,10 @@ class UserInputActivity : AppCompatActivity() {
             else {
 
                val buildingintent = Intent(this@UserInputActivity, BuildingsActivity::class.java)
-
                 buildingintent.putExtra("FromTime", fromtime.text.toString())
                 buildingintent.putExtra("ToTime", totime.text.toString())
                 buildingintent.putExtra("Date",date_text.text.toString())
-                buildingintent.putExtra("Capacity",capcity.text.toString())
+                buildingintent.putExtra("Capacity",capacity)
                 startActivity(buildingintent)
            }
 

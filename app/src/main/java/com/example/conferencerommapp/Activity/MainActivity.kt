@@ -1,28 +1,39 @@
 package com.example.conferencerommapp.Activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.conferencerommapp.AddingConference
+import com.example.conferencerommapp.BlockedDashboard
 import com.example.conferencerommapp.R
-import kotlinx.android.synthetic.main.activity_mainactivity.*
+import com.example.conferencerommapp.Spinner
+import com.github.clans.fab.FloatingActionButton
 
-class MainActivity: AppCompatActivity() {
-
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mainactivity)
+        setContentView(R.layout.activity_main)
+
+        val addConferenceRoom: FloatingActionButton = findViewById(R.id.add_conference)
+        val maintenance: FloatingActionButton = findViewById(R.id.maintenance)
+        val blocked : Button = findViewById(R.id.blocked_room)
 
 
-        btnnew.setOnClickListener({
 
-        })
-        btnpre.setOnClickListener({
+        blocked.setOnClickListener {
+            val blockintent = Intent(applicationContext, BlockedDashboard::class.java)
+            startActivity(blockintent)
+        }
 
-        })
-        btnEdit.setOnClickListener({
+        maintenance.setOnClickListener {
+            val maintenanceintent= Intent(applicationContext, Spinner::class.java)
+            startActivity(maintenanceintent)
+        }
 
-        })
-        btnHr.setOnClickListener({
-
-        })
+        addConferenceRoom.setOnClickListener {
+            val addConferenceintent = Intent(applicationContext, AddingConference::class.java)
+            startActivity(addConferenceintent)
+        }
     }
 }

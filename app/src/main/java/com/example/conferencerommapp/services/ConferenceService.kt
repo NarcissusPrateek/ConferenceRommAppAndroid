@@ -1,7 +1,12 @@
 package com.example.conferencerommapp.services
 
 import androidx.core.content.res.FontResourcesParserCompat
+import com.example.conferencerommapp.Blocked
+import com.example.conferencerommapp.BuildingConference
+import com.example.conferencerommapp.BuildingT
 import com.example.conferencerommapp.Model.*
+import com.example.conferencerommapp.addConferenceRoom
+import com.example.myapplication.Models.ConferenceList
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -27,6 +32,30 @@ interface ConferenceService  {
 
     @POST("api/BookMeeting")
     fun addBookingDetails(@Body booking: Booking) : Call<Int>
+
+    // Pratheek's.....
+
+    @POST("api/addconferenceroom")
+    fun addConference(@Body newConferenceRoom: addConferenceRoom):Call<ResponseBody>
+
+    @POST("api/blocking/{id}")
+    fun blockconference(@Path("id")id:Int) :Call<ResponseBody>
+
+    @GET("api/building")
+    fun getBuildings() :Call<List<BuildingT>>
+
+    @GET("api/building/{id}")
+    fun getBuildingsConference(@Path("id")id: Int) : Call<List<BuildingConference>>
+
+    @GET("api/blocking")
+    fun getBlockedConference() : Call<List<Blocked>>
+
+    @POST("api/unblocking/{id}")
+    fun unBlockingConferenceRoom(@Path("id")id: Int) : Call<ResponseBody>
+
+    @GET("api//BuildingConferenceRooms/{id}")
+    fun conferencelist(@Path("id")id : Int) : Call<ConferenceList>
+
 
     //@GET("destination")
     //fun getDestinationList(@Query( "country") country : String?, @Query("counnt") count: Int) : Call<List<Destination>>
