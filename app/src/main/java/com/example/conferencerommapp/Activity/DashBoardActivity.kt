@@ -50,18 +50,28 @@ class DashBoardActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        var id = item!!.itemId
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .build()
 
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
-        mGoogleSignInClient!!.signOut()
-            .addOnCompleteListener(this) {
-                Toast.makeText(applicationContext, "Successfully signed out", Toast.LENGTH_LONG).show()
-                startActivity(Intent(applicationContext, SignIn::class.java))
-                finish()
+        when(id) {
+            R.id.profile -> {
+                var acct = GoogleSignIn.getLastSignedInAccount(this)
+
             }
+            R.id.log_out -> {
+                    mGoogleSignInClient!!.signOut()
+                    .addOnCompleteListener(this) {
+                        Toast.makeText(applicationContext, "Successfully signed out", Toast.LENGTH_LONG).show()
+                        startActivity(Intent(applicationContext, SignIn::class.java))
+                        finish()
+                    }
+            }
+        }
+
         return true
     }
     private fun loadDashBoard() {

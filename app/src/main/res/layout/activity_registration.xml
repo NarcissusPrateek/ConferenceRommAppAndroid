@@ -116,7 +116,8 @@
             android:layout_below="@+id/edittext_id"
             android:layout_marginTop="30dp"
 
-            android:spinnerMode="dropdown" android:minWidth="@dimen/text_margin" android:dropDownWidth="wrap_content"
+            android:spinnerMode="dropdown" android:minWidth="@dimen/text_margin"
+            android:dropDownWidth="wrap_content"
             android:background="@color/colorPrimary"/>
 
 

@@ -21,7 +21,7 @@ class SplashScreen : AppCompatActivity() {
         val logoRunnable : Runnable = Runnable {
                 val intent : Intent = Intent(applicationContext,SignIn::class.java)
                 startActivity(intent)
-                finish()
+              finish()
         }
         logoHandler.postDelayed(logoRunnable,3000)
     }
