@@ -85,16 +85,16 @@ class UserInputActivity : AppCompatActivity() {
 
         }
 
-//        var options = arrayOf(2,4,6,8,10,12,14,16)
-//        spinner2.adapter = ArrayAdapter<Int>(this,android.R.layout.simple_list_item_1,options)
-//        spinner2.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                capacity = 2
-//            }
-//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                capacity = options.get(position)
-//            }
-//        }
+        var options = arrayOf(2,4,6,8,10,12,14,16)
+        spinner2.adapter = ArrayAdapter<Int>(this,android.R.layout.simple_list_item_1,options)
+        spinner2.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                capacity = 2
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                capacity = options.get(position)
+            }
+        }
 
 
         building_avtivity_button.setOnClickListener {
