@@ -62,7 +62,7 @@ class DashBoardActivity : AppCompatActivity() {
                 var acct = GoogleSignIn.getLastSignedInAccount(this)
 
             }
-            R.id.log_out -> {
+            R.id.Logout -> {
                     mGoogleSignInClient!!.signOut()
                     .addOnCompleteListener(this) {
                         Toast.makeText(applicationContext, "Successfully signed out", Toast.LENGTH_LONG).show()
