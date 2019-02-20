@@ -13,7 +13,7 @@ import retrofit2.http.*
 
 interface ConferenceService  {
 
-    @GET("api/building")
+    @GET("api/building_0")
     fun getBuildingList() : Call<List<Building>>
 
     @POST("api/availablerooms")
@@ -41,10 +41,10 @@ interface ConferenceService  {
     @POST("api/blocking/{id}")
     fun blockconference(@Path("id")id:Int) :Call<ResponseBody>
 
-    @GET("api/building")
+    @GET("api/building_0")
     fun getBuildings() :Call<List<BuildingT>>
 
-    @GET("api/building/{id}")
+    @GET("api/building_0/{id}")
     fun getBuildingsConference(@Path("id")id: Int) : Call<List<BuildingConference>>
 
     @GET("api/blocking")

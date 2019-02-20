@@ -6,11 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.conferencerommapp.Activity.ConferenceRoomActivity
 import com.example.conferencerommapp.Model.Building
 import com.example.conferencerommapp.Model.IntentProperties
 import com.example.conferencerommapp.R
+import kotlin.random.Random
 
 
 class BuildingAdapter(private val buildingList: List<Building>,val btnlistener: BtnClickListener) : androidx.recyclerview.widget.RecyclerView.Adapter<BuildingAdapter.ViewHolder>() {
@@ -27,6 +29,7 @@ class BuildingAdapter(private val buildingList: List<Building>,val btnlistener: 
 
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 		mClickListener = btnlistener
+        holder.image.setImageResource(getPictures())
 		holder.building = buildingList[position]
 		holder.txvBuilding.text = buildingList[position].building_name
 		var id = buildingList[position].building_id
@@ -36,12 +39,27 @@ class BuildingAdapter(private val buildingList: List<Building>,val btnlistener: 
 		}
 	}
 
-	override fun getItemCount(): Int {
+    private fun getPictures(): Int {
+        val grid = Random.nextInt(2)
+
+        return when(grid) {
+            0 -> R.drawable.building_0
+            1 -> R.drawable.building_1
+            2 -> R.drawable.building_2
+
+            else -> R.drawable.building_1
+        }
+    }
+
+    override fun getItemCount(): Int {
 		return buildingList.size
 	}
 
 	class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
+		val image:ImageView = itemView.findViewById(R.id.image)
+
+		val str:String = "building_"+ Random.nextInt(2)
 		val txvBuilding: TextView = itemView.findViewById(R.id.txv_building)
 		var building: Building? = null
 
