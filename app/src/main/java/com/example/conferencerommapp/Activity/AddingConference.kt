@@ -40,11 +40,7 @@ class AddingConference : AppCompatActivity() {
                             items_id.add(item.BId!!)
                         }
                         val adapter =ArrayAdapter<String>(this@AddingConference, android.R.layout.simple_list_item_1, items)
-                        buiding_Spinner.adapter = ArrayAdapter<String>(
-                            this@AddingConference,
-                            android.R.layout.simple_spinner_dropdown_item,
-                            items
-                        )
+                        buiding_Spinner.adapter = ArrayAdapter<String>(this@AddingConference,android.R.layout.simple_spinner_dropdown_item,items)
                         buiding_Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
