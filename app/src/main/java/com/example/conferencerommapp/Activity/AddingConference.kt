@@ -88,6 +88,8 @@ class AddingConference : AppCompatActivity() {
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if(response.isSuccessful){
+                    startActivity(Intent(this@AddingConference,ConferenceDashBoard::class.java))
+
                     Toast.makeText(applicationContext,"Successfull",Toast.LENGTH_SHORT).show()
                 }
                 else{
