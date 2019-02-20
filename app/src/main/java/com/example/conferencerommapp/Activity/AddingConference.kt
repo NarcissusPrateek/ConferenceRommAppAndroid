@@ -1,5 +1,6 @@
 package com.example.conferencerommapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -65,6 +66,7 @@ class AddingConference : AppCompatActivity() {
                                     room.Capacity = conferenceCapcity.text.toString().toInt()
 
                                     addingRoom(room)
+
                                 }
                             }
 

@@ -7,20 +7,32 @@
         android:layout_height="match_parent"
         tools:context=".ConferenceDashBoard">
 
-    <Spinner
+    <RelativeLayout
+            android:id="@+id/spinner_relative_layout"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="75dp"
-            android:id="@+id/building_Spinner"/>
+            android:layout_height="wrap_content">
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:paddingTop="80dp"
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="75dp"
+                android:id="@+id/spinner"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_below="@+id/spinner_relative_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="70dp"
-            android:id="@+id/conference_list"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/conference_list"/>
+            android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:id="@+id/conference_list"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/conference_list"/>
+
+    </RelativeLayout>
 
 
 </RelativeLayout>
