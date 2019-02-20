@@ -56,6 +56,9 @@ interface ConferenceService  {
     @GET("api//BuildingConferenceRooms/{id}")
     fun conferencelist(@Path("id")id : Int) :  Call<List<ConferenceList>>
 
+    @POST("AddBuilding")
+    fun addBuilding(@Body newBuilding:addBuilding):Call<ResponseBody>
+
 
     //@GET("destination")
     //fun getDestinationList(@Query( "country") country : String?, @Query("counnt") count: Int) : Call<List<Destination>>
