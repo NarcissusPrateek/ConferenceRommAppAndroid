@@ -1,5 +1,7 @@
 package com.example.conferencerommapp
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import com.example.conferencerommapp.Activity.DashBoardActivity
 import com.example.conferencerommapp.services.ConferenceService
 import com.example.globofly.services.Servicebuilder
 
@@ -19,7 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class BlockedRecyclerAdapter(private val blockedList: List<Blocked>) : androidx.recyclerview.widget.RecyclerView.Adapter<BlockedRecyclerAdapter.ViewHolder>() {
+class BlockedRecyclerAdapter(private val blockedList: List<Blocked>, val contex: Context) : androidx.recyclerview.widget.RecyclerView.Adapter<BlockedRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -35,7 +39,7 @@ class BlockedRecyclerAdapter(private val blockedList: List<Blocked>) : androidx.
         var id = blockedList[position].CId
         holder.unblock.setOnClickListener {
             var id = blockedList[position].CId
-            unBlock(id)
+            unBlock(id, contex)
         }
         holder.itemView.setOnClickListener { v ->
             var id = blockedList[position].CId
@@ -43,7 +47,7 @@ class BlockedRecyclerAdapter(private val blockedList: List<Blocked>) : androidx.
         }
     }
 
-    private fun unBlock(id: Int?) {
+    private fun unBlock(id: Int?, contex: Context) {
         val unBlockApi = Servicebuilder.buildService(ConferenceService::class.java)
         val requestCall : Call<ResponseBody> = unBlockApi.unBlockingConferenceRoom(id!!)
         requestCall.enqueue(object : Callback<ResponseBody> {
@@ -51,7 +55,8 @@ class BlockedRecyclerAdapter(private val blockedList: List<Blocked>) : androidx.
             }
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                Log.i("Done","COOL")
+                ContextCompat.startActivity(contex, Intent(contex, BlockedDashboard::class.java), null)
+                (contex as Activity).finish()
             }
 
         })

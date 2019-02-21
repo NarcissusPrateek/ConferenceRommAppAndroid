@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.conferencerommapp.BlockedDashboard
 import com.example.conferencerommapp.Helper.BuildingAdapter
 import com.example.conferencerommapp.Helper.DashBoardAdapter
 import com.example.conferencerommapp.Model.Building
@@ -74,6 +75,23 @@ class DashBoardActivity : AppCompatActivity() {
 
         return true
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (intent.getIntExtra("flag",-1)==1){
+            intent=Intent(Intent(this@DashBoardActivity, BlockedDashboard::class.java))
+            startActivity(intent)
+
+
+            //terminate
+
+        }else if(intent.getIntExtra("flag",-1)==2){
+            finish()
+            Log.d("kalyan","here");
+        }
+
+    }
+
     private fun loadDashBoard() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
@@ -95,13 +113,10 @@ class DashBoardActivity : AppCompatActivity() {
                 Log.i("---------@_@_@_@_@--", response.body().toString())
                 if(response.isSuccessful) {
                     val dashboardItemList: List<Dashboard>? = response.body()
-                    dashboardItemList!!.asReversed()
+                    //dashboardItemList!!.asReversed()
                     if(dashboardItemList!!.isEmpty()) {
 
-                        //val builder = AlertDialog.Builder(this@DashBoardActivity)
-                        //builder.setTitle("Booking Details")
-                        //builder.setMessage("No Booking Found!!!")
-                        //builder.show()
+                        Toast.makeText(applicationContext,"No previous booking found...", Toast.LENGTH_LONG).show()
                     }
                     else {
                         dashbord_recyclerview.adapter = DashBoardAdapter(dashboardItemList!!, this@DashBoardActivity)

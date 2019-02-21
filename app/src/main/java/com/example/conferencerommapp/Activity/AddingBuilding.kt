@@ -28,8 +28,14 @@ class AddingBuilding : AppCompatActivity() {
             var build = addBuilding()
             build.BName = bName.text.toString()
             build.Place = bplace.text.toString()
+            if(build.BName != null && build.Place != null) {
+                addBuild(build)
+            }
+            else {
+                Toast.makeText(this@AddingBuilding,"Please fill all boxes....", Toast.LENGTH_LONG).show()
+            }
 
-            addBuild(build)
+
         }
     }
 

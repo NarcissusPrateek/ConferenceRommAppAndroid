@@ -1,11 +1,13 @@
 package com.example.conferencerommapp.Activity
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import com.example.conferencerommapp.Helper.ConferenceRoomAdapter
+import com.example.conferencerommapp.Model.Building
 import com.example.conferencerommapp.Model.ConferenceRoom
 import com.example.conferencerommapp.Model.FetchConferenceRoom
 import com.example.conferencerommapp.R
@@ -65,7 +67,16 @@ public class ConferenceRoomActivity : AppCompatActivity() {
                 if(response.isSuccessful) {
                     var conferenceRoomList =  response.body()
                     if(conferenceRoomList!!.size == 0) {
-                        Toast.makeText(this@ConferenceRoomActivity,"No rooms available plese select other building",Toast.LENGTH_LONG).show()
+                        val builder = AlertDialog.Builder(this@ConferenceRoomActivity)
+                        builder.setTitle("Availablity Status")
+                        builder.setMessage("No Room is available in this building!!!")
+                        builder.setPositiveButton("Ok"){dialog, which ->
+                            //startActivity(Intent(this@ConferenceRoomActivity, BuildingsActivity::class.java))
+                            finish()
+                        }
+                        val dialog: AlertDialog = builder.create()
+                        dialog.show()
+
                     }
                     else {
                         conference_recycler_view.adapter = ConferenceRoomAdapter(conferenceRoomList!!,

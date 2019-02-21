@@ -23,11 +23,11 @@ interface ConferenceService  {
     @GET("api/UserLogin")
     fun getRequestCode(@Query( "email") email : String?) : Call<Int>
 
-    //@GET("api/UserDashboard")
-    //fun getDashboard(@Query( "email") email : String?) : Call<List<Dashboard>>
+    @GET("api/UserDashboard")
+    fun getDashboard(@Query( "email") email : String?) : Call<List<Dashboard>>
 
-    @POST("api/UserDashboard")
-    fun getDashboard(@Body email : String) : Call<List<Dashboard>>
+    //@POST("api/UserDashboard")
+    //fun getDashboard(@Body email : String) : Call<List<Dashboard>>
 
     @POST("api/UserLogin")
     fun addEmployee(@Body newEmoployee: Employee) : Call<Int>

@@ -48,6 +48,7 @@
         <activity android:name=".Spinner"></activity>
         <activity android:name=".ConferenceDashBoard"></activity>
         <activity android:name=".Activity.MainActivity11"></activity>
+        <activity android:name=".Activity.SecondActivity"></activity>
     </application>
 
 </manifest>

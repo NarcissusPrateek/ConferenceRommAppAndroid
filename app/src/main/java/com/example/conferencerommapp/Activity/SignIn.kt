@@ -1,7 +1,9 @@
 package com.example.conferencerommapp
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 //import android.support.v7.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -27,6 +29,7 @@ import retrofit2.Response
 
 class SignIn : AppCompatActivity() {
 
+   // val progressDialog = ProgressDialog(applicationContext)
     var RC_SIGN_IN = 0
     var signInButton: SignInButton? = null
     var mGoogleSignInClient: GoogleSignInClient? = null
@@ -56,6 +59,9 @@ class SignIn : AppCompatActivity() {
         }
     }
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+//        progressDialog.setMessage("Loading....")
+//        progressDialog.setCancelable(false)
+//        progressDialog.show()
         try {
             val account = completedTask.getResult(ApiException::class.java)
             connectTOBackend(account.email)
@@ -68,6 +74,9 @@ class SignIn : AppCompatActivity() {
     }
     override fun onStart() {
         super.onStart()
+       // progressDialog.setMessage("Loading....")
+        //progressDialog.setCancelable(false)
+       // progressDialog.show()
         val account = GoogleSignIn.getLastSignedInAccount(this)
         if (account != null) {
 
@@ -113,7 +122,8 @@ class SignIn : AppCompatActivity() {
             }
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 var code = response.body()
-                Log.i("------helper on Response-----", "${code}")
+              //  progressDialog.dismiss()
+               // Log.i("------helper on Response-----", "${code}")
                 goAction(code)
             }
         })

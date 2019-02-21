@@ -1,5 +1,6 @@
 package com.example.conferencerommapp.Activity
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
@@ -133,7 +134,15 @@ class UserInputActivity : AppCompatActivity() {
                        startActivity(buildingintent)
                    }
                    else {
-                       Toast.makeText(this@UserInputActivity,"From-time Must be greater than To-Time and hours must be less than 4",Toast.LENGTH_LONG).show()
+                        val builder = AlertDialog.Builder(this@UserInputActivity)
+                        builder.setTitle("Blocked Status")
+                        builder.setMessage("From-Time must be greater then To-Time and the meeting time must be less then 4 Hours")
+                        builder.setPositiveButton("Ok"){dialog, which ->
+                        }
+                       val dialog: AlertDialog = builder.create()
+                       dialog.setCanceledOnTouchOutside(false)
+                       dialog.show()
+                       //Toast.makeText(this@UserInputActivity,"From-time Must be greater than To-Time and hours must be less than 4",Toast.LENGTH_LONG).show()
                    }
                } catch (e: Exception) {
                    Toast.makeText(this@UserInputActivity,"Details are Invalid!!!",Toast.LENGTH_LONG).show()

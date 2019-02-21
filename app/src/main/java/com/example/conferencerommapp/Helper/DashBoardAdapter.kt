@@ -1,5 +1,6 @@
 package com.example.conferencerommapp.Helper
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -69,7 +70,8 @@ class DashBoardAdapter(val dashboardItemList: List<Dashboard>,val contex: Contex
 				if(response.isSuccessful) {
 					val code = response.body()
 					Toast.makeText(contex,"Booking Canceled with code ${code}", Toast.LENGTH_LONG).show()
-					startActivity(contex,Intent(contex, DashBoardActivity::class.java),null)
+						startActivity(contex,Intent(contex, DashBoardActivity::class.java),null)
+					(contex as Activity).finish()
 
 
 				}

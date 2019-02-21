@@ -1,5 +1,6 @@
 package com.example.conferencerommapp
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -60,7 +61,11 @@ class BlockedDashboard : AppCompatActivity() {
                 Log.i("----------------", response.body().toString())
                 if(response.isSuccessful) {
                     val blockedList: List<Blocked>? = response.body()
-                    conference_blocked_list.adapter = BlockedRecyclerAdapter(blockedList!!)
+                    if(blockedList!!.size == 0){
+                        Toast.makeText(applicationContext,"You haven't block any Room", Toast.LENGTH_LONG).show()
+
+                    }
+                    conference_blocked_list.adapter = BlockedRecyclerAdapter(blockedList!!,this@BlockedDashboard)
 
                 }
                 else {

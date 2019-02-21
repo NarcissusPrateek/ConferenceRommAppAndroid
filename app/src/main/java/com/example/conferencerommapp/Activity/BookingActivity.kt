@@ -31,8 +31,10 @@ class BookingActivity: AppCompatActivity() {
 
     var mUserItems = ArrayList<Int>()
     val EmailList = ArrayList<String>()
+    var bookedStatus:Boolean=false
     var mGoogleSignInClient: GoogleSignInClient? = null
     var str :StringBuilder? = null
+    var userStatus=-1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_booking)
@@ -168,10 +170,21 @@ class BookingActivity: AppCompatActivity() {
             }
             override fun onResponse(call: Call<Int>, response: Response<Int>) { Log.i("-------#####-----",booking.Purpose)
                 if(response.isSuccessful) {
+                    if (true){
+                        userStatus=1
+                    }else{
+                        userStatus=2
+                    }
+
                     val code = response.body()
                     Toast.makeText(this@BookingActivity,"Successully Booked with code ${code}",Toast.LENGTH_LONG).show()
-                    startActivity(Intent(this@BookingActivity, DashBoardActivity::class.java))
+                    bookedStatus=true
+                    val intent=Intent(Intent(this@BookingActivity, DashBoardActivity::class.java))
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    intent.putExtra("flag",userStatus)
+                    startActivity(intent)
                     finish()
+
                 }
                 else {
                     Toast.makeText(this@BookingActivity,"Response Error",Toast.LENGTH_LONG).show()
