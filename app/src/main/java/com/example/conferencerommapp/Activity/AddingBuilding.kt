@@ -3,9 +3,11 @@ package com.example.conferencerommapp.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.conferencerommapp.ConferenceDashBoard
 import com.example.conferencerommapp.Model.addBuilding
 import com.example.conferencerommapp.R
 import com.example.conferencerommapp.services.ConferenceService
@@ -27,17 +29,18 @@ class AddingBuilding : AppCompatActivity() {
             var build = addBuilding()
             build.BName = bName.text.toString()
             build.Place = bplace.text.toString()
-            if(build.BName != null && build.Place != null) {
+            if(TextUtils.isEmpty(bName.text))
+            {
+                Toast.makeText(this@AddingBuilding,"Please enter the Building Name!", Toast.LENGTH_LONG).show()
+            }
+            else if(TextUtils.isEmpty(bplace.text)) {
+                Toast.makeText(this@AddingBuilding,"Please enter the place of building!", Toast.LENGTH_LONG).show()
+            }
+            else{
                 addBuild(build)
             }
-            else {
-                Toast.makeText(this@AddingBuilding,"Please fill all boxes....", Toast.LENGTH_LONG).show()
-            }
-
-
-        }
+}
     }
-
     private fun addBuild(build: addBuilding) {
         val buildapi = Servicebuilder.buildService(ConferenceService::class.java)
         val addconferencerequestCall: Call<ResponseBody> = buildapi.addBuilding(build)

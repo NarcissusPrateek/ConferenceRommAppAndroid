@@ -23,11 +23,7 @@ public class BuildingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_building_list)
-        //val intent = getIntent().getStringExtra("FromTime")
-        //val FromTime=intent.getStringExtra("FromTime")
-     //   Toast.makeText(this@BuildingsActivity,intent + getIntent().getStringExtra("FromTime") + getIntent().getStringExtra("ToTime")+getIntent().getStringExtra("Date"),Toast.LENGTH_SHORT).show()
      }
-
     override fun onResume() {
         super.onResume()
         loadBuildings()
