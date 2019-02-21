@@ -15,11 +15,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.conferencerommapp.Activity.DashBoardActivity
-import com.example.conferencerommapp.Activity.HRActivity
-import com.example.conferencerommapp.Activity.UserInputActivity
-import com.example.conferencerommapp.R
 import com.example.conferencerommapp.services.ConferenceService
-import com.example.conferencerommapp.services.Servicebuilder11
 import com.example.globofly.services.Servicebuilder
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.common.SignInButton
