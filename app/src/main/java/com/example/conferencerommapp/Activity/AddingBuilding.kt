@@ -20,6 +20,7 @@ class AddingBuilding : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_building)
+
         val add: Button = findViewById(R.id.addbuilding)
         add.setOnClickListener {
             val bName : TextView = findViewById(R.id.input_buildingName)

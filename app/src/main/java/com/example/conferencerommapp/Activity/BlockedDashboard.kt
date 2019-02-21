@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import com.example.conferencerommapp.Activity.BuildingDashboard
 import com.example.conferencerommapp.Activity.DashBoardActivity
 import com.example.conferencerommapp.services.ConferenceService
 import com.example.globofly.services.Servicebuilder
@@ -35,7 +36,7 @@ class BlockedDashboard : AppCompatActivity() {
         }
 
         addConferenceRoom.setOnClickListener {
-            val addConferenceintent = Intent(applicationContext,AddingConference::class.java)
+            val addConferenceintent = Intent(applicationContext,BuildingDashboard::class.java)
             startActivity(addConferenceintent)
             finish()
         }
