@@ -24,14 +24,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.ArrayList
-
-
+import kotlin.text.StringBuilder
 
 
 class BookingActivity: AppCompatActivity() {
 
     var mUserItems = ArrayList<Int>()
+    val EmailList = ArrayList<String>()
     var mGoogleSignInClient: GoogleSignInClient? = null
+    var str :StringBuilder? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_booking)
@@ -77,11 +78,9 @@ class BookingActivity: AppCompatActivity() {
         txvemployeename.text = acct.displayName
 
 
-
-
-
-
-    /*    button1.setOnClickListener {
+        button.setOnClickListener {
+            var servicebuilder = Servicebuilder.buildService(ConferenceService::class.java)
+            var requestCall = servicebuilder.getEmployees()
             requestCall.enqueue(object : Callback<List<EmployeeList>> {
                 override fun onFailure(call: Call<List<EmployeeList>>, t: Throwable) {
                     Toast.makeText(this@BookingActivity, "On failure while Loading the EmployeeList", Toast.LENGTH_LONG)
@@ -95,93 +94,71 @@ class BookingActivity: AppCompatActivity() {
                         for (item: EmployeeList in emplist!!) {
                             list.add(item.Name!!)
                         }
-                        val array = arrayOfNulls<String>(list.size)
-                        list.toArray(array)
-                        //val email_list = selectMember(array, emplist, employee)
-                       // Log.i("-------@_@_## ----", employee.EmailList.toString())
+                        val listItems = arrayOfNulls<String>(list.size)
+                        list.toArray(listItems)
+
+                        //val EmailList = ArrayList<String>()
+                        var checkedItems: BooleanArray = BooleanArray(emplist.size)
+
+                        val mBuilder = AlertDialog.Builder(this@BookingActivity)
+                        mBuilder.setTitle("Select Members for Meeting")
+
+                        mBuilder.setMultiChoiceItems(
+                            listItems,
+                            checkedItems,
+                            DialogInterface.OnMultiChoiceClickListener { dialogInterface, position, isChecked ->
+                                if (isChecked) {
+                                    mUserItems.add(position)
+                                } else if (mUserItems.contains(position)) {
+                                    mUserItems.remove(position)
+                                }
+                            })
+                        mBuilder.setCancelable(false)
+                        mBuilder.setPositiveButton(
+                            R.string.ok_label,
+                            DialogInterface.OnClickListener { dialogInterface, which ->
+                                str = StringBuilder("")
+                                for (i in mUserItems.indices) {
+                                    str!!.append(emplist[mUserItems.get(i)].Email!!)
+                                    if(i != (mUserItems.size - 1)) {
+                                        str!!.append(",")
+                                    }
+                                }
+                                mUserItems.clear()
+                            })
+                        mBuilder.setNegativeButton(
+                            R.string.dismiss_label,
+                            DialogInterface.OnClickListener { dialogInterface, i -> dialogInterface.dismiss() }
+
+                        )
+                        mBuilder.setNeutralButton(
+                            R.string.clear_all_label,
+                            DialogInterface.OnClickListener { dialogInterface, which ->
+                                for (i in checkedItems.indices) {
+                                    checkedItems[i] = false
+                                }
+                                str = StringBuilder("")
+                                mUserItems.clear()
+                                EmailList.clear()
+
+                            })
+                        val mDialog = mBuilder.create()
+                        mDialog.show()
                     }
+
                 }
 
             })
-        }*/
+        }
         book_button.setOnClickListener {
             booking.Purpose = edittextPurpose.text.toString()
             booking.CName = roomname
+            booking.CCMail = str.toString()
             addBookingDetails(booking)
        }
-
-
     }
-    /*fun getEmployeeList(): List<EmployeeList> {
-        var emplist = ArrayList<EmployeeList>()
-        var employee = ListOfEmployee()
-        var servicebuilder = Servicebuilder.buildService(ConferenceService::class.java)
-        var requestCall = servicebuilder.getEmployees()
-        requestCall.enqueue(object: Callback<ArrayList<EmployeeList>> {
-            override fun onFailure(call: Call<ArrayList<EmployeeList>>, t: Throwable) {
 
-            }
 
-            override fun onResponse(call: Call<ArrayList<EmployeeList>>, response: Response<ArrayList<EmployeeList>>) {
-                if(response.isSuccessful) {
-                    emplist = response.body()
-                }
-                else {
-                    Toast.makeText(this@BookingActivity, "Unable to load Employee List",Toast.LENGTH_LONG).show()
-                }
-            }
-
-        })
-    }*/
-    fun selectMember(listItems: Array<String?>, emplist: List<EmployeeList>, employee: ListOfEmployee)/*: ArrayList<String?> */{
-        Log.i("56565656","34345d4fg")
-        val EmailList = ArrayList<String?>()
-        var checkedItems: BooleanArray = BooleanArray(emplist.size)
-        var email_list = mutableListOf<String>()
-        val mBuilder = AlertDialog.Builder(this@BookingActivity)
-        mBuilder.setTitle("Select Members for Meeting")
-
-        mBuilder.setMultiChoiceItems(
-            listItems,
-            checkedItems,
-            DialogInterface.OnMultiChoiceClickListener { dialogInterface, position, isChecked ->
-                if (isChecked) {
-                    mUserItems.add(position)
-                } else {
-                    mUserItems.remove(Integer.valueOf(position))
-                }
-            })
-        mBuilder.setCancelable(false)
-        mBuilder.setPositiveButton(R.string.ok_label, DialogInterface.OnClickListener { dialogInterface, which ->
-            // var employee  = ListOfEmployee()
-            for (i in mUserItems.indices) {
-                Log.i("---------", emplist[i].Email)
-                //EmailList.add(emplist[i].Email)
-                employee.EmailList!!.add(emplist[i].Email!!)
-                //email_list.add(emplist.get(i).Email!!)
-            }
-
-            Log.i("----%%%%%555-----", employee.EmailList.toString())
-        })
-        mBuilder.setNegativeButton(
-            R.string.dismiss_label,
-            DialogInterface.OnClickListener { dialogInterface, i -> dialogInterface.dismiss()}
-
-        )
-        mBuilder.setNeutralButton(
-            R.string.clear_all_label,
-            DialogInterface.OnClickListener { dialogInterface, which ->
-                for (i in checkedItems.indices) {
-                    checkedItems[i] = false
-                    mUserItems.clear()
-                    //employee = null
-                    //EmailList.clear()
-                }
-            })
-        val mDialog = mBuilder.create()
-        mDialog.show()
-        //   return EmailList
-    }
     private fun addBookingDetails(booking: Booking)  {
         val service = Servicebuilder.buildService(ConferenceService::class.java )
         val requestCall : Call<Int> = service.addBookingDetails(booking)

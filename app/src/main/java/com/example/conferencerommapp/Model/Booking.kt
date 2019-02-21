@@ -14,12 +14,14 @@ data class Booking (
 
     var ToTime: String? = null,
 
-    var Purpose: String? = null
+    var Purpose: String? = null,
+
+    var CCMail: String? = null
 
 
 
 ) {
     override fun toString(): String {
-        return "Booking(Email=$Email, CId=$CId, BId=$BId, FromTime=$FromTime, ToTime=$ToTime, Purpose=$Purpose, CName=$CName)"
+        return "Booking(Email=$Email, CId=$CId, BId=$BId, FromTime=$FromTime, ToTime=$ToTime, Purpose=$Purpose, CName=$CName, CCMail=$CCMail)"
     }
 }

@@ -58,7 +58,7 @@ class BuildingDashboard : AppCompatActivity() {
                                 intent.putExtra("BuildingId", buildingId)
                                 startActivity(intent)
 
-                                Toast.makeText(this@BuildingDashboard,buildingId.toString(), Toast.LENGTH_SHORT).show()
+                                //Toast.makeText(this@BuildingDashboard,buildingId.toString(), Toast.LENGTH_SHORT).show()
 
                                 // Toast.makeText(this@BuildingsActivity, buildingId, Toast.LENGTH_LONG)
                             }

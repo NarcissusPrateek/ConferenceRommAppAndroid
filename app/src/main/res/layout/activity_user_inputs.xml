@@ -102,7 +102,7 @@
             android:layout_marginTop="388dp"
             android:layout_alignParentTop="true"/>
     <Button
-            android:text="Button"
+            android:text="NEXT"
             android:layout_width="135dp"
             android:layout_height="52dp"
             android:layout_below="@+id/spinner2"

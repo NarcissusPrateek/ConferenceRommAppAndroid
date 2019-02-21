@@ -85,7 +85,7 @@ class DashBoardActivity : AppCompatActivity() {
         val acct = GoogleSignIn.getLastSignedInAccount(applicationContext)
         var email = acct!!.email
         val conferenceService = Servicebuilder.buildService(ConferenceService::class.java)
-        val requestCall : Call<List<Dashboard>> = conferenceService.getDashboard(email)
+        val requestCall : Call<List<Dashboard>> = conferenceService.getDashboard(email!!)
         requestCall.enqueue(object: Callback<List<Dashboard>> {
             override fun onFailure(call: Call<List<Dashboard>>, t: Throwable) {
                 Toast.makeText(applicationContext,t.message,Toast.LENGTH_LONG).show()

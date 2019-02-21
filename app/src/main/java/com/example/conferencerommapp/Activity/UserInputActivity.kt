@@ -124,7 +124,7 @@ class UserInputActivity : AppCompatActivity() {
                    var min : Long = 900000
                    var max: Long = 14400000
                    if((min <= elapsed) && (max >= elapsed)) {
-                       Toast.makeText(this@UserInputActivity,"all Details are correct Good To GO.....",Toast.LENGTH_LONG).show()
+                       //Toast.makeText(this@UserInputActivity,"all Details are correct Good To GO.....",Toast.LENGTH_LONG).show()
                        val buildingintent = Intent(this@UserInputActivity, BuildingsActivity::class.java)
                        buildingintent.putExtra("FromTime", fromtime.text.toString())
                        buildingintent.putExtra("ToTime", totime.text.toString())
@@ -133,7 +133,7 @@ class UserInputActivity : AppCompatActivity() {
                        startActivity(buildingintent)
                    }
                    else {
-                       Toast.makeText(this@UserInputActivity,"From-time Must be greater than To-Time and houes must be less than 4",Toast.LENGTH_LONG).show()
+                       Toast.makeText(this@UserInputActivity,"From-time Must be greater than To-Time and hours must be less than 4",Toast.LENGTH_LONG).show()
                    }
                } catch (e: Exception) {
                    Toast.makeText(this@UserInputActivity,"Details are Invalid!!!",Toast.LENGTH_LONG).show()

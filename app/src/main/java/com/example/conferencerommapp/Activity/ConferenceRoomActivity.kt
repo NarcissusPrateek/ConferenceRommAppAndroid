@@ -61,27 +61,32 @@ public class ConferenceRoomActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<List<ConferenceRoom>>, response: Response<List<ConferenceRoom>>) {
-                Log.i("-3-3-3-3-3----",response.body().toString())
-                if(response.isSuccessful) {
-                   var conferenceRoomList =  response.body()
-                    conference_recycler_view.adapter = ConferenceRoomAdapter(conferenceRoomList!!,
-                        object : ConferenceRoomAdapter.BtnClickListener {
-                            override fun onBtnClick(roomId: String?,roomname: String?) {
-                                //Toast.makeText(this@ConferenceRoomActivity,"Hello Pratheek",Toast.LENGTH_LONG).show()
-                                val intent = Intent(this@ConferenceRoomActivity, BookingActivity::class.java)
-                                intent.putExtra("RoomId", roomId)
-                                intent.putExtra("BuildingId", buildingId)
-                                intent.putExtra("FromTime",from)
-                                intent.putExtra("ToTime", to)
-                                intent.putExtra("Date",date)
-                                intent.putExtra("Capacity",capacity)
-                                intent.putExtra("RoomName",roomname)
-                                intent.putExtra("BuildingName", building_name)
-                                startActivity(intent)
-                               // finish()
 
-                            }
-                        })
+                if(response.isSuccessful) {
+                    var conferenceRoomList =  response.body()
+                    if(conferenceRoomList!!.size == 0) {
+                        Toast.makeText(this@ConferenceRoomActivity,"No rooms available plese select other building",Toast.LENGTH_LONG).show()
+                    }
+                    else {
+                        conference_recycler_view.adapter = ConferenceRoomAdapter(conferenceRoomList!!,
+                            object : ConferenceRoomAdapter.BtnClickListener {
+                                override fun onBtnClick(roomId: String?,roomname: String?) {
+                                    val intent = Intent(this@ConferenceRoomActivity, BookingActivity::class.java)
+                                    intent.putExtra("RoomId", roomId)
+                                    intent.putExtra("BuildingId", buildingId)
+                                    intent.putExtra("FromTime",from)
+                                    intent.putExtra("ToTime", to)
+                                    intent.putExtra("Date",date)
+                                    intent.putExtra("Capacity",capacity)
+                                    intent.putExtra("RoomName",roomname)
+                                    intent.putExtra("BuildingName", building_name)
+                                    startActivity(intent)
+                                    // finish()
+
+                                }
+                            })
+                    }
+
                 }
                 else {
                     Toast.makeText(applicationContext, "Unable to Load Conference Room", Toast.LENGTH_LONG).show()
