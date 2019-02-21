@@ -23,55 +23,22 @@ class AddingConference : AppCompatActivity() {
     }
 
     private fun AddRoom() {
-        val buildingapi = Servicebuilder.buildService(ConferenceService::class.java)
-        val requestCall: Call<List<BuildingT>> = buildingapi.getBuildings()
-        requestCall.enqueue(object:Callback<List<BuildingT>>{
-            override fun onFailure(call: Call<List<BuildingT>>, t: Throwable) {
-                Toast.makeText(applicationContext,t.message,Toast.LENGTH_SHORT).show()
-            }
+        val bundle: Bundle = intent.extras
+        val buildingId = bundle.get("BuildingId").toString().toInt()
+        val addconferenceRoom:Button = findViewById(R.id.add_conference_room)
+        addconferenceRoom.setOnClickListener {
 
-            override fun onResponse(call: Call<List<BuildingT>>, response: Response<List<BuildingT>>) {
-                if(response.isSuccessful) {
-                    response.body()?.let {
-                        var items = mutableListOf<String>()
-                        var items_id = mutableListOf<Int>()
-                        for (item in it) {
-                            items.add(item.BName!!)
-                            items_id.add(item.BId!!)
-                        }
-                        val adapter =ArrayAdapter<String>(this@AddingConference, android.R.layout.simple_list_item_1, items)
-                        buiding_Spinner.adapter = ArrayAdapter<String>(this@AddingConference,android.R.layout.simple_spinner_dropdown_item,items)
-                        buiding_Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                            override fun onNothingSelected(parent: AdapterView<*>?) {
-                                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                            }
-
-                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
-                                val addconferenceRoom: Button = findViewById(R.id.add_conference_room)
-
-
-
-                                addconferenceRoom.setOnClickListener {
-                                    val buildingId: Int = items_id[position]
-                                    val conferenceRoom: EditText = findViewById(R.id.conference_Name)
-                                    val conferenceCapcity: EditText = findViewById(R.id.conference_Capacity)
-                                    var room = addConferenceRoom()
-                                    room.BId = buildingId
-                                    room.CName = conferenceRoom.text.toString()
-                                    room.Capacity = conferenceCapcity.text.toString().toInt()
-
-                                    addingRoom(room)
-
-                                }
-                            }
-
-
-                        }
-                    }
-                }
+            val conferenceRoom: EditText = findViewById(R.id.conference_Name)
+            val conferenceCapcity: EditText = findViewById(R.id.conference_Capacity)
+            var room = addConferenceRoom()
+            room.BId = buildingId
+            room.CName = conferenceRoom.text.toString()
+            room.Capacity = conferenceCapcity.text.toString().toInt()
+            addingRoom(room)
+            val intent=Intent(this,ConferenceDashBoard::class.java)
+            intent.putExtra("BuildingId", buildingId)
+            startActivity(intent)
         }
-    })
 }
 
     private fun addingRoom(room: addConferenceRoom) {
