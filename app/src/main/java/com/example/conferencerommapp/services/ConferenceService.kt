@@ -13,7 +13,7 @@ import retrofit2.http.*
 
 interface ConferenceService  {
 
-    @GET("api/building")
+    @GET("api/Building")
     fun getBuildingList() : Call<List<Building>>
 
     @POST("api/availablerooms")
@@ -22,7 +22,6 @@ interface ConferenceService  {
 
     @GET("api/UserLogin")
     fun getRequestCode(@Query( "email") email : String?) : Call<Int>
-
 
     @GET("api/UserDashboard")
     fun getDashboard(@Query( "email") email : String?) : Call<List<Dashboard>>
@@ -33,7 +32,14 @@ interface ConferenceService  {
     @POST("api/BookMeeting")
     fun addBookingDetails(@Body booking: Booking) : Call<Int>
 
+    @POST("api/CancelBooking")
+    fun cancelBooking(@Body cancel: CancelBooking) : Call<Int>
+
+
     // Pratheek's.....
+
+    @GET("api/")
+    fun addBuilding(@Body build: addBuilding) : Call<ResponseBody>
 
     @POST("api/addconferenceroom")
     fun addConference(@Body newConferenceRoom: addConferenceRoom):Call<ResponseBody>
@@ -41,10 +47,10 @@ interface ConferenceService  {
     @POST("api/blocking/{id}")
     fun blockconference(@Path("id")id:Int) :Call<ResponseBody>
 
-    @GET("api/building")
+    @GET("api/Building")
     fun getBuildings() :Call<List<BuildingT>>
 
-    @GET("api/building/{id}")
+    @GET("api/Building/{id}")
     fun getBuildingsConference(@Path("id")id: Int) : Call<List<BuildingConference>>
 
     @GET("api/blocking")
@@ -54,10 +60,7 @@ interface ConferenceService  {
     fun unBlockingConferenceRoom(@Path("id")id: Int) : Call<ResponseBody>
 
     @GET("api//BuildingConferenceRooms/{id}")
-    fun conferencelist(@Path("id")id : Int) :  Call<List<ConferenceList>>
-
-    @POST("AddBuilding")
-    fun addBuilding(@Body newBuilding:addBuilding):Call<ResponseBody>
+    fun conferencelist(@Path("id")id : Int) : Call<List<ConferenceList>>
 
 
     //@GET("destination")

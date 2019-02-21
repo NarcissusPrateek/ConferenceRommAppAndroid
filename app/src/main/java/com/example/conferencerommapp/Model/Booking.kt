@@ -10,7 +10,7 @@ data class Booking (
 
     var FromTime: String? = null,
 
-
+    var CName: String? = null,
 
     var ToTime: String? = null,
 
@@ -20,6 +20,6 @@ data class Booking (
 
 ) {
     override fun toString(): String {
-        return "Booking(Email=$Email, CId=$CId, BId=$BId, FromTime=$FromTime, ToTime=$ToTime, Purpose=$Purpose)"
+        return "Booking(Email=$Email, CId=$CId, BId=$BId, FromTime=$FromTime, ToTime=$ToTime, Purpose=$Purpose, CName=$CName)"
     }
 }

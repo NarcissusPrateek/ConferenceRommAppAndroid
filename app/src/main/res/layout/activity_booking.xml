@@ -151,7 +151,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true" android:layout_marginStart="95dp"
             android:layout_above="@+id/book_button"
-            android:layout_marginBottom="96dp" app:layout_constraintBottom_toTopOf="@+id/book_button"/>
+            app:layout_constraintBottom_toTopOf="@+id/button" android:layout_marginBottom="36dp"/>
 
     <!--<EditText android:layout_width="wrap_content"-->
               <!--android:layout_height="wrap_content"-->
@@ -189,4 +189,11 @@
             android:id="@+id/textView2" android:layout_marginBottom="0dp"
             app:layout_constraintBottom_toTopOf="@+id/textView3" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="4dp"/>
+    <Button
+            android:text="Select Members"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/button" android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/book_button" app:layout_constraintHorizontal_bias="0.498"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

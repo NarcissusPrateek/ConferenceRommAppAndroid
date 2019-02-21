@@ -6,7 +6,8 @@ data class Dashboard (
     var BName : String? = null,
     var CId : Int? = null,
     var CName : String? = null,
-    var Purpose: String? = null
+    var Purpose: String? = null,
+    var Email: String? = null
 
 )
 

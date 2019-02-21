@@ -95,6 +95,7 @@ class DashBoardActivity : AppCompatActivity() {
                 Log.i("---------@_@_@_@_@--", response.body().toString())
                 if(response.isSuccessful) {
                     val dashboardItemList: List<Dashboard>? = response.body()
+                    dashboardItemList!!.asReversed()
                     if(dashboardItemList!!.isEmpty()) {
 
                         //val builder = AlertDialog.Builder(this@DashBoardActivity)
@@ -103,7 +104,7 @@ class DashBoardActivity : AppCompatActivity() {
                         //builder.show()
                     }
                     else {
-                        dashbord_recyclerview.adapter = DashBoardAdapter(dashboardItemList!!)
+                        dashbord_recyclerview.adapter = DashBoardAdapter(dashboardItemList!!, this@DashBoardActivity)
                     }
 
                 }

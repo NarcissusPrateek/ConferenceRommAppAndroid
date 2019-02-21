@@ -57,16 +57,7 @@ public class BuildingsActivity : AppCompatActivity() {
                 if(response.isSuccessful) {
                     val buildingList: List<Building>? = response.body()
                     Log.i("--------$$$$----",buildingList!!.isEmpty().toString())
-                    if(buildingList!!.isEmpty()) {
-                        val builder = AlertDialog.Builder(this@BuildingsActivity)
 
-                        // Set the alert dialog title
-                        builder.setTitle("Available Room Status")
-
-                        // Display a message on alert dialog
-                        builder.setMessage("Sorry! No Rooms Available")
-                    }
-                    else {
                         building_recycler_view.adapter = BuildingAdapter(buildingList!!,
                             object : BuildingAdapter.BtnClickListener{
                                 override fun onBtnClick(buildingId: String?, buildingname: String?) {
@@ -85,8 +76,6 @@ public class BuildingsActivity : AppCompatActivity() {
 
                             })
                     }
-
-                }
                 else {
                     Toast.makeText(applicationContext,"Unable to Load Buildings",Toast.LENGTH_LONG).show()
                 }

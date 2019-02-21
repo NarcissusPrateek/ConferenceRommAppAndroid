@@ -35,32 +35,6 @@
                 android:layout_margin="10dp"
                 android:textColor="#303030"
                 android:textSize="20sp"/>
-        <TextView
-                android:id="@+id/from_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint=" From-time"
-                android:layout_margin="10dp"
-                android:textColor="#303030"
-                android:textSize="20sp"/>
-
-        <TextView
-                android:id="@+id/to_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="To Time"
-                android:layout_margin="10dp"
-                android:textColor="#303030"
-                android:textSize="20sp"/>
-        <TextView
-                android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Date"
-                android:layout_margin="10dp"
-                android:textColor="#303030"
-                android:textSize="20sp"/>
-
 
         <TextView
                 android:id="@+id/purpose"
@@ -70,6 +44,46 @@
                 android:layout_margin="10dp"
                 android:textColor="#303030"
                 android:textSize="20sp"/>
+
+        <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Date"
+                android:layout_margin="10dp"
+                android:textColor="#303030"
+                android:textSize="20sp"/>
+
+        <TextView
+                android:id="@+id/from_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint=" From-time"
+                android:layout_margin="10dp"
+                android:textColor="#303030"
+                android:textSize="20sp"/>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:weightSum="100">
+            <TextView
+                    android:id="@+id/to_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="To Time"
+                    android:layout_weight="60"
+                    android:layout_margin="10dp"
+                    android:textColor="#303030"
+                    android:textSize="20sp"/>
+            <Button android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnCancel"
+                    android:textSize="20sp"
+                    android:text="Cancel"
+                    android:layout_weight="40"
+            />
+        </LinearLayout>
 
     </LinearLayout>
 

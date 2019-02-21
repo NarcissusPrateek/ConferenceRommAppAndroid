@@ -11,10 +11,6 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".Activity.AddingBuilding">
-        </activity>
-        <activity android:name=".Activity.BuildingDashboard">
-        </activity>
         <activity android:name=".Activity.HRActivity">
         </activity>
         <activity
@@ -46,10 +42,10 @@
         <activity android:name=".SignOut"/>
         <activity android:name=".RegistrationActivity"/>
         <activity android:name=".Activity.DashBoardActivity"/>
-        <activity android:name=".AddingConference"/>
-        <activity android:name=".BlockedDashboard"/>
-        <activity android:name=".Spinner"/>
-        <activity android:name=".ConferenceDashBoard"/>
+        <activity android:name=".AddingConference"></activity>
+        <activity android:name=".BlockedDashboard"></activity>
+        <activity android:name=".Spinner"></activity>
+        <activity android:name=".ConferenceDashBoard"></activity>
     </application>
 
 </manifest>

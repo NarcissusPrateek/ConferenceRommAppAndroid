@@ -12,7 +12,5 @@ class InputActivity : AppCompatActivity() {
         setContentView(R.layout.activity_input)
 
         Toast.makeText(applicationContext,"Input Control",Toast.LENGTH_LONG).show()
-
-
     }
 }

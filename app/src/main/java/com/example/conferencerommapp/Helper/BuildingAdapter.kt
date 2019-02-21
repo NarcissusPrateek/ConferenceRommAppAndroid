@@ -40,7 +40,7 @@ class BuildingAdapter(private val buildingList: List<Building>,val btnlistener: 
 	}
 
     private fun getPictures(): Int {
-        val grid = Random.nextInt(2)
+        val grid = Random.nextInt(0,3)
 
         return when(grid) {
             0 -> R.drawable.building_0
@@ -57,9 +57,9 @@ class BuildingAdapter(private val buildingList: List<Building>,val btnlistener: 
 
 	class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
-		val image:ImageView = itemView.findViewById(R.id.image)
+	val image:ImageView = itemView.findViewById(R.id.image)
 
-		val str:String = "building_"+ Random.nextInt(2)
+	//	val str:String = "building_"+ Random.nextInt(2)
 		val txvBuilding: TextView = itemView.findViewById(R.id.txv_building)
 		var building: Building? = null
 
