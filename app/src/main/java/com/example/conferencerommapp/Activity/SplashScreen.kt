@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.example.conferencerommapp.BlockedDashboard
 import com.example.conferencerommapp.R
 import com.example.conferencerommapp.RegistrationActivity
 import com.example.conferencerommapp.SignIn
@@ -19,7 +20,7 @@ class SplashScreen : AppCompatActivity() {
 
         val logoHandler  : Handler = Handler()
         val logoRunnable : Runnable = Runnable {
-                val intent : Intent = Intent(applicationContext,SignIn::class.java)
+                val intent : Intent = Intent(applicationContext,BlockedDashboard::class.java)
                 startActivity(intent)
                 finish()
         }

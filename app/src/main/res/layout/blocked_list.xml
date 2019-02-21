@@ -6,24 +6,28 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
+
+                android:backgroundTint="#EEF1F7"
                 android:layout_marginBottom="5dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardCornerRadius="20dp">
 
     <RelativeLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
         <TextView
+
                 android:layout_marginTop="20dp"
                 android:id="@+id/conferenceRoomName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Conference Name"
                 android:layout_marginLeft="30dp"
-                android:textColor="#303030"
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
 
     </RelativeLayout>
@@ -41,7 +45,7 @@
                 android:text="Building Name"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
-                android:textColor="#303030"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:paddingBottom="20dp"
         />
@@ -52,9 +56,11 @@
                 android:layout_alignLeft="@+id/buildingname"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="265dp"/>
+                android:background="@drawable/buttonsubmit"
+                android:layout_marginLeft="220dp"/>
 
     </RelativeLayout>
+
 
         <!--<LinearLayout-->
                 <!--android:layout_width="wrap_content"-->

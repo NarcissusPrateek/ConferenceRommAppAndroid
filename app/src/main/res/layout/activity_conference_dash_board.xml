@@ -7,12 +7,24 @@
         android:layout_height="match_parent"
         tools:context=".ConferenceDashBoard">
 
-
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <androidx.recyclerview.widget.RecyclerView
+            android:layout_height="match_parent">
+        <TextView
+                android:text="Conference Rooms"
+                android:textStyle="normal"
+                android:textSize="30sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
+                android:textColor="#242B53"/>
+    </RelativeLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="80dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
@@ -24,6 +36,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                app:fab_colorPressed="#D3D3D8"
+                app:menu_colorPressed="#D3D3D8"
+                app:fab_colorNormal="#A3A7B8"
                 android:src="@drawable/ic_add_white_24dp"
                 android:id="@+id/add_conferenece"
                 android:layout_alignParentEnd="true"
@@ -32,5 +47,3 @@
         />
     </RelativeLayout>
 
-
-</RelativeLayout>

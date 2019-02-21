@@ -3,34 +3,19 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".SignIn">
 
     <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
             android:layout_marginTop="252dp"/>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            android:textSize="30dp"
-            android:id="@+id/tv_name"
-            android:layout_centerHorizontal="true" android:layout_marginTop="38dp"
-            android:layout_below="@+id/sign_in_button"/>
 
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SignOut"
-            android:id="@+id/button_sign_out"
-            android:layout_centerHorizontal="true" android:layout_alignParentBottom="true"
-            android:layout_marginBottom="205dp" android:layout_marginTop="92dp" android:layout_below="@+id/tv_name"/>
 
 
 </RelativeLayout>

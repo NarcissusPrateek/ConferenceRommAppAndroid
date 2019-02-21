@@ -7,9 +7,24 @@
         android:layout_height="match_parent"
         tools:context=".Activity.BuildingDashboard">
 
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="100dp">
+        <TextView
+                android:textStyle="normal"
+                android:textSize="30sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Building DashBoard"
+                android:textColor="#242B53"/>
+    </RelativeLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="80dp"
             android:layout_width="match_parent"
             android:id="@+id/buidingRecyclerView"
+            android:textColor="@color/black"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/building_dashboard_list"
 
@@ -21,6 +36,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            app:fab_colorPressed="#D3D3D8"
+            app:menu_colorPressed="#D3D3D8"
+            app:fab_colorNormal="#A3A7B8"
             android:src="@drawable/ic_add_white_24dp"
             android:id="@+id/add_building"
             android:layout_alignParentEnd="true"

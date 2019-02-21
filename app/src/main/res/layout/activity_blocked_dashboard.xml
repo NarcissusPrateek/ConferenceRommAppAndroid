@@ -13,18 +13,21 @@
             android:layout_height="match_parent">
         <TextView
                 android:text="Blocked Rooms"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:textSize="30sp"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+
+                android:textColor="#242B53"/>
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="70dp"
+
             android:id="@+id/conference_blocked_list"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/blocked_list"/>
@@ -43,13 +46,13 @@
             app:menu_fab_size="normal"
             app:menu_icon="@drawable/ic_menu_white_24dp"
             app:menu_labels_colorNormal="#333"
-            app:menu_colorPressed="#444"
-
+            app:menu_colorPressed="#D3D3D8"
+            app:menu_colorNormal="#A3A7B8"
             app:menu_labels_cornerRadius="5dp"
             app:menu_labels_ellipsize="none"
             app:menu_fab_hide_animation="@anim/fab_slide_in_from_right"
             app:menu_labels_maxLines="-1"
-
+            app:menu_colorRipple="@color/white"
             app:menu_labels_position="left"
             app:menu_fab_show_animation="@anim/fab_slide_in_from_right"
             app:menu_labels_showShadow="true"
@@ -64,6 +67,9 @@
             app:menu_showShadow="true"
     >
         <com.github.clans.fab.FloatingActionButton
+                app:fab_colorPressed="#D3D3D8"
+
+                app:fab_colorNormal="#A3A7B8"
                 android:src="@drawable/ic_account_balance_white_24dp"
                 android:id="@+id/booking_detials"
                 app:fab_label="Book Rooms"
@@ -71,6 +77,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         <com.github.clans.fab.FloatingActionButton
+                app:menu_shadowColor="#66aff198"
+                app:fab_colorPressed="#D3D3D8"
+                app:menu_colorPressed="#D3D3D8"
+                app:fab_colorNormal="#A3A7B8"
                 android:src="@drawable/ic_block_white_24dp"
                 android:id="@+id/maintenance"
                 app:fab_label="Block"
@@ -78,6 +88,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         <com.github.clans.fab.FloatingActionButton
+                app:menu_shadowColor="#66aff198"
+                app:fab_colorPressed="#D3D3D8"
+                app:menu_colorPressed="#D3D3D8"
+                app:fab_colorNormal="#A3A7B8"
                 android:src="@drawable/ic_add_white_24dp"
                 android:id="@+id/add_conference"
                 app:fab_label="Add"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name" formatted="true" translatable="true" >Nineleaps</string>
     <string name="make_an_order">Make an order</string>
     <string name="dialog_title">Items available in a shop</string>
     <string name="ok_label">OK</string>

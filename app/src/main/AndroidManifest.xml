@@ -10,7 +10,7 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/Theme.AppCompat.DayNight">
         <activity android:name=".Activity.HRActivity">
         </activity>
         <activity
@@ -37,8 +37,12 @@
         </activity>
         <activity android:name=".Activity.ConferenceRoomActivity"/>
         <activity android:name=".InputActivity"/>
-        <activity android:name=".SignIn"/>
+        <activity android:name=".SignIn"
+                  android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Activity.BookingActivity"/>
+        <activity android:name=".Activity.AddingBuilding"/>
+        <activity android:name=".Activity.BuildingDashboard"/>
+
         <activity android:name=".SignOut"/>
         <activity android:name=".Activity.BuildingDashboard"></activity>
         <activity android:name=".RegistrationActivity"/>

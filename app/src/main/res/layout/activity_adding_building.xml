@@ -6,30 +6,54 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Activity.AddingBuilding">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView
+                android:textStyle="normal"
+                android:textSize="30sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Building"
+                android:textColor="#242B53"
+        />
+    </RelativeLayout>
 
     <EditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_margin="10dp"
-            android:layout_centerInParent="true"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:hint="Building Name"
+            android:backgroundTint="#242B53"
+            android:layout_centerHorizontal="true"
             android:id="@+id/input_buildingName"
     />
 
     <EditText
+            android:hint="Building Place"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="60dp"
+            android:backgroundTint="#242B53"
+            android:layout_marginRight="60dp"
             android:layout_below="@+id/input_buildingName"
-            android:layout_margin="10dp"
             android:id="@+id/input_buildingPlace"
     />
     <Button
+
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
             android:text="Add Building"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textSize="20dp"
-            android:textStyle="bold"
+            android:textStyle="normal"
+            android:textColor="#242B53"
+            android:background="@drawable/buttonsubmit"
             android:id="@+id/addbuilding"
             android:layout_below="@+id/input_buildingPlace"
             android:layout_centerHorizontal="true"

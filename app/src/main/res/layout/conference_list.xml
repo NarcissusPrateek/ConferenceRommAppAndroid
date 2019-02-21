@@ -6,6 +6,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
+        android:backgroundTint="#EEF1F7"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="5dp"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,15 +16,27 @@
     <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
 
         <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Cname"
+                android:text=" Name :"
+                android:layout_marginLeft="25dp"
+                android:textColor="#303030"
+                android:textSize="20sp"/>
+
+        <TextView
+                android:layout_toRightOf="@id/Cname"
                 android:layout_marginTop="20dp"
                 android:id="@+id/conferenceRoomName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Conference Name"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="100dp"
                 android:textColor="#303030"
                 android:textSize="20sp"/>
 
@@ -33,15 +46,30 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
+        <TextView
+                android:paddingTop="30dp"
+                android:id="@+id/Ccapacity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Capacity :"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:textColor="#303030"
+                android:textSize="20sp"
+                android:paddingBottom="20dp"
+        />
+
 
         <TextView
             android:paddingTop="30dp"
+            android:layout_toRightOf="@id/Ccapacity"
+
             android:id="@+id/conference_room_capacity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Capacity"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="100dp"
             android:textColor="#303030"
             android:textSize="20sp"
             android:paddingBottom="20dp"

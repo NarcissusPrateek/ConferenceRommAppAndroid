@@ -42,8 +42,8 @@ interface ConferenceService  {
     fun getEmployees() : Call<List<EmployeeList>>
     // Pratheek's.....
 
-    @GET("api/")
-    fun addBuilding(@Body build: addBuilding) : Call<ResponseBody>
+    @POST("api/AddBuilding")
+    fun addBuilding(@Body newBuilding:addBuilding):Call<ResponseBody>
 
     @POST("api/addconferenceroom")
     fun addConference(@Body newConferenceRoom: addConferenceRoom):Call<ResponseBody>
@@ -63,7 +63,7 @@ interface ConferenceService  {
     @POST("api/unblocking/{id}")
     fun unBlockingConferenceRoom(@Path("id")id: Int) : Call<ResponseBody>
 
-    @GET("api//BuildingConferenceRooms/{id}")
+    @GET("api/BuildingConferenceRooms/{id}")
     fun conferencelist(@Path("id")id : Int) : Call<List<ConferenceList>>
 
 
