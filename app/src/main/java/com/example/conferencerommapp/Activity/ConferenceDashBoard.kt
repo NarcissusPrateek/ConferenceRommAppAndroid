@@ -21,7 +21,7 @@ class ConferenceDashBoard : AppCompatActivity() {
         setContentView(R.layout.activity_conference_dash_board)
         val bundle: Bundle = intent.extras
         val buildingId = bundle.get("BuildingId").toString().toInt()
-        var addConference: FloatingActionButton =findViewById(R.id.add_conferenece)
+        var addConference: FloatingActionButton=findViewById(R.id.add_conferenece)
         addConference.setOnClickListener {
             val intent=Intent(this,AddingConference::class.java)
             intent.putExtra("BuildingId", buildingId)
