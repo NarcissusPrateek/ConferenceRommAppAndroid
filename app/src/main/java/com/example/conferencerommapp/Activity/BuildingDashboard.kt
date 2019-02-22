@@ -33,22 +33,16 @@ class BuildingDashboard : AppCompatActivity() {
     }
 
     fun loadBuildings() {
-
-
-        //Toast.makeText(this@BuildingsActivity,intent.getStringExtra("FromTime"),Toast.LENGTH_LONG).show()
         val conferenceService = Servicebuilder.buildService(ConferenceService::class.java)
         val requestCall : Call<List<BuildingT>> = conferenceService.getBuildings()
         requestCall.enqueue(object: Callback<List<BuildingT>> {
             override fun onFailure(call: Call<List<BuildingT>>, t: Throwable) {
-
                 Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
             }
-
             override fun onResponse(call: Call<List<BuildingT>>, response: Response<List<BuildingT>>) {
                 if (response.isSuccessful)
                 {
                     val buildingList: List<BuildingT>? = response.body()
-                    Log.i("--------$$$$----", buildingList!!.isEmpty().toString())
                     buidingRecyclerView.adapter = BuildingRecyclerAdapter(buildingList!!,
                         object : BuildingRecyclerAdapter.BtnClickListener
                         {
@@ -57,10 +51,6 @@ class BuildingDashboard : AppCompatActivity() {
                                 var intent = Intent(this@BuildingDashboard, ConferenceDashBoard::class.java)
                                 intent.putExtra("BuildingId", buildingId)
                                 startActivity(intent)
-
-                                //Toast.makeText(this@BuildingDashboard,buildingId.toString(), Toast.LENGTH_SHORT).show()
-
-                                // Toast.makeText(this@BuildingsActivity, buildingId, Toast.LENGTH_LONG)
                             }
 
                         })

@@ -31,9 +31,8 @@ public class BuildingsActivity : AppCompatActivity() {
 
     fun loadBuildings() {
 
-
         //Toast.makeText(this@BuildingsActivity,intent.getStringExtra("FromTime"),Toast.LENGTH_LONG).show()
-         val bundle: Bundle? = intent.extras
+        val bundle: Bundle? = intent.extras
         val from = bundle!!.get("FromTime").toString()
         val to = bundle.get("ToTime").toString()
         val date = bundle.get("Date").toString()

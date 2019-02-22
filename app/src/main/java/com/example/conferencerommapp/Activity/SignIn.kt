@@ -1,7 +1,9 @@
 package com.example.conferencerommapp
 
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 //import android.support.v7.app.AppCompatActivity
@@ -29,11 +31,11 @@ class SignIn : AppCompatActivity() {
     var RC_SIGN_IN = 0
     var signInButton: SignInButton? = null
     var mGoogleSignInClient: GoogleSignInClient? = null
-
+    var prefs: SharedPreferences? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main1)
-
+        prefs = getSharedPreferences("myPref", Context.MODE_PRIVATE)
         signInButton = findViewById(R.id.sign_in_button)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
@@ -118,8 +120,9 @@ class SignIn : AppCompatActivity() {
             }
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 var code = response.body()
-              //  progressDialog.dismiss()
-               // Log.i("------helper on Response-----", "${code}")
+                val  editor = prefs!!.edit()
+                editor.putInt("Code",code!!)
+                editor.apply()
                 goAction(code)
             }
         })

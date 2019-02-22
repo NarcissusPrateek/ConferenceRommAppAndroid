@@ -1,5 +1,6 @@
 package com.example.conferencerommapp.Activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -72,26 +73,30 @@ class DashBoardActivity : AppCompatActivity() {
                     }
             }
         }
-
         return true
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        if (intent.getIntExtra("flag",-1)==1){
+        val pref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        var code = pref.getInt("Code",10)
+        if(code == 11) {
             intent=Intent(Intent(this@DashBoardActivity, BlockedDashboard::class.java))
             startActivity(intent)
-
-
-            //terminate
-
-        }else if(intent.getIntExtra("flag",-1)==2){
             finish()
-            Log.d("kalyan","here");
+        }
+        else {
+            finish()
         }
 
-    }
 
+//        if (intent.getIntExtra("flag",-1)==11){
+//            intent=Intent(Intent(this@DashBoardActivity, BlockedDashboard::class.java))
+//            startActivity(intent)
+//        }else{
+//            finish()
+//        }
+    }
     private fun loadDashBoard() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()

@@ -1,5 +1,6 @@
 package com.example.conferencerommapp.Activity
 
+import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -28,6 +29,7 @@ import kotlin.text.StringBuilder
 
 class BookingActivity: AppCompatActivity() {
 
+    var progressDialog: ProgressDialog? = null
     var mUserItems = ArrayList<Int>()
     val EmailList = ArrayList<String>()
     var bookedStatus:Boolean=false
@@ -152,45 +154,62 @@ class BookingActivity: AppCompatActivity() {
             })
         }
         book_button.setOnClickListener {
+            progressDialog = ProgressDialog(this@BookingActivity)
+            progressDialog!!.setMessage("Loading....")
+            progressDialog!!.setCancelable(false)
+            progressDialog!!.show()
             booking.Purpose = edittextPurpose.text.toString()
             booking.CName = roomname
             booking.CCMail = str.toString()
-            addBookingDetails(booking)
+            addBookingDetails(booking,booking.Email.toString())
        }
     }
 
 
-    private fun addBookingDetails(booking: Booking)  {
+    private fun addBookingDetails(booking: Booking,email: String)  {
         val service = Servicebuilder.buildService(ConferenceService::class.java )
         val requestCall : Call<Int> = service.addBookingDetails(booking)
         requestCall.enqueue(object: Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
+                progressDialog!!.dismiss()
                 Toast.makeText(this@BookingActivity,"Error on Failure",Toast.LENGTH_LONG).show()
             }
             override fun onResponse(call: Call<Int>, response: Response<Int>) { Log.i("-------#####-----",booking.Purpose)
                 if(response.isSuccessful) {
-                    if (true){
-                        userStatus=1
-                    }else{
-                        userStatus=2
-                    }
-
                     val code = response.body()
                     Toast.makeText(this@BookingActivity,"Successully Booked with code ${code}",Toast.LENGTH_LONG).show()
-                    bookedStatus=true
+                    bookedStatus = true
+                    var code1 = getCode(email)
+                    progressDialog!!.dismiss()
                     val intent=Intent(Intent(this@BookingActivity, DashBoardActivity::class.java))
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    intent.putExtra("flag",userStatus)
+                    //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    intent.putExtra("flag",code1)
                     startActivity(intent)
                     finish()
-
                 }
                 else {
+                    progressDialog!!.dismiss()
                     Toast.makeText(this@BookingActivity,"Response Error",Toast.LENGTH_LONG).show()
                 }
 
             }
 
         })
+    }
+
+    private fun getCode(email: String): Int? {
+        var code1:Int? = 10
+        val service = Servicebuilder.buildService(ConferenceService::class.java)
+        val requestCall : Call<Int> = service.getRequestCode(email)
+        requestCall.enqueue(object: Callback<Int> {
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                Log.i("------helper-----",t.message)
+            }
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                var code = response.body()
+                code1 = code
+            }
+        })
+        return code1
     }
 }
