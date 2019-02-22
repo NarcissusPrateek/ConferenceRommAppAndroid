@@ -17,51 +17,51 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"/>
     </LinearLayout>
-    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
-<LinearLayout
-        android:id="@+id/name"
-        android:orientation="horizontal"
-        android:layout_marginTop="100dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <TextView
-            android:text="Name"
-            android:textSize="30dp"
-            android:layout_marginLeft="30dp"
-            android:textColor="#000000"
-            android:textStyle="normal"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"/>
-    <TextView
-            android:text="Employee Name"
-            android:textSize="30dp"
-            android:layout_marginLeft="40dp"
-            android:textColor="#000000"
-            android:id="@+id/textView_name"
-            android:textStyle="normal"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"/>
-</LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/name"
+            android:orientation="horizontal"
+            android:layout_marginTop="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:text="Name"
+                android:textSize="20dp"
+                android:layout_marginLeft="60dp"
+                android:textColor="#000000"
+                android:textStyle="normal"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"/>
+        <TextView
+                android:text="Employee Name"
+                android:textSize="20dp"
+                android:layout_marginLeft="40dp"
+                android:textColor="#000000"
+                android:id="@+id/textView_name"
+                android:textStyle="normal"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"/>
+    </LinearLayout>
 
     <LinearLayout
             android:id="@+id/building"
             android:layout_below="@id/name"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
                 android:text="Building"
-                android:textSize="30dp"
-                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:layout_marginLeft="60dp"
                 android:textColor="#000000"
                 android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"/>
         <TextView
                 android:text="Building Name"
-                android:textSize="30dp"
-                android:layout_marginLeft="10dp"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
                 android:textColor="#000000"
                 android:id="@+id/textView_buildingname"
                 android:textStyle="normal"
@@ -73,20 +73,20 @@
             android:id="@+id/room"
             android:layout_below="@id/building"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
                 android:text="Room"
-                android:textSize="30dp"
-                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:layout_marginLeft="60dp"
                 android:textColor="#000000"
                 android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"/>
         <TextView
                 android:text="Room Name"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:layout_marginLeft="40dp"
                 android:textColor="#000000"
                 android:id="@+id/textView_conf_name"
@@ -98,20 +98,20 @@
             android:id="@+id/date"
             android:layout_below="@+id/room"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
                 android:text="Date"
-                android:textSize="30dp"
-                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:layout_marginLeft="60dp"
                 android:textColor="#000000"
                 android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"/>
         <TextView
                 android:text="Date"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:layout_marginLeft="55dp"
                 android:textColor="#000000"
                 android:id="@+id/textView_date"
@@ -124,20 +124,20 @@
             android:id="@+id/fromTime"
             android:layout_below="@id/date"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
                 android:text="From"
-                android:textSize="30dp"
-                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:layout_marginLeft="60dp"
                 android:textColor="#000000"
                 android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"/>
         <TextView
                 android:text="From"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:layout_marginLeft="45dp"
                 android:textColor="#000000"
                 android:id="@+id/textView_from_time"
@@ -150,20 +150,20 @@
             android:id="@+id/totime"
             android:layout_below="@id/fromTime"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
                 android:text="To"
-                android:textSize="30dp"
-                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:layout_marginLeft="60dp"
                 android:textColor="#000000"
                 android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"/>
         <TextView
                 android:text="To"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:layout_marginLeft="80dp"
                 android:textColor="#000000"
                 android:id="@+id/textView_to_time"
@@ -187,7 +187,7 @@
     <Button
             android:layout_below="@id/editText_purpose"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:text="Select Members"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
@@ -199,7 +199,7 @@
     <Button
             android:layout_below="@id/button"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:text="Book"
             android:id="@+id/book_button"
             android:paddingRight="10dp"
@@ -208,8 +208,5 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"/>
 
-
-
-
-    </ScrollView>
 </RelativeLayout>
+
