@@ -16,11 +16,6 @@ import kotlinx.android.synthetic.main.activity_user_inputs.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-
-
-
-
-
 class UserInputActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,9 +32,9 @@ class UserInputActivity : AppCompatActivity() {
         //var capcity: EditText = findViewById(R.id.capacity)
         var building_avtivity_button: Button = findViewById(R.id.next)
 
-        fromtime.setFocusable(false)
-        totime.setFocusable(false)
-        date_text.setFocusable(false)
+//        fromtime.setFocusable(false)
+//        totime.setFocusable(false)
+//        date_text.setFocusable(false)
         fromtime.setOnClickListener {
             val now = Calendar.getInstance()
             val timePickerDialog = TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->

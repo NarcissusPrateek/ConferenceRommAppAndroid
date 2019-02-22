@@ -32,7 +32,7 @@
 		<TextView
 				android:layout_toRightOf="@id/Cname"
 				android:layout_marginTop="20dp"
-				android:id="@+id/conferenceRoomName"
+				android:id="@+id/txv_room"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="Conference Name"
@@ -64,7 +64,7 @@
 				android:paddingTop="30dp"
 				android:layout_toRightOf="@id/Ccapacity"
 
-				android:id="@+id/conference_room_capacity"
+				android:id="@+id/txv_room_capacity"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="Capacity"

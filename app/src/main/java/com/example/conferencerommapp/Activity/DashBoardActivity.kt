@@ -2,19 +2,16 @@ package com.example.conferencerommapp.Activity
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import com.example.conferencerommapp.BlockedDashboard
-import com.example.conferencerommapp.Helper.BuildingAdapter
 import com.example.conferencerommapp.Helper.DashBoardAdapter
-import com.example.conferencerommapp.Model.Building
 import com.example.conferencerommapp.Model.Dashboard
-import com.example.conferencerommapp.R
 import com.example.conferencerommapp.SignIn
 import com.example.conferencerommapp.services.ConferenceService
 import com.example.globofly.services.Servicebuilder
@@ -22,12 +19,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.github.clans.fab.*
-//import kotlinx.android.synthetic.main.activity_building_list.*
 import kotlinx.android.synthetic.main.activity_dashboard.*
-//import kotlinx.android.synthetic.main.activity_main.*
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.example.conferencerommapp.R
+
+
 
 
 class DashBoardActivity : AppCompatActivity() {
@@ -40,8 +39,9 @@ class DashBoardActivity : AppCompatActivity() {
         val userinputs: FloatingActionButton = findViewById(R.id.userInput)
         userinputs.setOnClickListener {
             startActivity(Intent(this@DashBoardActivity, UserInputActivity::class.java))
-            finish()
+            //finish()
         }
+
         loadDashBoard()
      }
 
@@ -115,18 +115,15 @@ class DashBoardActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<List<Dashboard>>, response: Response<List<Dashboard>>) {
-                Log.i("---------@_@_@_@_@--", response.body().toString())
                 if(response.isSuccessful) {
                     val dashboardItemList: List<Dashboard>? = response.body()
-                    //dashboardItemList!!.asReversed()
                     if(dashboardItemList!!.isEmpty()) {
 
                         Toast.makeText(applicationContext,"No previous booking found...", Toast.LENGTH_LONG).show()
                     }
                     else {
-                        dashbord_recyclerview.adapter = DashBoardAdapter(dashboardItemList!!, this@DashBoardActivity)
+                        dashbord_recyclerview1.adapter = DashBoardAdapter(dashboardItemList!!, this@DashBoardActivity)
                     }
-
                 }
                 else {
                     Toast.makeText(applicationContext,"Unable to Load Booking Details. Please try again",Toast.LENGTH_LONG).show()

@@ -155,7 +155,7 @@ class BookingActivity: AppCompatActivity() {
         }
         book_button.setOnClickListener {
             progressDialog = ProgressDialog(this@BookingActivity)
-            progressDialog!!.setMessage("Loading....")
+            progressDialog!!.setMessage("Processing....")
             progressDialog!!.setCancelable(false)
             progressDialog!!.show()
             booking.Purpose = edittextPurpose.text.toString()

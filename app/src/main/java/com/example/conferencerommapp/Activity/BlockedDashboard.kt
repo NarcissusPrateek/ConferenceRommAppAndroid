@@ -33,13 +33,13 @@ class BlockedDashboard : AppCompatActivity() {
         maintenance.setOnClickListener {
             val maintenanceintent= Intent(applicationContext,Spinner::class.java)
             startActivity(maintenanceintent)
-            finish()
+            //finish()
         }
 
         addConferenceRoom.setOnClickListener {
             val addConferenceintent = Intent(applicationContext,BuildingDashboard::class.java)
             startActivity(addConferenceintent)
-            finish()
+            //finish()
         }
     }
     override fun onResume() {

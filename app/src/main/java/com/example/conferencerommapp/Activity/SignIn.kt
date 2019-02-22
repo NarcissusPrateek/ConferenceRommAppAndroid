@@ -1,5 +1,6 @@
 package com.example.conferencerommapp
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -27,7 +28,7 @@ import retrofit2.Response
 
 class SignIn : AppCompatActivity() {
 
-   // val progressDialog = ProgressDialog(applicationContext)
+    //var progressDialog: ProgressDialog? = null
     var RC_SIGN_IN = 0
     var signInButton: SignInButton? = null
     var mGoogleSignInClient: GoogleSignInClient? = null
@@ -57,9 +58,11 @@ class SignIn : AppCompatActivity() {
         }
     }
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-//        progressDialog.setMessage("Loading....")
-//        progressDialog.setCancelable(false)
-//        progressDialog.show()
+        var progress = ProgressDialog(this@SignIn)
+//        progressDialog = progress
+//        progressDialog!!.setMessage("Loading....")
+//        progressDialog!!.setCancelable(false)
+//        progressDialog!!.show()
         try {
             val account = completedTask.getResult(ApiException::class.java)
             connectTOBackend(account.email)
@@ -72,17 +75,18 @@ class SignIn : AppCompatActivity() {
     }
     override fun onStart() {
         super.onStart()
-       // progressDialog.setMessage("Loading....")
-        //progressDialog.setCancelable(false)
-       // progressDialog.show()
         val account = GoogleSignIn.getLastSignedInAccount(this)
         if (account != null) {
-
+            var progress = ProgressDialog(this@SignIn)
+            //progressDialog = progress
+            //progressDialog!!.setMessage("Loading....")
+            //progressDialog!!.setCancelable(false)
+            //progressDialog!!.show()
             connectTOBackend(account.email)
+            Log.i("---------","Hello Prateek")
             finish()
-            //startActivity(Intent(applicationContext, SignOut::class.java))
-            //goAction(code)
         }
+
     }
     fun goAction(code: Int?) {
         Log.i("--------------", "heyeye ${code}")
@@ -104,8 +108,14 @@ class SignIn : AppCompatActivity() {
                 //finish()
             }
             else -> {
-                Toast.makeText(applicationContext,"Something went Wrong",Toast.LENGTH_LONG).show()
-                //finish()
+                val builder = AlertDialog.Builder(this@SignIn)
+                builder.setTitle("Error!")
+                builder.setMessage("Plese Restart the application..")
+                builder.setPositiveButton("Ok"){dialog, which ->
+                    finish()
+                }
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
             }
 
         }
@@ -116,14 +126,21 @@ class SignIn : AppCompatActivity() {
         val requestCall : Call<Int> = service.getRequestCode(email)
         requestCall.enqueue(object: Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
+                //progressDialog!!.dismiss()
                 Log.i("------helper-----",t.message)
             }
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                var code = response.body()
-                val  editor = prefs!!.edit()
-                editor.putInt("Code",code!!)
-                editor.apply()
-                goAction(code)
+                if(response.isSuccessful) {
+                  //  progressDialog!!.dismiss()
+                    var code = response.body()
+                    val  editor = prefs!!.edit()
+                    editor.putInt("Code",code!!)
+                    editor.apply()
+                    goAction(code)
+                }else {
+                    //progressDialog!!.dismiss()
+                }
+
             }
         })
 

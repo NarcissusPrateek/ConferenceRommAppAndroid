@@ -40,6 +40,7 @@
             android:layout_marginTop="170dp"
             android:id="@+id/fromTime"
             android:inputType="none"
+            android:focusable="false"
             android:paddingLeft="10dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="20dp"
@@ -59,6 +60,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="170dp"
             android:id="@+id/toTime"
+            android:focusable="false"
             android:paddingLeft="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -85,6 +87,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
             android:id="@+id/date"
+            android:focusable="false"
             android:paddingLeft="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -100,6 +103,7 @@
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textColorHint="@color/black"
             android:layout_below="@+id/from_time"
+            android:focusable="false"
             android:layout_alignParentStart="true"
             android:layout_marginStart="30dp"/>
 

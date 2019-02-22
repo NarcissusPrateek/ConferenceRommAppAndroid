@@ -21,7 +21,7 @@
     <LinearLayout
             android:id="@+id/name"
             android:orientation="horizontal"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="70dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
@@ -47,7 +47,7 @@
             android:id="@+id/building"
             android:layout_below="@id/name"
             android:orientation="horizontal"
-            android:layout_marginTop="0dp"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
@@ -152,7 +152,7 @@
             android:orientation="horizontal"
             android:layout_marginTop="0dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="40dp">
         <TextView
                 android:text="To"
                 android:textSize="20dp"
@@ -176,7 +176,7 @@
             android:layout_marginRight="50dp"
             android:layout_marginLeft="50dp"
             android:hint="Purpose"
-            android:textSize="28dp"
+            android:textSize="20dp"
             android:id="@+id/editText_purpose"
             android:textAlignment="center"
             android:textColor="#000000"
@@ -184,29 +184,41 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
 
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_below="@id/editText_purpose"
+            android:layout_width="match_parent"
+            android:weightSum="100"
+            android:layout_height="wrap_content">
     <Button
             android:layout_below="@id/editText_purpose"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="0dp"
             android:text="Select Members"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
+            android:layout_marginLeft="40dp"
             android:id="@+id/button"
+            android:layout_weight="50"
             android:background="@drawable/buttonsubmit"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="50dp"/>
 
+        <!--<TextView android:layout_width="0dp" android:layout_height="wrap_content"-->
+        <!--android:layout_weight="20dp"-->
+        <!--/>-->
+
     <Button
-            android:layout_below="@id/button"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
+            android:layout_below="@id/editText_purpose"
+            android:layout_alignRight="@id/button"
             android:text="Book"
+            android:layout_weight="40"
             android:id="@+id/book_button"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
+            android:layout_marginLeft="40dp"
             android:background="@drawable/buttonsubmit"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="50dp"/>
-
+    </LinearLayout>
 </RelativeLayout>
 

@@ -36,15 +36,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.ConferenceRoomActivity"/>
-        <activity android:name=".InputActivity"/>
         <activity android:name=".SignIn"
                   android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Activity.BookingActivity"/>
         <activity android:name=".Activity.AddingBuilding"/>
         <activity android:name=".Activity.BuildingDashboard"/>
-
         <activity android:name=".SignOut"/>
-        <activity android:name=".Activity.BuildingDashboard"></activity>
         <activity android:name=".RegistrationActivity"/>
         <activity android:name=".Activity.DashBoardActivity"/>
         <activity android:name=".AddingConference"></activity>

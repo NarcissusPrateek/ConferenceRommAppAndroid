@@ -74,7 +74,7 @@
             android:textStyle="normal"
             android:textColor="#242B53"
             android:background="@drawable/buttonsubmit"
-            android:id="@+id/addbuilding"
+            android:id="@+id/button_add"
             android:layout_below="@+id/spinner"
             android:layout_centerHorizontal="true"
     />

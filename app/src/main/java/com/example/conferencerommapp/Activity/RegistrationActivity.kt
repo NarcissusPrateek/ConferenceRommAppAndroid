@@ -43,7 +43,7 @@ class RegistrationActivity : AppCompatActivity() {
         val acct = GoogleSignIn.getLastSignedInAccount(applicationContext)
 
 
-        textView_email.text = acct!!.email
+
 
         val employee = Employee()
 
@@ -63,7 +63,7 @@ class RegistrationActivity : AppCompatActivity() {
             employee.EmpId = edittext_id.text.toString()
             employee.Name = textView_name.text.toString()
             employee.ActivationCode = "xxx"
-            employee.Email = acct.email
+            employee.Email = acct!!.email
             employee.Verified = false
             addEmployee(employee)
         })

@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="70dp"
-            android:id="@+id/dashbord_recyclerview"
+            android:id="@+id/dashbord_recyclerview1"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/dashboard_list"/>
 
