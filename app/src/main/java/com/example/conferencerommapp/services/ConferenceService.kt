@@ -16,9 +16,14 @@ interface ConferenceService  {
     @GET("api/Building")
     fun getBuildingList() : Call<List<Building>>
 
-    @POST("api/availablerooms")
+//    @POST("api/availablerooms")
+//    //fun getConferenceRoomList(@Path("id")id: Int) : Call<List<ConferenceRoom>>
+//    fun getConferenceRoomList(@Body availableRoom: FetchConferenceRoom) : Call<List<ConferenceRoom>>
+
+    @POST("api/AllRomosWithStatus")
     //fun getConferenceRoomList(@Path("id")id: Int) : Call<List<ConferenceRoom>>
     fun getConferenceRoomList(@Body availableRoom: FetchConferenceRoom) : Call<List<ConferenceRoom>>
+
 
     @GET("api/UserLogin")
     fun getRequestCode(@Query( "email") email : String?) : Call<Int>

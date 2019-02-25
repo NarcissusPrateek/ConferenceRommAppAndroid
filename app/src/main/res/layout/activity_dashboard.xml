@@ -4,7 +4,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -34,7 +35,7 @@
             <ImageView
                     android:background="@drawable/imagebg"
                     android:layout_marginTop="30dp"
-                    android:layout_marginStart="150dp"
+                    android:layout_marginStart="140dp"
                     android:layout_marginEnd="150dp"
                     android:id="@+id/profile_image"
                     android:layout_width="100dp"
@@ -44,14 +45,20 @@
                     android:id="@+id/profile_email"
                     android:layout_marginTop="160dp"
                     android:textSize="20dp"
-                    android:layout_marginStart="130dp"
+                    android:layout_marginStart="70dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+    <TextView
+            android:textSize="30sp"
+            android:layout_margin="20dp"
+            android:textColor="#242B53"
+            android:text="Book History"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 </com.google.android.material.appbar.AppBarLayout>
-
 
     <androidx.core.widget.NestedScrollView
             android:layout_marginTop="0dp"
@@ -64,7 +71,6 @@
         <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
         android:id="@+id/dashbord_recyclerview1"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/dashboard_list"/>
@@ -78,7 +84,10 @@
     android:id="@+id/userInput"
     app:fab_label="Book Rooms"
     android:layout_alignParentEnd="true"
-    app:fab_size="mini"
+    app:fab_size="normal"
+    app:fab_colorPressed="#D3D3D8"
+    app:menu_colorPressed="#D3D3D8"
+    app:fab_colorNormal="#A3A7B8"
     android:layout_alignParentBottom="true"
     android:layout_margin="33dp"
     android:layout_width="wrap_content"

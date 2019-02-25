@@ -17,7 +17,6 @@
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:textColor="#242B53"/>
     </RelativeLayout>
 
@@ -29,11 +28,10 @@
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
             android:hint="Name"
-
             android:backgroundTint="#242B53"
             android:layout_centerHorizontal="true"
             android:id="@+id/textView_name"
-    />
+            android:singleLine="true"/>
 
     <EditText
             android:hint="Nineleaps Id"
@@ -45,7 +43,7 @@
             android:layout_marginRight="60dp"
             android:layout_below="@+id/textView_name"
             android:id="@+id/edittext_id"
-    />
+            android:singleLine="true"/>
     <Spinner
             android:popupBackground="#D2D2DA"
             android:layout_marginStart="60dp"

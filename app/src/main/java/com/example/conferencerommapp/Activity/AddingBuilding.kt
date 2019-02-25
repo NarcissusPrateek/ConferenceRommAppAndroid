@@ -1,5 +1,6 @@
 package com.example.conferencerommapp.Activity
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -40,10 +41,6 @@ class AddingBuilding : AppCompatActivity() {
                 Toast.makeText(this@AddingBuilding,"Please enter the place of building!", Toast.LENGTH_LONG).show()
             }
             else{
-                progressDialog = ProgressDialog(this@AddingBuilding)
-                progressDialog!!.setMessage("Loading....")
-                progressDialog!!.setCancelable(false)
-                progressDialog!!.show()
                 addBuild(build)
             }
 }
@@ -53,18 +50,24 @@ class AddingBuilding : AppCompatActivity() {
         val addconferencerequestCall: Call<ResponseBody> = buildapi.addBuilding(build)
         addconferencerequestCall.enqueue(object: Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                progressDialog!!.dismiss()
+
                 Toast.makeText(applicationContext,"onFailure", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if(response.isSuccessful){
-                    progressDialog!!.dismiss()
-                    startActivity(Intent(this@AddingBuilding,BuildingDashboard::class.java))
-                    Toast.makeText(applicationContext,"Successfull", Toast.LENGTH_SHORT).show()
+                    val builder = AlertDialog.Builder(this@AddingBuilding)
+                    builder.setTitle("Status")
+                    builder.setMessage("Building added successfully.")
+                    builder.setPositiveButton("Ok"){dialog, which ->
+                        finish()
+                    }
+                    val dialog: AlertDialog = builder.create()
+                    dialog.setCanceledOnTouchOutside(false)
+                    dialog.show()
                 }
                 else{
-                    progressDialog!!.dismiss()
+
                     Toast.makeText(applicationContext,"Unable to post", Toast.LENGTH_SHORT).show()
                 }
             }

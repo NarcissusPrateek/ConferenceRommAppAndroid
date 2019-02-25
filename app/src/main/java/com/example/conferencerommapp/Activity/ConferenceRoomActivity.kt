@@ -23,8 +23,6 @@ public class ConferenceRoomActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conference_room)
 
-        //var building_id: String = intent.getStringExtra("BuildingId")
-        //Toast.makeText(applicationContext, building_id, Toast.LENGTH_LONG).show()
         loadConferenceRoom()
 
 
@@ -71,7 +69,6 @@ public class ConferenceRoomActivity : AppCompatActivity() {
                         builder.setTitle("Availablity Status")
                         builder.setMessage("No Room is available in this building!!!")
                         builder.setPositiveButton("Ok"){dialog, which ->
-                            //startActivity(Intent(this@ConferenceRoomActivity, BuildingsActivity::class.java))
                             finish()
                         }
                         val dialog: AlertDialog = builder.create()
@@ -108,10 +105,3 @@ public class ConferenceRoomActivity : AppCompatActivity() {
         })
     }
 }
-
-
-
-
-/*
-
- */

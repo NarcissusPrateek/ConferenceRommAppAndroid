@@ -1,6 +1,7 @@
 package com.example.conferencerommapp
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,10 +26,10 @@ class BlockedDashboard : AppCompatActivity() {
 
         val addConferenceRoom: FloatingActionButton = findViewById(R.id.add_conference)
         val maintenance: FloatingActionButton = findViewById(R.id.maintenance)
-
+        val booking_details:FloatingActionButton=findViewById(R.id.booking_detials)
         booking_detials.setOnClickListener {
             startActivity(Intent(this@BlockedDashboard, DashBoardActivity::class.java))
-
+            finish()
         }
         maintenance.setOnClickListener {
             val maintenanceintent= Intent(applicationContext,Spinner::class.java)
@@ -41,6 +42,12 @@ class BlockedDashboard : AppCompatActivity() {
             startActivity(addConferenceintent)
             //finish()
         }
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity();
+        //finish()
+
     }
     override fun onResume() {
         super.onResume()

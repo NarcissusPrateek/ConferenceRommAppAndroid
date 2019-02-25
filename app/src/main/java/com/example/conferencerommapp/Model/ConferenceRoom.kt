@@ -14,6 +14,8 @@ data class ConferenceRoom(
     var conf_capacity: String? = null,
 
     @SerializedName("BId")
-    var building_id: String? = null
+    var building_id: String? = null,
+
+    var Status: String? = null
 
 )

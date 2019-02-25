@@ -5,6 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         tools:context=".Activity.AddingBuilding">
     <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
         <TextView
@@ -29,7 +30,7 @@
             android:backgroundTint="#242B53"
             android:layout_centerHorizontal="true"
             android:id="@+id/input_buildingName"
-    />
+            android:singleLine="true"/>
 
     <EditText
             android:hint="Building Place"
@@ -41,7 +42,7 @@
             android:layout_marginRight="60dp"
             android:layout_below="@+id/input_buildingName"
             android:id="@+id/input_buildingPlace"
-    />
+            android:singleLine="true"/>
     <Button
 
             android:layout_width="wrap_content"

@@ -7,8 +7,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.conferencerommapp.BlockedDashboard
 import com.example.conferencerommapp.Helper.DashBoardAdapter
 import com.example.conferencerommapp.Model.Dashboard
@@ -27,8 +29,6 @@ import retrofit2.Response
 import com.example.conferencerommapp.R
 
 
-
-
 class DashBoardActivity : AppCompatActivity() {
 
     var mGoogleSignInClient: GoogleSignInClient? = null
@@ -41,7 +41,14 @@ class DashBoardActivity : AppCompatActivity() {
             startActivity(Intent(this@DashBoardActivity, UserInputActivity::class.java))
             //finish()
         }
+        var profile_image: ImageView = findViewById(R.id.profile_image)
+        val acct = GoogleSignIn.getLastSignedInAccount(this@DashBoardActivity)
+        val personPhoto = acct!!.getPhotoUrl()
 
+        profile_email.text = acct.email
+        //Glide.with(this@DashBoardActivity).load(personPhoto).into(profile_image)
+        //Glide.with(this@DashBoardActivity).load(personPhoto).into(profile_image)
+        profile_image.setImageResource(R.drawable.profile)
         loadDashBoard()
      }
 
@@ -60,10 +67,6 @@ class DashBoardActivity : AppCompatActivity() {
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
         when(id) {
-            R.id.profile -> {
-                var acct = GoogleSignIn.getLastSignedInAccount(this)
-
-            }
             R.id.Logout -> {
                     mGoogleSignInClient!!.signOut()
                     .addOnCompleteListener(this) {
@@ -86,16 +89,9 @@ class DashBoardActivity : AppCompatActivity() {
             finish()
         }
         else {
-            finish()
+            finishAffinity();
+           // finish()
         }
-
-
-//        if (intent.getIntExtra("flag",-1)==11){
-//            intent=Intent(Intent(this@DashBoardActivity, BlockedDashboard::class.java))
-//            startActivity(intent)
-//        }else{
-//            finish()
-//        }
     }
     private fun loadDashBoard() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

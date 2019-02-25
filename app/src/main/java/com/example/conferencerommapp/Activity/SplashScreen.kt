@@ -19,12 +19,15 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         val logoHandler  : Handler = Handler()
+
         val logoRunnable : Runnable = Runnable {
                 val intent : Intent = Intent(applicationContext,SignIn::class.java)
                 startActivity(intent)
                 finish()
         }
         logoHandler.postDelayed(logoRunnable,3000)
+
+
     }
 }
 

@@ -6,14 +6,13 @@
 
     <application
             android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/nine"
             android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
+            android:roundIcon="@drawable/nine"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.DayNight">
-        <activity android:name=".Activity.HRActivity">
-        </activity>
-        <activity
+
+            <activity
                 android:name=".Activity.SplashScreen"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,35 +20,33 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity
+            </activity>
+            <activity
                 android:name=".Activity.UserInputActivity"
                 android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
+            </activity>
+            <activity
                 android:name=".Activity.BuildingsActivity"
                 android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity android:name=".Activity.ConferenceRoomActivity"/>
-        <activity android:name=".SignIn"
+                <!--<category android:name="android.intent.category.DEFAULT"/>-->
+            <!--</intent-filter>-->
+            </activity>
+            <activity android:name=".Activity.ConferenceRoomActivity"/>
+            <activity android:name=".SignIn"
                   android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Activity.BookingActivity"/>
-        <activity android:name=".Activity.AddingBuilding"/>
-        <activity android:name=".Activity.BuildingDashboard"/>
-        <activity android:name=".SignOut"/>
-        <activity android:name=".RegistrationActivity"/>
-        <activity android:name=".Activity.DashBoardActivity"/>
-        <activity android:name=".AddingConference"></activity>
-        <activity android:name=".BlockedDashboard"></activity>
-        <activity android:name=".Spinner"></activity>
-        <activity android:name=".ConferenceDashBoard"></activity>
-        <activity android:name=".Activity.MainActivity11"></activity>
-        <activity android:name=".Activity.SecondActivity"></activity>
-    </application>
+            <activity android:name=".Activity.BookingActivity"/>
+            <activity android:name=".Activity.AddingBuilding"/>
+            <activity android:name=".Activity.BuildingDashboard"/>
+            <activity android:name=".RegistrationActivity"/>
+            <activity android:name=".Activity.DashBoardActivity"/>
+            <activity android:name=".AddingConference"></activity>
+            <activity android:name=".BlockedDashboard"></activity>
+            <activity android:name=".Spinner"></activity>
+            <activity android:name=".ConferenceDashBoard"></activity>
+            <activity android:name="com.nineleaps.buttonchecker.Buildings__Activity__new"></activity>
+       </application>
 
 </manifest>

@@ -5,7 +5,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         tools:context=".Activity.UserInputActivity">
 
 
@@ -35,15 +34,15 @@
             android:layout_marginStart="31dp"/>
 
     <EditText
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginTop="170dp"
             android:id="@+id/fromTime"
             android:inputType="none"
             android:focusable="false"
             android:paddingLeft="10dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="90dp"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:background="@drawable/edittext_bg"
     />
@@ -56,14 +55,15 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="233dp"/>
     <EditText
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginTop="170dp"
             android:id="@+id/toTime"
             android:focusable="false"
             android:paddingLeft="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="20dp"
             android:layout_toRightOf="@+id/fromTime"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:background="@drawable/edittext_bg"
@@ -84,8 +84,8 @@
             android:layout_height="50dp"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
             android:id="@+id/date"
             android:focusable="false"
             android:paddingLeft="10dp"
@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Capacity"
-            android:layout_marginTop="370dp"
+            android:layout_marginTop="300dp"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textColorHint="@color/black"
             android:layout_below="@+id/from_time"
@@ -111,10 +111,10 @@
     <Spinner
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_marginEnd="38dp"
+            android:layout_marginEnd="50dp"
             android:id="@+id/spinner2"
             android:popupBackground="#D2D2DA"
-            android:layout_marginStart="35dp"
+            android:layout_marginStart="50dp"
             android:backgroundTint="#9596A0"
             android:background="#9596A0"
             android:layout_alignParentStart="true"

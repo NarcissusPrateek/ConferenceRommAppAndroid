@@ -190,35 +190,35 @@
             android:layout_width="match_parent"
             android:weightSum="100"
             android:layout_height="wrap_content">
-    <Button
-            android:layout_below="@id/editText_purpose"
-            android:layout_marginTop="0dp"
-            android:text="Select Members"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:layout_marginLeft="40dp"
-            android:id="@+id/button"
-            android:layout_weight="50"
-            android:background="@drawable/buttonsubmit"
-            android:layout_width="0dp"
-            android:layout_height="50dp"/>
+        <Button
+                android:layout_below="@id/editText_purpose"
+                android:layout_marginTop="0dp"
+                android:text="Select Members"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="40dp"
+                android:id="@+id/button"
+                android:layout_weight="50"
+                android:background="@drawable/buttonsubmit"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
 
         <!--<TextView android:layout_width="0dp" android:layout_height="wrap_content"-->
         <!--android:layout_weight="20dp"-->
         <!--/>-->
 
-    <Button
-            android:layout_below="@id/editText_purpose"
-            android:layout_alignRight="@id/button"
-            android:text="Book"
-            android:layout_weight="40"
-            android:id="@+id/book_button"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:layout_marginLeft="40dp"
-            android:background="@drawable/buttonsubmit"
-            android:layout_width="0dp"
-            android:layout_height="50dp"/>
+        <Button
+                android:layout_below="@id/editText_purpose"
+                android:layout_alignRight="@id/button"
+                android:text="Book"
+                android:layout_weight="40"
+                android:id="@+id/book_button"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/buttonsubmit"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
     </LinearLayout>
 </RelativeLayout>
 

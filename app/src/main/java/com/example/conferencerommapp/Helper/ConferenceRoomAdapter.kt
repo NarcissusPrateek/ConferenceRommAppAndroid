@@ -1,11 +1,13 @@
 package com.example.conferencerommapp.Helper
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.conferencerommapp.Activity.BookingActivity
@@ -35,9 +37,26 @@ class ConferenceRoomAdapter(private val conferenceRoomList: List<ConferenceRoom>
 		holder.txvRoom.text = conferenceRoomList[position].conf_name
 
 		holder.txvRoomCapacity.text = conferenceRoomList[position].conf_capacity
-		holder.itemView.setOnClickListener { v ->
+
+
+//        if(conferenceRoomList[position].Status.equals("Available"))
+//        {
+//            holder.button!!.setBackgroundColor(Color.GREEN)
+//            holder.button!!.setOnClickListener {
+//                Log.i("--------","Room is Available")
+//            }
+//        }else if(conferenceRoomList[position].Status.equals("Booked")){
+//            holder.button!!.setBackgroundColor(Color.RED)
+//            holder.button!!.setEnabled(false)
+//        }
+//        else {
+//            holder.button!!.setBackgroundColor(Color.YELLOW)
+//            holder.button!!.setEnabled(false)
+//        }
+
+
+        holder.itemView.setOnClickListener { v ->
 			val context = v.context
-			Toast.makeText(context,"Hello", Toast.LENGTH_LONG).show()
 			val roomId = conferenceRoomList[position].conf_id
 			val roomname = conferenceRoomList[position].conf_name
 			mClickListener?.onBtnClick(roomId.toString(),roomname)
@@ -52,7 +71,8 @@ class ConferenceRoomAdapter(private val conferenceRoomList: List<ConferenceRoom>
 
 		val txvRoom: TextView = itemView.findViewById(R.id.txv_room)
 		val txvRoomCapacity: TextView = itemView.findViewById(R.id.txv_room_capacity)
-		var conferenceRoom: ConferenceRoom? = null
+     //   var button: Button? = null
+        var conferenceRoom: ConferenceRoom? = null
 
 		override fun toString(): String {
 			return """${super.toString()} '${txvRoom.text}'"""

@@ -31,7 +31,6 @@ public class BuildingsActivity : AppCompatActivity() {
 
     fun loadBuildings() {
 
-        //Toast.makeText(this@BuildingsActivity,intent.getStringExtra("FromTime"),Toast.LENGTH_LONG).show()
         val bundle: Bundle? = intent.extras
         val from = bundle!!.get("FromTime").toString()
         val to = bundle.get("ToTime").toString()
@@ -39,12 +38,11 @@ public class BuildingsActivity : AppCompatActivity() {
         val capacity = bundle.get("Capacity").toString()
         val DateFromTime = date + " " + from
         val DateToTime = date + " " + to
-        Toast.makeText(applicationContext,DateFromTime,Toast.LENGTH_LONG).show()
+
         val conferenceService = Servicebuilder.buildService(ConferenceService::class.java)
         val requestCall : Call<List<Building>> = conferenceService.getBuildingList()
         requestCall.enqueue(object: Callback<List<Building>> {
             override fun onFailure(call: Call<List<Building>>, t: Throwable) {
-
                 Toast.makeText(applicationContext,t.message,Toast.LENGTH_LONG).show()
             }
 
@@ -64,9 +62,6 @@ public class BuildingsActivity : AppCompatActivity() {
                                     intent.putExtra("Capacity",capacity)
                                     intent.putExtra("BuildingName", buildingname)
                                     startActivity(intent)
-
-
-                                    // Toast.makeText(this@BuildingsActivity, buildingId, Toast.LENGTH_LONG)
                                 }
 
                             })

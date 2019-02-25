@@ -1,5 +1,6 @@
 package com.example.conferencerommapp
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -81,8 +82,19 @@ class Spinner : AppCompatActivity() {
                                                             var cid=conference_id[position]
                                                             blocking(cid)
 
-                                                            val blockdashboard_intent = Intent(applicationContext, BlockedDashboard::class.java)
-                                                            startActivity(blockdashboard_intent)
+                                                            val builder = AlertDialog.Builder(this@Spinner)
+                                                            builder.setTitle("Blocking Status")
+                                                            builder.setMessage("Room is successfully Blocked...")
+                                                            builder.setPositiveButton("Ok"){dialog, which ->
+                                                                //startActivity(Intent(this@ConferenceRoomActivity, BuildingsActivity::class.java))
+                                                                finish()
+                                                            }
+                                                            val dialog: AlertDialog = builder.create()
+                                                            dialog.show()
+
+
+                                                            //val blockdashboard_intent = Intent(applicationContext, BlockedDashboard::class.java)
+                                                            //startActivity(blockdashboard_intent)
                                                         }
                                                     }
 
@@ -117,8 +129,20 @@ class Spinner : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                startActivity(Intent(this@Spinner,BlockedDashboard::class.java))
-                finish()
+                if(response.isSuccessful) {
+
+                }else {
+                    val builder = AlertDialog.Builder(this@Spinner)
+                    builder.setTitle("Blocking Status")
+                    builder.setMessage("Something went wrong Room can't be Blocked.")
+                    builder.setPositiveButton("Ok"){dialog, which ->
+                        //startActivity(Intent(this@ConferenceRoomActivity, BuildingsActivity::class.java))
+                        finish()
+                    }
+                    val dialog: AlertDialog = builder.create()
+                    dialog.show()
+
+                }
             }
 
         })

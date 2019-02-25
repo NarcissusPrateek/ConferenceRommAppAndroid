@@ -20,6 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import kotlinx.android.synthetic.main.activity_booking.*
+import kotlinx.android.synthetic.main.test.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -100,7 +101,7 @@ class BookingActivity: AppCompatActivity() {
                         val listItems = arrayOfNulls<String>(list.size)
                         list.toArray(listItems)
 
-                        //val EmailList = ArrayList<String>()
+
                         var checkedItems: BooleanArray = BooleanArray(emplist.size)
 
                         val mBuilder = AlertDialog.Builder(this@BookingActivity)
@@ -132,7 +133,6 @@ class BookingActivity: AppCompatActivity() {
                         mBuilder.setNegativeButton(
                             R.string.dismiss_label,
                             DialogInterface.OnClickListener { dialogInterface, i -> dialogInterface.dismiss() }
-
                         )
                         mBuilder.setNeutralButton(
                             R.string.clear_all_label,
@@ -143,7 +143,6 @@ class BookingActivity: AppCompatActivity() {
                                 str = StringBuilder("")
                                 mUserItems.clear()
                                 EmailList.clear()
-
                             })
                         val mDialog = mBuilder.create()
                         mDialog.show()
@@ -154,15 +153,19 @@ class BookingActivity: AppCompatActivity() {
             })
         }
         book_button.setOnClickListener {
-            progressDialog = ProgressDialog(this@BookingActivity)
-            progressDialog!!.setMessage("Processing....")
-            progressDialog!!.setCancelable(false)
-            progressDialog!!.show()
-            booking.Purpose = edittextPurpose.text.toString()
-            booking.CName = roomname
-            booking.CCMail = str.toString()
-            addBookingDetails(booking,booking.Email.toString())
-       }
+            if(edittextPurpose.text.isEmpty()) {
+                Toast.makeText(this@BookingActivity,"Please Enter the purpose of meeting.",Toast.LENGTH_LONG).show()
+            }else {
+                progressDialog = ProgressDialog(this@BookingActivity)
+                progressDialog!!.setMessage("Processing....")
+                progressDialog!!.setCancelable(false)
+                progressDialog!!.show()
+                booking.Purpose = edittextPurpose.text.toString()
+                booking.CName = roomname
+                booking.CCMail = str.toString()
+                addBookingDetails(booking,booking.Email.toString())
+            }
+        }
     }
 
 
@@ -177,19 +180,17 @@ class BookingActivity: AppCompatActivity() {
             override fun onResponse(call: Call<Int>, response: Response<Int>) { Log.i("-------#####-----",booking.Purpose)
                 if(response.isSuccessful) {
                     val code = response.body()
-                    Toast.makeText(this@BookingActivity,"Successully Booked with code ${code}",Toast.LENGTH_LONG).show()
                     bookedStatus = true
                     var code1 = getCode(email)
                     progressDialog!!.dismiss()
                     val intent=Intent(Intent(this@BookingActivity, DashBoardActivity::class.java))
-                    //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     intent.putExtra("flag",code1)
                     startActivity(intent)
                     finish()
                 }
                 else {
                     progressDialog!!.dismiss()
-                    Toast.makeText(this@BookingActivity,"Response Error",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@BookingActivity,"Unable to Book.... ",Toast.LENGTH_LONG).show()
                 }
 
             }

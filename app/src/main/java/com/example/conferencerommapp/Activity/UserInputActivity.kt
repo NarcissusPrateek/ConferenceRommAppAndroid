@@ -29,12 +29,8 @@ class UserInputActivity : AppCompatActivity() {
         var date_text: EditText =findViewById(R.id.date)
         var fromtime : EditText =findViewById(R.id.fromTime)
         var totime: EditText = findViewById(R.id.toTime)
-        //var capcity: EditText = findViewById(R.id.capacity)
         var building_avtivity_button: Button = findViewById(R.id.next)
 
-//        fromtime.setFocusable(false)
-//        totime.setFocusable(false)
-//        date_text.setFocusable(false)
         fromtime.setOnClickListener {
             val now = Calendar.getInstance()
             val timePickerDialog = TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
@@ -94,14 +90,14 @@ class UserInputActivity : AppCompatActivity() {
 
 
         building_avtivity_button.setOnClickListener {
-           if(TextUtils.isEmpty(date_text.text) ){
+           if(TextUtils.isEmpty(fromtime.text) ){
                 Toast.makeText(applicationContext, "Please enter the Date", Toast.LENGTH_SHORT).show()
 
             }
             else if ( TextUtils.isEmpty(totime.text)){
                 Toast.makeText(applicationContext, "Please enter the To Time", Toast.LENGTH_SHORT).show()
             }
-            else if ( TextUtils.isEmpty(fromtime.text)){
+            else if ( TextUtils.isEmpty(date_text.text)){
                 Toast.makeText(applicationContext, "Please enter the From Time", Toast.LENGTH_SHORT).show()
             }
             else {
@@ -120,7 +116,6 @@ class UserInputActivity : AppCompatActivity() {
                    var min : Long = 900000
                    var max: Long = 14400000
                    if((min <= elapsed) && (max >= elapsed)) {
-                       //Toast.makeText(this@UserInputActivity,"all Details are correct Good To GO.....",Toast.LENGTH_LONG).show()
                        val buildingintent = Intent(this@UserInputActivity, BuildingsActivity::class.java)
                        buildingintent.putExtra("FromTime", fromtime.text.toString())
                        buildingintent.putExtra("ToTime", totime.text.toString())
@@ -137,7 +132,7 @@ class UserInputActivity : AppCompatActivity() {
                        val dialog: AlertDialog = builder.create()
                        dialog.setCanceledOnTouchOutside(false)
                        dialog.show()
-                       //Toast.makeText(this@UserInputActivity,"From-time Must be greater than To-Time and hours must be less than 4",Toast.LENGTH_LONG).show()
+
                    }
                } catch (e: Exception) {
                    Toast.makeText(this@UserInputActivity,"Details are Invalid!!!",Toast.LENGTH_LONG).show()

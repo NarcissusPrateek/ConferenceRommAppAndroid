@@ -1,8 +1,11 @@
 package com.example.conferencerommapp.Helper
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.ColorFilter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +23,8 @@ import com.example.globofly.services.Servicebuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class DashBoardAdapter(val dashboardItemList: List<Dashboard>,val contex: Context) : androidx.recyclerview.widget.RecyclerView.Adapter<DashBoardAdapter.ViewHolder>() {
@@ -37,26 +42,63 @@ class DashBoardAdapter(val dashboardItemList: List<Dashboard>,val contex: Contex
         holder.txvBName.text = dashboardItemList[position].BName
         holder.txvRoomName.text = dashboardItemList[position].CName
 		holder.txvToTime.text = dashboardItemList[position].ToTime
-		//holder.txvFrom.text = dashboardItemList[position].FromTime
-		holder.txvPurpose.text = dashboardItemList[position].Purpose
+        holder.txvPurpose.text = dashboardItemList[position].Purpose
 
 		var fromtime = dashboardItemList[position].FromTime
 		var totime = dashboardItemList[position].ToTime
 		var datefrom = fromtime!!.split("T")
 		var dateto = totime!!.split("T")
+
 		holder.txvDate.text = datefrom.get(0)
 		holder.txvFrom.text = datefrom.get(1)
 		holder.txvToTime.text = dateto.get(1)
+//		try {
+//			val cal: Calendar = Calendar.getInstance()
+//			val sdf = SimpleDateFormat("dd-M-yyyy hh:mm")
+//			val d1 = sdf.parse("${datefrom.get(0)}  ${datefrom.get(1)}")
+//			val elapsed = d1.getTime() - cal.timeInMillis
+//			Log.i("-------------", elapsed.toString())
+//			if(elapsed > 0) {
+//				holder.btnCancel.text = "Cancle"
+////				holder.btnCancel.setBackgroundColor(Color.RED)
+//			}
+//			else {
+//				holder.btnCancel.text = "Delete"
+////				holder.btnCancel.setBackgroundColor()
+//			}
+//		} catch (e: Exception) {
+//			Log.i("-------------------",e.message.toString())
+//			Toast.makeText(contex,"Something went wrong.Plese try agin after some time",Toast.LENGTH_SHORT).show()
+//		}
 		holder.btnCancel.setOnClickListener{
-			var cancel = CancelBooking()
-			cancel.CId = dashboardItemList.get(position).CId
-			cancel.ToTime = totime
-			cancel.FromTime = fromtime
-			cancel.Email = dashboardItemList.get(position).Email
-			cancelBooking(cancel,contex)
+//			if(holder.btnCancel.text.equals("Cancel")) {
+//				var builder = AlertDialog.Builder(contex)
+//				builder.setTitle("Confirm ")
+//				builder.setMessage("Press ok to Cancel the meeting")
+//				builder.setPositiveButton("OK"){dialog, which ->
+//					var cancel = CancelBooking()
+//					cancel.CId = dashboardItemList.get(position).CId
+//					cancel.ToTime = totime
+//					cancel.FromTime = fromtime
+//					cancel.Email = dashboardItemList.get(position).Email
+//					cancelBooking(cancel,contex)
+//				}
+//				builder.setNegativeButton("cancel"){ dialog, which ->
+//					Toast.makeText(contex,"Cancelled",Toast.LENGTH_SHORT).show()
+//				}
+//				val dialog: AlertDialog = builder.create()
+//				dialog.show()
+//			}
+//			else {
+				var cancel = CancelBooking()
+				cancel.CId = dashboardItemList.get(position).CId
+				cancel.ToTime = totime
+				cancel.FromTime = fromtime
+				cancel.Email = dashboardItemList.get(position).Email
+				cancelBooking(cancel,contex)
+			//}
 
 		}
-
 	}
 	 private fun cancelBooking(cancel: CancelBooking,contex: Context) {
 		val service = Servicebuilder.buildService(ConferenceService::class.java )
@@ -66,14 +108,11 @@ class DashBoardAdapter(val dashboardItemList: List<Dashboard>,val contex: Contex
 				Toast.makeText(contex,"Error on Failure", Toast.LENGTH_LONG).show()
 			}
 			override fun onResponse(call: Call<Int>, response: Response<Int>) {
-				Log.i("-------@@@-----",response.body().toString())
-				if(response.isSuccessful) {
+                if(response.isSuccessful) {
 					val code = response.body()
-					Toast.makeText(contex,"Booking Canceled with code ${code}", Toast.LENGTH_LONG).show()
+					Toast.makeText(contex,"Booking Canceled with code ${code}", Toast.LENGTH_SHORT).show()
 						startActivity(contex,Intent(contex, DashBoardActivity::class.java),null)
 					(contex as Activity).finish()
-
-
 				}
 				else {
 					Toast.makeText(contex,"Response Error", Toast.LENGTH_LONG).show()
