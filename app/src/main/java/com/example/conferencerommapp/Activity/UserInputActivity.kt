@@ -23,7 +23,7 @@ class UserInputActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_inputs)
 
 
-        var timeFormat = SimpleDateFormat("HH:mm ", Locale.CHINA)
+        var timeFormat = SimpleDateFormat("HH:mm ", Locale.US)
         var dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
         var capacity = 0
         var date_text: EditText =findViewById(R.id.date)

@@ -1,23 +1,13 @@
 package com.example.conferencerommapp.Helper
 
-import android.content.Intent
 import android.graphics.Color
-import androidx.recyclerview.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
-import com.example.conferencerommapp.Activity.BookingActivity
-import com.example.conferencerommapp.Activity.ConferenceRoomActivity
-import com.example.conferencerommapp.Model.Building
 import com.example.conferencerommapp.Model.ConferenceRoom
 import com.example.conferencerommapp.R
-import java.sql.Time
-import java.util.*
 
 
 class ConferenceRoomAdapter(private val conferenceRoomList: List<ConferenceRoom>, val btnlistener: BtnClickListener) : androidx.recyclerview.widget.RecyclerView.Adapter<ConferenceRoomAdapter.ViewHolder>() {
@@ -48,7 +38,7 @@ class ConferenceRoomAdapter(private val conferenceRoomList: List<ConferenceRoom>
 			holder.txvStatus.setTextColor(Color.GREEN)
 		}
 		else if(holder.txvStatus.text.equals("Booked")) {
-			holder.txvStatus.setTextColor(Color.YELLOW)
+			holder.txvStatus.setTextColor(Color.rgb(1,1,0))
 		}else if(holder.txvStatus.text.equals("Blocked")) {
 			holder.txvStatus.setTextColor(Color.RED)
 		}

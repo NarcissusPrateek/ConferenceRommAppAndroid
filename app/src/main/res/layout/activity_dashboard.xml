@@ -33,20 +33,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp">
 
-            <ImageView
-                    android:background="@drawable/imagebg"
+            <com.mikhaellopez.circularimageview.CircularImageView
+                    app:civ_border_width="6dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_radius="5"
+                    app:civ_shadow_color="#E2E5F7"
+                    app:civ_border_color="#494242"
                     android:layout_marginTop="30dp"
-                    android:layout_marginStart="140dp"
-                    android:layout_marginEnd="150dp"
+                    android:layout_gravity="center_horizontal"
                     android:id="@+id/profile_image"
                     android:layout_width="100dp"
                     android:layout_height="100dp"/>
+
+            <TextView
+                    android:text="Name"
+                    android:id="@+id/profile_name"
+                    android:layout_marginTop="140dp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
             <TextView
                     android:text="Email"
                     android:id="@+id/profile_email"
-                    android:layout_marginTop="160dp"
+                    android:layout_marginTop="180dp"
                     android:textSize="20dp"
-                    android:layout_marginStart="70dp"
+                    android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 

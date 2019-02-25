@@ -17,13 +17,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AddingConference : AppCompatActivity() {
-    var capacity = 2
+
     var options1 = arrayOf(2,4,6,8,10,12,14,16)
     //var progressDialog: ProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_conference)
 
+        var capacity = 2
         conference_Capacity.adapter = ArrayAdapter<Int>(this@AddingConference,android.R.layout.simple_list_item_1,options1)
         conference_Capacity.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -34,14 +35,10 @@ class AddingConference : AppCompatActivity() {
             }
 
         }
-        AddRoom(capacity)
-    }
-    private fun AddRoom(capacity: Int) {
         val bundle: Bundle = intent.extras
         val buildingId = bundle.get("BuildingId").toString().toInt()
-        val addconferenceRoom:Button = findViewById(R.id.add_conference_room)
-        addconferenceRoom.setOnClickListener {
 
+        add_conference_room.setOnClickListener {
             val conferenceRoom: EditText = findViewById(R.id.conference_Name)
             var room = addConferenceRoom()
             if(conferenceRoom.text.isEmpty()) {
@@ -55,8 +52,8 @@ class AddingConference : AppCompatActivity() {
                 addingRoom(room)
             }
         }
-}
 
+    }
     private fun addingRoom(room: addConferenceRoom) {
         val conferenceRoomapi =Servicebuilder.buildService(ConferenceService::class.java)
         val addconferencerequestCall: Call<ResponseBody> = conferenceRoomapi.addConference(room)

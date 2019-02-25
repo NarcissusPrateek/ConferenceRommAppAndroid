@@ -20,7 +20,7 @@ interface ConferenceService  {
     //fun getConferenceRoomList(@Path("id")id: Int) : Call<List<ConferenceRoom>>
     //fun getConferenceRoomList(@Body availableRoom: FetchConferenceRoom) : Call<List<ConferenceRoom>>
 
-    @POST("api/AllRomosWithStatus")
+    @POST("api/AllRoomsWithStatus")
    // fun getConferenceRoomList(@Path("id")id: Int) : Call<List<ConferenceRoom>>
     fun getConferenceRoomList(@Body availableRoom: FetchConferenceRoom) : Call<List<ConferenceRoom>>
 

@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -41,16 +42,25 @@ class DashBoardActivity : AppCompatActivity() {
             startActivity(Intent(this@DashBoardActivity, UserInputActivity::class.java))
             //finish()
         }
-        var profile_image: ImageView = findViewById(R.id.profile_image)
+        var profile_image: com.mikhaellopez.circularimageview.CircularImageView = findViewById(R.id.profile_image)
+        var profile_name:TextView = findViewById(R.id.profile_name)
         val acct = GoogleSignIn.getLastSignedInAccount(this@DashBoardActivity)
+        val name = acct!!.displayName
+        profile_name.setText("Hello, ${name}")
         val personPhoto = acct!!.getPhotoUrl()
-
+        Log.i("------------------",personPhoto.toString())
         profile_email.text = acct.email
-        //Glide.with(this@DashBoardActivity).load(personPhoto).into(profile_image)
-        //Glide.with(this@DashBoardActivity).load(personPhoto).into(profile_image)
-        profile_image.setImageResource(R.drawable.profile)
+
+        if(personPhoto == null )
+        {
+            profile_image.setImageResource(R.drawable.profile)
+        }
+        else {
+            Glide.with(applicationContext).load(personPhoto).thumbnail(1.0f).into(profile_image)
+           }
         loadDashBoard()
-     }
+
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
@@ -63,8 +73,6 @@ class DashBoardActivity : AppCompatActivity() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .build()
-
-        // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
         when(id) {
             R.id.Logout -> {
@@ -90,7 +98,6 @@ class DashBoardActivity : AppCompatActivity() {
         }
         else {
             finishAffinity();
-           // finish()
         }
     }
     private fun loadDashBoard() {

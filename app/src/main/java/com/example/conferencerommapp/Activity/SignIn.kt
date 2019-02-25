@@ -45,6 +45,7 @@ class SignIn : AppCompatActivity() {
         signInButton!!.setOnClickListener(View.OnClickListener {
             val signInIntent = mGoogleSignInClient!!.getSignInIntent()
             startActivityForResult(signInIntent, RC_SIGN_IN)
+
             //finish()
         })
 
@@ -58,7 +59,6 @@ class SignIn : AppCompatActivity() {
     }
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
-            //progressDialog = ProgressDialog(this@SignIn)
             val account = completedTask.getResult(ApiException::class.java)
             connectTOBackend(account.email)
             //finish()
@@ -72,11 +72,6 @@ class SignIn : AppCompatActivity() {
     override fun onStart() {
         val account = GoogleSignIn.getLastSignedInAccount(this)
         if (account != null) {
-//            progressDialog = ProgressDialog(this@SignIn)
-//            progressDialog!!.setMessage("Processing....")
-//            progressDialog!!.setCancelable(false)
-//            progressDialog!!.show()
-
             prefs = getSharedPreferences("myPref", Context.MODE_PRIVATE)
             connectTOBackend(account.email)
             //finish()
@@ -130,7 +125,7 @@ class SignIn : AppCompatActivity() {
             }
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 if(response.isSuccessful) {
-//                   progressDialog!!.dismiss()
+                //   progressDialog!!.dismiss()
                     var code = response.body()
                     val  editor = prefs!!.edit()
                     editor.putInt("Code",code!!)
@@ -138,7 +133,7 @@ class SignIn : AppCompatActivity() {
                     goAction(code)
                     Toast.makeText(this@SignIn,"code is ${getSharedPreferences("myPref", Context.MODE_PRIVATE).getInt("Code",5)}",Toast.LENGTH_LONG).show()
                 }else {
-                    progressDialog!!.dismiss()
+                  //  progressDialog!!.dismiss()
                 }
 
             }

@@ -52,51 +52,51 @@ class DashBoardAdapter(val dashboardItemList: List<Dashboard>,val contex: Contex
 		holder.txvDate.text = datefrom.get(0)
 		holder.txvFrom.text = datefrom.get(1)
 		holder.txvToTime.text = dateto.get(1)
-//		try {
-//			val cal: Calendar = Calendar.getInstance()
-//			val sdf = SimpleDateFormat("dd-M-yyyy hh:mm")
-//			val d1 = sdf.parse("${datefrom.get(0)}  ${datefrom.get(1)}")
-//			val elapsed = d1.getTime() - cal.timeInMillis
-//			Log.i("-------------", elapsed.toString())
-//			if(elapsed > 0) {
-//				holder.btnCancel.text = "Cancle"
-////				holder.btnCancel.setBackgroundColor(Color.RED)
-//			}
-//			else {
-//				holder.btnCancel.text = "Delete"
-////				holder.btnCancel.setBackgroundColor()
-//			}
-//		} catch (e: Exception) {
-//			Log.i("-------------------",e.message.toString())
-//			Toast.makeText(contex,"Something went wrong.Plese try agin after some time",Toast.LENGTH_SHORT).show()
-//		}
+		try {
+			val cal: Calendar = Calendar.getInstance()
+			val sdf = SimpleDateFormat("yyyy-M-dd hh:mm:ss")
+			val d1 = sdf.parse("${datefrom.get(0)}  ${datefrom.get(1)}")
+			val elapsed = d1.getTime() - cal.timeInMillis
+			Log.i("-------------", elapsed.toString())
+			if(elapsed > 0) {
+				holder.btnCancel.text = "Cancel"
+				holder.btnCancel.setBackgroundResource(R.drawable.buttoncancel)
+				holder.btnCancel.setTextColor(Color.WHITE)
+			}
+			else {
+				holder.btnCancel.text = "Delete"
+			}
+		} catch (e: Exception) {
+			Log.i("-------------------",e.message.toString())
+			Toast.makeText(contex,"Something went wrong.Plese try agin after some time",Toast.LENGTH_SHORT).show()
+		}
 		holder.btnCancel.setOnClickListener{
-//			if(holder.btnCancel.text.equals("Cancel")) {
-//				var builder = AlertDialog.Builder(contex)
-//				builder.setTitle("Confirm ")
-//				builder.setMessage("Press ok to Cancel the meeting")
-//				builder.setPositiveButton("OK"){dialog, which ->
-//					var cancel = CancelBooking()
-//					cancel.CId = dashboardItemList.get(position).CId
-//					cancel.ToTime = totime
-//					cancel.FromTime = fromtime
-//					cancel.Email = dashboardItemList.get(position).Email
-//					cancelBooking(cancel,contex)
-//				}
-//				builder.setNegativeButton("cancel"){ dialog, which ->
-//					Toast.makeText(contex,"Cancelled",Toast.LENGTH_SHORT).show()
-//				}
-//				val dialog: AlertDialog = builder.create()
-//				dialog.show()
-//			}
-//			else {
+			if(holder.btnCancel.text.equals("Cancel")) {
+				var builder = AlertDialog.Builder(contex)
+				builder.setTitle("Confirm ")
+				builder.setMessage("Press ok to Cancel the meeting")
+				builder.setPositiveButton("OK"){dialog, which ->
+					var cancel = CancelBooking()
+					cancel.CId = dashboardItemList.get(position).CId
+					cancel.ToTime = totime
+					cancel.FromTime = fromtime
+					cancel.Email = dashboardItemList.get(position).Email
+					cancelBooking(cancel,contex)
+				}
+				builder.setNegativeButton("cancel"){ dialog, which ->
+					Toast.makeText(contex,"Cancelled",Toast.LENGTH_SHORT).show()
+				}
+				val dialog: AlertDialog = builder.create()
+				dialog.show()
+			}
+			else {
 				var cancel = CancelBooking()
 				cancel.CId = dashboardItemList.get(position).CId
 				cancel.ToTime = totime
 				cancel.FromTime = fromtime
 				cancel.Email = dashboardItemList.get(position).Email
 				cancelBooking(cancel,contex)
-			//}
+			}
 
 		}
 	}

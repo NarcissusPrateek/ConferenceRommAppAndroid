@@ -1,5 +1,6 @@
 package com.example.conferencerommapp
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 //import android.support.v7.app.AppCompatActivity
@@ -27,7 +28,7 @@ import retrofit2.Response
 class RegistrationActivity : AppCompatActivity() {
 
     var mGoogleSignInClient: GoogleSignInClient? = null
-
+    var progressDialog: ProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
@@ -60,6 +61,11 @@ class RegistrationActivity : AppCompatActivity() {
             }
         }
         button_add.setOnClickListener(View.OnClickListener {
+            progressDialog = ProgressDialog(this@RegistrationActivity)
+            progressDialog!!.setMessage("Adding....")
+            progressDialog!!.setCancelable(false)
+            progressDialog!!.show()
+
             employee.EmpId = edittext_id.text.toString()
             employee.Name = textView_name.text.toString()
             employee.ActivationCode = "xxx"
@@ -74,16 +80,19 @@ class RegistrationActivity : AppCompatActivity() {
             val requestCall: Call<Int> = service.addEmployee(employee)
         requestCall.enqueue(object: Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
+                progressDialog!!.dismiss()
                 Toast.makeText(applicationContext,"on failure in registration ${t.message}",Toast.LENGTH_LONG).show()
             }
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
 
                 if(response.isSuccessful) {
+                    progressDialog!!.dismiss()
                     Toast.makeText(applicationContext,"Information added Successfully",Toast.LENGTH_LONG).show()
                     startActivity(Intent(this@RegistrationActivity, DashBoardActivity::class.java))
                     finish()
                 }
                 else {
+                    progressDialog!!.dismiss()
                     Toast.makeText(applicationContext,"Response is wrong ${response.body()}",Toast.LENGTH_LONG).show()
                 }
 
