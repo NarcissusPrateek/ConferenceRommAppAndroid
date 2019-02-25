@@ -6,6 +6,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import com.example.conferencerommapp.Activity.BuildingDashboard
@@ -13,6 +15,10 @@ import com.example.conferencerommapp.Activity.DashBoardActivity
 import com.example.conferencerommapp.services.ConferenceService
 import com.example.globofly.services.Servicebuilder
 import com.github.clans.fab.FloatingActionButton
+import com.github.clans.fab.FloatingActionMenu
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import kotlinx.android.synthetic.main.activity_blocked_dashboard.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,6 +26,7 @@ import retrofit2.Response
 
 class BlockedDashboard : AppCompatActivity() {
 
+    var mGoogleSignInClient: GoogleSignInClient? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_blocked_dashboard)
@@ -27,6 +34,8 @@ class BlockedDashboard : AppCompatActivity() {
         val addConferenceRoom: FloatingActionButton = findViewById(R.id.add_conference)
         val maintenance: FloatingActionButton = findViewById(R.id.maintenance)
         val booking_details:FloatingActionButton=findViewById(R.id.booking_detials)
+        val menu:FloatingActionMenu=findViewById(R.id.menu)
+        menu.setClosedOnTouchOutside(true);
         booking_detials.setOnClickListener {
             startActivity(Intent(this@BlockedDashboard, DashBoardActivity::class.java))
             finish()
@@ -42,7 +51,39 @@ class BlockedDashboard : AppCompatActivity() {
             startActivity(addConferenceintent)
             //finish()
         }
+
+
+
+
+
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        var id = item!!.itemId
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
+
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+        when(id) {
+            R.id.Logout -> {
+                mGoogleSignInClient!!.signOut()
+                    .addOnCompleteListener(this) {
+                        Toast.makeText(applicationContext, "Successfully signed out", Toast.LENGTH_LONG).show()
+                        startActivity(Intent(applicationContext, SignIn::class.java))
+                        finish()
+                    }
+            }
+        }
+        return true
+    }
+
     override fun onBackPressed() {
         super.onBackPressed()
         finishAffinity();

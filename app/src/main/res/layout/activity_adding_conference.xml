@@ -32,19 +32,38 @@
             android:layout_width="match_parent"
             android:hint="Conference Room Name"
             android:singleLine="true"/>
-    <EditText
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="60dp"
-            android:backgroundTint="#242B53"
-            android:id="@+id/conference_Capacity"
-            android:inputType="number"
-            android:layout_below="@+id/conference_Name"
-            android:hint="Capcity"
-            android:layout_marginRight="60dp"
 
-            android:layout_width="match_parent"
-            android:singleLine="true"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="60dp"
+            android:id="@+id/conference_Capacity"
+            android:popupBackground="#D2D2DA"
+            android:layout_marginStart="60dp"
+            android:backgroundTint="#9596A0"
+            android:background="#9596A0"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="visible"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/conference_Name"
+           />
+
+    <!--<EditText-->
+            <!--android:layout_height="60dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:layout_marginLeft="60dp"-->
+            <!--android:backgroundTint="#242B53"-->
+            <!--android:id="@+id/conference_Capacity"-->
+            <!--android:inputType="number"-->
+            <!--android:layout_below="@+id/conference_Name"-->
+            <!--android:hint="Capcity"-->
+            <!--android:layout_marginRight="60dp"-->
+
+            <!--android:layout_width="match_parent"-->
+            <!--android:singleLine="true"/>-->
 
     <Button
             android:layout_width="100dp"

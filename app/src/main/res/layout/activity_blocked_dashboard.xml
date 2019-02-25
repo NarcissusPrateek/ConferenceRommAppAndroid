@@ -65,6 +65,7 @@
             app:menu_shadowXOffset="1dp"
             app:menu_shadowYOffset="4dp"
             app:menu_showShadow="true"
+            android:id="@+id/menu"
     >
         <com.github.clans.fab.FloatingActionButton
                 app:fab_colorPressed="#D3D3D8"

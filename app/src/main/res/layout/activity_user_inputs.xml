@@ -22,54 +22,57 @@
 
                 android:textColor="#242B53"/>
     </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From Time"
+                android:layout_marginTop="150dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:layout_below="@+id/from_time"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="31dp"/>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="From Time"
-            android:layout_marginTop="150dp"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:layout_below="@+id/from_time"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="31dp"/>
+        <EditText
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="170dp"
+                android:id="@+id/fromTime"
+                android:inputType="none"
+                android:focusable="false"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="90dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/edittext_bg"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To Time"
+                android:layout_marginTop="150dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="190dp"/>
+        <EditText
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="170dp"
+                android:id="@+id/toTime"
+                android:focusable="false"
 
-    <EditText
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="170dp"
-            android:id="@+id/fromTime"
-            android:inputType="none"
-            android:focusable="false"
-            android:paddingLeft="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="90dp"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:background="@drawable/edittext_bg"
-    />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="To Time"
-            android:layout_marginTop="150dp"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="233dp"/>
-    <EditText
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="170dp"
-            android:id="@+id/toTime"
-            android:focusable="false"
-            android:paddingLeft="10dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="20dp"
-            android:layout_toRightOf="@+id/fromTime"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:background="@drawable/edittext_bg"
-            android:inputType="none"
-    />
-
+                android:paddingLeft="10dp"
+                android:layout_marginStart="200dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/edittext_bg"
+                android:inputType="none"
+        />
+    </RelativeLayout>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,7 +94,7 @@
             android:paddingLeft="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_below="@+id/toTime"
+            android:layout_below="@+id/time"
             android:background="@drawable/edittext_bg"
             android:editable="false"
     />

@@ -26,6 +26,7 @@
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:fitsSystemWindows="true"
+                android:background="#EEF1F7"
                 app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleTextAppearance="@android:color/transparent"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -89,7 +90,7 @@
     app:menu_colorPressed="#D3D3D8"
     app:fab_colorNormal="#A3A7B8"
     android:layout_alignParentBottom="true"
-    android:layout_margin="33dp"
+
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"/>
 </RelativeLayout>

@@ -16,12 +16,12 @@
 		android:layout_height="wrap_content"
 
 		android:orientation="horizontal">
-		<ImageView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:id="@+id/image"
-				android:background="#CCCCCE"
-		/>
+		<!--<ImageView-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:id="@+id/image"-->
+				<!--android:background="#CCCCCE"-->
+		<!--/>-->
 
 		<TextView
 				android:layout_centerHorizontal="true"
@@ -36,7 +36,7 @@
 				android:textColor="#303030"
 				android:textSize="20sp"
 
-				android:layout_below="@+id/image"/>
+				/>
 
 	</RelativeLayout>
 </androidx.cardview.widget.CardView>

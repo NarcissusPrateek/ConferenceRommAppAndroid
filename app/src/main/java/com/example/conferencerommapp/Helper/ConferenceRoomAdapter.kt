@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import com.example.conferencerommapp.Activity.BookingActivity
 import com.example.conferencerommapp.Activity.ConferenceRoomActivity
 import com.example.conferencerommapp.Model.Building
@@ -26,7 +27,8 @@ class ConferenceRoomAdapter(private val conferenceRoomList: List<ConferenceRoom>
 	}
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-		val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_conference_room, parent, false)
+		//val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_conference_room, parent, false)
+		val view = LayoutInflater.from(parent.context).inflate(R.layout.room_availablity, parent, false)
 		return ViewHolder(view)
 	}
 
@@ -37,6 +39,19 @@ class ConferenceRoomAdapter(private val conferenceRoomList: List<ConferenceRoom>
 		holder.txvRoom.text = conferenceRoomList[position].conf_name
 
 		holder.txvRoomCapacity.text = conferenceRoomList[position].conf_capacity
+
+
+		holder.txvStatus.text = conferenceRoomList[position].Status
+
+
+		if(holder.txvStatus.text.equals("Available")) {
+			holder.txvStatus.setTextColor(Color.GREEN)
+		}
+		else if(holder.txvStatus.text.equals("Booked")) {
+			holder.txvStatus.setTextColor(Color.YELLOW)
+		}else if(holder.txvStatus.text.equals("Blocked")) {
+			holder.txvStatus.setTextColor(Color.RED)
+		}
 
 
 //        if(conferenceRoomList[position].Status.equals("Available"))
@@ -56,10 +71,18 @@ class ConferenceRoomAdapter(private val conferenceRoomList: List<ConferenceRoom>
 
 
         holder.itemView.setOnClickListener { v ->
-			val context = v.context
-			val roomId = conferenceRoomList[position].conf_id
-			val roomname = conferenceRoomList[position].conf_name
-			mClickListener?.onBtnClick(roomId.toString(),roomname)
+			if(holder.txvStatus.text.equals("Available")) {
+
+				val context = v.context
+				val roomId = conferenceRoomList[position].conf_id
+				val roomname = conferenceRoomList[position].conf_name
+				mClickListener?.onBtnClick(roomId.toString(),roomname)
+			}else if(holder.txvStatus.text.equals("Booked")) {
+
+			}else if(holder.txvStatus.text.equals("Blocked")) {
+
+			}
+
 		}
 	}
 
@@ -71,8 +94,9 @@ class ConferenceRoomAdapter(private val conferenceRoomList: List<ConferenceRoom>
 
 		val txvRoom: TextView = itemView.findViewById(R.id.txv_room)
 		val txvRoomCapacity: TextView = itemView.findViewById(R.id.txv_room_capacity)
-     //   var button: Button? = null
-        var conferenceRoom: ConferenceRoom? = null
+     	val txvStatus: TextView = itemView.findViewById(R.id.status_txv)
+		var cardview: CardView = itemView.findViewById(R.id.cardview2)
+		var conferenceRoom: ConferenceRoom? = null
 
 		override fun toString(): String {
 			return """${super.toString()} '${txvRoom.text}'"""

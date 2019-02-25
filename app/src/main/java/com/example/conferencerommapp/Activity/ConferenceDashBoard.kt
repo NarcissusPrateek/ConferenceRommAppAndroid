@@ -65,8 +65,7 @@ class ConferenceDashBoard : AppCompatActivity() {
                 if(response.isSuccessful){
 
                     val conferencelist:List<ConferenceList>? = response.body()
-                    //Conference_Room_adapter_new.
-                    //conference_list.adapter= ConferenceRecyclerAdapter(conferencelist!!)
+                    conference_list.adapter= ConferenceRecyclerAdapter(conferencelist!!)
                 }
                 else{
                     Toast.makeText(this@ConferenceDashBoard,"unable to load Recycler View",Toast.LENGTH_LONG).show()

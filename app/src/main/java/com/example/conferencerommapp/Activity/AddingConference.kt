@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.*
 import com.example.conferencerommapp.services.ConferenceService
 import com.example.globofly.services.Servicebuilder
+import kotlinx.android.synthetic.main.activity_adding_conference.*
 import kotlinx.android.synthetic.main.activity_spinner.*
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -16,38 +17,43 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AddingConference : AppCompatActivity() {
-
+    var capacity = 2
+    var options1 = arrayOf(2,4,6,8,10,12,14,16)
     //var progressDialog: ProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_conference)
-        AddRoom()
+
+        conference_Capacity.adapter = ArrayAdapter<Int>(this@AddingConference,android.R.layout.simple_list_item_1,options1)
+        conference_Capacity.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                capacity = 3
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                capacity = options1[position]
+            }
+
+        }
+        AddRoom(capacity)
     }
-    private fun AddRoom() {
+    private fun AddRoom(capacity: Int) {
         val bundle: Bundle = intent.extras
         val buildingId = bundle.get("BuildingId").toString().toInt()
         val addconferenceRoom:Button = findViewById(R.id.add_conference_room)
         addconferenceRoom.setOnClickListener {
+
             val conferenceRoom: EditText = findViewById(R.id.conference_Name)
-            val conferenceCapcity: EditText = findViewById(R.id.conference_Capacity)
             var room = addConferenceRoom()
             if(conferenceRoom.text.isEmpty()) {
                 Toast.makeText(this@AddingConference,"Please Enter Room Name",Toast.LENGTH_LONG).show()
             }
-            else if(conferenceCapcity.text.isEmpty()) {
-                Toast.makeText(this@AddingConference,"Please Enter Room Capacity",Toast.LENGTH_LONG).show()
-            }
+
             else {
                 room.BId = buildingId
                 room.CName = conferenceRoom.text.toString()
-                room.Capacity = conferenceCapcity.text.toString().toInt()
+                room.Capacity = capacity.toString().toInt()
                 addingRoom(room)
             }
-            //var intent = Intent(this@AddingConference,ConferenceDashBoard::class.java)
-            //intent.putExtra("BuildingId",buildingId)
-            //startActivity(intent)
-            //finish()
-
         }
 }
 
