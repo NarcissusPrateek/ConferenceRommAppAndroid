@@ -131,7 +131,7 @@ class SignIn : AppCompatActivity() {
                     editor.putInt("Code",code!!)
                     editor.apply()
                     goAction(code)
-                    Toast.makeText(this@SignIn,"code is ${getSharedPreferences("myPref", Context.MODE_PRIVATE).getInt("Code",5)}",Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this@SignIn,"code is ${getSharedPreferences("myPref", Context.MODE_PRIVATE).getInt("Code",5)}",Toast.LENGTH_LONG).show()
                 }else {
                   //  progressDialog!!.dismiss()
                 }

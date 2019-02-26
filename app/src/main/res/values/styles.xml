@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -13,5 +13,13 @@
     </style>
     <style name="sighin" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary1</item>
+    </style>
+    <style name="flatbutton" parent="Theme.AppCompat.Light">
+        <item name="buttonStyle">
+            @style/Widget.AppCompat.Button.Borderless.Colored</item>
+            <item name="colorControlHighlight">
+                @color/colorAccent
+        </item>
+        <item name="colorAccent">@color/black</item>
     </style>
 </resources>

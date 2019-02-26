@@ -20,9 +20,6 @@ class Spinner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_spinner)
-
-
-
         getBuilding()
     }
 
@@ -34,7 +31,6 @@ class Spinner : AppCompatActivity() {
 
                 Toast.makeText(applicationContext,t.message, Toast.LENGTH_LONG).show()
             }
-
             override fun onResponse(call: Call<List<BuildingT>>, response: Response<List<BuildingT>>) {
                 if(response.isSuccessful) {
                     response.body()?.let {

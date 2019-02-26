@@ -54,17 +54,17 @@ class DashBoardAdapter(val dashboardItemList: List<Dashboard>,val contex: Contex
 		holder.txvToTime.text = dateto.get(1)
 		try {
 			val cal: Calendar = Calendar.getInstance()
-			val sdf = SimpleDateFormat("yyyy-M-dd hh:mm:ss")
+			val sdf = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
 			val d1 = sdf.parse("${datefrom.get(0)}  ${datefrom.get(1)}")
 			val elapsed = d1.getTime() - cal.timeInMillis
 			Log.i("-------------", elapsed.toString())
 			if(elapsed > 0) {
 				holder.btnCancel.text = "Cancel"
-				holder.btnCancel.setBackgroundResource(R.drawable.buttoncancel)
-				holder.btnCancel.setTextColor(Color.WHITE)
+				holder.btnCancel.setTextColor(Color.RED)
 			}
 			else {
 				holder.btnCancel.text = "Delete"
+				holder.btnCancel.setTextColor(Color.BLACK)
 			}
 		} catch (e: Exception) {
 			Log.i("-------------------",e.message.toString())
@@ -81,7 +81,7 @@ class DashBoardAdapter(val dashboardItemList: List<Dashboard>,val contex: Contex
 					cancel.ToTime = totime
 					cancel.FromTime = fromtime
 					cancel.Email = dashboardItemList.get(position).Email
-					cancelBooking(cancel,contex)
+					cancelBooking(cancel,contex,"Canceled")
 				}
 				builder.setNegativeButton("cancel"){ dialog, which ->
 					Toast.makeText(contex,"Cancelled",Toast.LENGTH_SHORT).show()
@@ -95,12 +95,12 @@ class DashBoardAdapter(val dashboardItemList: List<Dashboard>,val contex: Contex
 				cancel.ToTime = totime
 				cancel.FromTime = fromtime
 				cancel.Email = dashboardItemList.get(position).Email
-				cancelBooking(cancel,contex)
+				cancelBooking(cancel,contex,"Deleted")
 			}
 
 		}
 	}
-	 private fun cancelBooking(cancel: CancelBooking,contex: Context) {
+	 private fun cancelBooking(cancel: CancelBooking,contex: Context,title: String) {
 		val service = Servicebuilder.buildService(ConferenceService::class.java )
 		val requestCall : Call<Int> = service.cancelBooking(cancel)
 		requestCall.enqueue(object: Callback<Int> {
@@ -110,7 +110,7 @@ class DashBoardAdapter(val dashboardItemList: List<Dashboard>,val contex: Contex
 			override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 if(response.isSuccessful) {
 					val code = response.body()
-					Toast.makeText(contex,"Booking Canceled with code ${code}", Toast.LENGTH_SHORT).show()
+					Toast.makeText(contex,"Booking ${title} Successfully", Toast.LENGTH_SHORT).show()
 						startActivity(contex,Intent(contex, DashBoardActivity::class.java),null)
 					(contex as Activity).finish()
 				}
