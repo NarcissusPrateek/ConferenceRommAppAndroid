@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.conferencerommapp">
 
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 ///
     <application
@@ -10,76 +13,62 @@
             android:label="@string/app_name"
             android:roundIcon="@drawable/nine"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
-            <activity
+            android:theme="@style/Theme.AppCompat.DayNight">
+        <activity
+                android:name=".Activity.Main2Activity"
+                android:label="Booking Dashboard"
+                android:theme="@style/NoActionBar">
+        </activity>
+        <activity
                 android:name=".Activity.SplashScreen"
                 android:theme="@style/AppTheme.NoActionBar">
-                    <intent-filter>
-                        <action android:name="android.intent.action.MAIN"/>
-                        <category android:name="android.intent.category.LAUNCHER"/>
-                    </intent-filter>
-            </activity>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
-            <activity
-                    android:parentActivityName=".Activity.DashBoardActivity"
-                    android:name=".Activity.UserInputActivity"
-                    android:launchMode="singleTop"
-                    android:theme="@style/AppTheme">
-            </activity>
-
-            <activity
-                android:parentActivityName=".Activity.UserInputActivity"
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".Activity.UserInputActivity"
+                android:label="Input"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
                 android:name=".Activity.BuildingsActivity"
-                android:launchMode="singleTop"
-                android:theme="@style/AppTheme">
-            </activity>
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".Activity.ConferenceRoomActivity"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".SignIn"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".Activity.BookingActivity"
+                android:label="Booking"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".Activity.AddingBuilding"
+                android:label="Add Building"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".AddingConference"
+                android:label="Add Conference Room"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".Activity.BuildingDashboard"/>
+        <activity
+                android:name=".RegistrationActivity"
+                android:label="Registration"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".Activity.DashBoardActivity"/>
 
-            <activity
-                    android:parentActivityName=".Activity.BuildingsActivity"
-                    android:launchMode="singleTop"
-                    android:name=".Activity.ConferenceRoomActivity"/>
-
-            <activity android:name=".SignIn"
-                      android:theme="@style/AppTheme.NoActionBar"/>
-
-            <activity
-                    android:parentActivityName=".Activity.ConferenceRoomActivity"
-                    android:launchMode="singleTop"
-                    android:name=".Activity.BookingActivity"/>
-
-            <activity
-                    android:parentActivityName=".Activity.BuildingDashboard"
-                    android:launchMode="singleTop"
-                    android:name=".Activity.AddingBuilding"/>
-
-            <activity
-                    android:parentActivityName=".BlockedDashboard"
-                    android:launchMode="singleTop"
-                    android:name=".Activity.BuildingDashboard"/>
-
-            <activity
-                    android:name=".RegistrationActivity"/>
-
-            <activity android:name=".Activity.DashBoardActivity" />
-
-            <activity
-                    android:parentActivityName=".ConferenceDashBoard"
-                    android:name=".AddingConference" android:launchMode="singleTop"></activity>
-
-            <activity android:name=".BlockedDashboard"></activity>
-
-
-            <activity
-                    android:parentActivityName=".BlockedDashboard"
-                    android:launchMode="singleTop"
-                    android:name=".Spinner"></activity>
-
-            <activity
-                    android:parentActivityName=".Activity.BuildingDashboard"
-                    android:launchMode="singleTop"
-                    android:name=".ConferenceDashBoard"></activity>
-
-
-       </application>
+        <activity android:name=".BlockedDashboard"/>
+        <activity android:name=".Spinner"/>
+        <activity android:name=".ConferenceDashBoard"/>
+        <activity android:name=".Activity.MultiItemChecker"/>
+        <activity android:name="com.nineleaps.buttonchecker.Buildings__Activity__new"/>
+    </application>
 
 </manifest>
