@@ -3,7 +3,6 @@ package com.example.conferencerommapp
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
-//import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -11,19 +10,19 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.conferencerommapp.Activity.DashBoardActivity
 import com.example.conferencerommapp.Model.Employee
-import com.example.conferencerommapp.R
 import com.example.conferencerommapp.services.ConferenceService
-import com.example.conferencerommapp.services.Servicebuilder11
 import com.example.globofly.services.Servicebuilder
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import kotlinx.android.synthetic.main.activity_registration.*
-//import com.nineleaps.signin.Model.Employee
-import okhttp3.ResponseBody
+import kotlinx.android.synthetic.main.toolbar.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
+
+
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -31,24 +30,19 @@ class RegistrationActivity : AppCompatActivity() {
     var progressDialog: ProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //setContentView(com.example.conferencerommapp.R.layout.activity_registration)
         setContentView(R.layout.activity_registration)
+        setSupportActionBar(toolbar)
 
         Toast.makeText(applicationContext,"Registration Activity", Toast.LENGTH_LONG).show()
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .build()
-        // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
         val acct = GoogleSignIn.getLastSignedInAccount(applicationContext)
-
-
-
-
         val employee = Employee()
-
-
 
         var options = arrayOf("Intern","SDE-1", "SDE-2", "SDE-3", "Principal Engineer", "Project Manager","HR", "CEO","CTO", "COO")
         spinner.adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,options)
@@ -57,34 +51,48 @@ class RegistrationActivity : AppCompatActivity() {
                 employee.Role = "Intern"
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                employee.Role = options.get(position)
+                employee.Role = spinner.getItemAtPosition(position).toString()
             }
         }
         button_add.setOnClickListener(View.OnClickListener {
-            progressDialog = ProgressDialog(this@RegistrationActivity)
-            progressDialog!!.setMessage("Adding....")
-            progressDialog!!.setCancelable(false)
-            progressDialog!!.show()
+            if(edittext_id.text.trim().isEmpty()) {
+                Toast.makeText(this@RegistrationActivity,"Please enter ID", Toast.LENGTH_SHORT).show()
+            } else if(textView_name.text.trim().isEmpty()) {
+                Toast.makeText(this@RegistrationActivity,"Please enter name", Toast.LENGTH_SHORT).show()
+            }else if(employee.Role.toString().equals("Select Role...")) {
+                Toast.makeText(this@RegistrationActivity,"Please Select Role", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                progressDialog = ProgressDialog(this@RegistrationActivity)
+                progressDialog!!.setMessage("Adding....")
+                progressDialog!!.setCancelable(false)
+                progressDialog!!.show()
 
-            employee.EmpId = edittext_id.text.toString()
-            employee.Name = textView_name.text.toString()
-            employee.ActivationCode = "xxx"
-            employee.Email = acct!!.email
-            employee.Verified = false
-            addEmployee(employee)
+                employee.EmpId = edittext_id.text.toString()
+                employee.Name = textView_name.text.toString()
+                employee.ActivationCode = "xxx"
+                employee.Email = acct!!.email
+                employee.Verified = false
+                addEmployee(employee)
+            }
+
         })
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
 
     }
     fun addEmployee(employee: Employee) {
             val service = Servicebuilder.buildService(ConferenceService::class.java)
             val requestCall: Call<Int> = service.addEmployee(employee)
-        requestCall.enqueue(object: Callback<Int> {
+            requestCall.enqueue(object: Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
                 progressDialog!!.dismiss()
                 Toast.makeText(applicationContext,"on failure in registration ${t.message}",Toast.LENGTH_LONG).show()
             }
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
-
                 if(response.isSuccessful) {
                     progressDialog!!.dismiss()
                     Toast.makeText(applicationContext,"Information added Successfully",Toast.LENGTH_LONG).show()
@@ -97,7 +105,6 @@ class RegistrationActivity : AppCompatActivity() {
                 }
 
             }
-
-        })
+            })
     }
 }

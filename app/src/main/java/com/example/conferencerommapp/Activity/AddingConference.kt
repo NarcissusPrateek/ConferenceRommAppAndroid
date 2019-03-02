@@ -1,8 +1,6 @@
 package com.example.conferencerommapp
 
 import android.app.AlertDialog
-import android.app.ProgressDialog
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,7 +8,7 @@ import android.widget.*
 import com.example.conferencerommapp.services.ConferenceService
 import com.example.globofly.services.Servicebuilder
 import kotlinx.android.synthetic.main.activity_adding_conference.*
-import kotlinx.android.synthetic.main.activity_spinner.*
+import kotlinx.android.synthetic.main.toolbar.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,20 +16,21 @@ import retrofit2.Response
 
 class AddingConference : AppCompatActivity() {
 
-    var options1 = arrayOf(2,4,6,8,10,12,14,16)
+    var options1 = arrayOf(2,4,6,8,10,12,14)
     //var progressDialog: ProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_conference)
+        setSupportActionBar(toolbar)
 
-        var capacity = 2
+        var capacity = ""
         conference_Capacity.adapter = ArrayAdapter<Int>(this@AddingConference,android.R.layout.simple_list_item_1,options1)
         conference_Capacity.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                capacity = 3
+                capacity = "3"
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                capacity = options1[position]
+                capacity = conference_Capacity.getItemAtPosition(position).toString()
             }
 
         }
@@ -41,14 +40,14 @@ class AddingConference : AppCompatActivity() {
         add_conference_room.setOnClickListener {
             val conferenceRoom: EditText = findViewById(R.id.conference_Name)
             var room = addConferenceRoom()
-            if(conferenceRoom.text.isEmpty()) {
+            if(conferenceRoom.text.trim().isEmpty()) {
                 Toast.makeText(this@AddingConference,"Please Enter Room Name",Toast.LENGTH_LONG).show()
-            }
-
-            else {
+            }else if(capacity.equals("Select Capacity...")) {
+                Toast.makeText(this@AddingConference,"Please Select Capacity",Toast.LENGTH_LONG).show()
+            } else {
                 room.BId = buildingId
                 room.CName = conferenceRoom.text.toString()
-                room.Capacity = capacity.toString().toInt()
+                room.Capacity = capacity.toInt()
                 addingRoom(room)
             }
         }

@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import kotlinx.android.synthetic.main.activity_booking.*
+import kotlinx.android.synthetic.main.app_bar_main2.*
+import kotlinx.android.synthetic.main.multitemchecker.*
 import kotlinx.android.synthetic.main.test.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,14 +35,15 @@ class BookingActivity: AppCompatActivity() {
 
     var progressDialog: ProgressDialog? = null
     var mUserItems = ArrayList<Int>()
-    val EmailList = ArrayList<String>()
+    var emailList: String = ""
     var bookedStatus:Boolean=false
     var mGoogleSignInClient: GoogleSignInClient? = null
     var str :StringBuilder? = null
-    var userStatus=-1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_booking)
+        setSupportActionBar(toolbar)
 
         val txv_fromTime: TextView = findViewById(R.id.textView_from_time)
         val txv_toTime: TextView = findViewById(R.id.textView_to_time)
@@ -83,76 +87,56 @@ class BookingActivity: AppCompatActivity() {
 
 
         button.setOnClickListener {
-            var servicebuilder = Servicebuilder.buildService(ConferenceService::class.java)
-            var requestCall = servicebuilder.getEmployees()
-            requestCall.enqueue(object : Callback<List<EmployeeList>> {
-                override fun onFailure(call: Call<List<EmployeeList>>, t: Throwable) {
-                    Toast.makeText(this@BookingActivity, "On failure while Loading the EmployeeList", Toast.LENGTH_LONG)
-                        .show()
+            var empList: List<EmployeeList>? = getEmployeeList()
+            if(empList!!.isEmpty()) {
+                Toast.makeText(this@BookingActivity,"Unable to fetch empployee Details..",Toast.LENGTH_SHORT).show()
+            }else {
+                val list = ArrayList<String>()
+                for (item: EmployeeList in empList!!) {
+                    list.add(item.Name!!)
                 }
+                val listItems = arrayOfNulls<String>(list.size)
+                list.toArray(listItems)
+                var checkedItems: BooleanArray = BooleanArray(empList.size)
 
-                override fun onResponse(call: Call<List<EmployeeList>>, response: Response<List<EmployeeList>>) {
-                    if (response.isSuccessful) {
-                        var emplist: List<EmployeeList>? = response.body()
-                        val list = ArrayList<String>()
-                        for (item: EmployeeList in emplist!!) {
-                            list.add(item.Name!!)
+                val mBuilder = android.app.AlertDialog.Builder(this@BookingActivity)
+                mBuilder.setTitle("Select")
+                mBuilder.setMultiChoiceItems(listItems, checkedItems,
+                    DialogInterface.OnMultiChoiceClickListener { dialogInterface, position, isChecked ->
+                        if (isChecked) {
+                            mUserItems.add(position)
+                        } else {
+                            mUserItems.remove(Integer.valueOf(position))
                         }
-                        val listItems = arrayOfNulls<String>(list.size)
-                        list.toArray(listItems)
-
-
-                        var checkedItems: BooleanArray = BooleanArray(emplist.size)
-
-                        val mBuilder = AlertDialog.Builder(this@BookingActivity)
-                        mBuilder.setTitle("Select Members for Meeting")
-
-                        mBuilder.setMultiChoiceItems(
-                            listItems,
-                            checkedItems,
-                            DialogInterface.OnMultiChoiceClickListener { dialogInterface, position, isChecked ->
-                                if (isChecked) {
-                                    mUserItems.add(position)
-                                } else if (mUserItems.contains(position)) {
-                                    mUserItems.remove(position)
-                                }
-                            })
-                        mBuilder.setCancelable(false)
-                        mBuilder.setPositiveButton(
-                            R.string.ok_label,
-                            DialogInterface.OnClickListener { dialogInterface, which ->
-                                str = StringBuilder("")
-                                for (i in mUserItems.indices) {
-                                    str!!.append(emplist[mUserItems.get(i)].Email!!)
-                                    if(i != (mUserItems.size - 1)) {
-                                        str!!.append(",")
-                                    }
-                                }
-                                mUserItems.clear()
-                            })
-                        mBuilder.setNegativeButton(
-                            R.string.dismiss_label,
-                            DialogInterface.OnClickListener { dialogInterface, i -> dialogInterface.dismiss() }
-                        )
-                        mBuilder.setNeutralButton(
-                            R.string.clear_all_label,
-                            DialogInterface.OnClickListener { dialogInterface, which ->
-                                for (i in checkedItems.indices) {
-                                    checkedItems[i] = false
-                                }
-                                str = StringBuilder("")
-                                mUserItems.clear()
-                                EmailList.clear()
-                            })
-                        val mDialog = mBuilder.create()
-                        mDialog.show()
+                    })
+                mBuilder.setCancelable(false)
+                mBuilder.setPositiveButton("Ok") { dialogInterface, which ->
+                    var item = ""
+                    for (i in mUserItems.indices) {
+                        item = item + listItems[mUserItems[i]]
+                        if (i != mUserItems.size - 1) {
+                            item = "$item, "
+                        }
                     }
-
+                    emailList = item
+                    Log.i("---------", item)
                 }
 
-            })
+                mBuilder.setNegativeButton(
+                    "Dismis"
+                ) { dialogInterface, i -> dialogInterface.dismiss() }
+
+                mBuilder.setNeutralButton("Clear All") { dialogInterface, which ->
+                    for (i in checkedItems.indices) {
+                        checkedItems[i] = false
+                        mUserItems.clear()
+                    }
+                }
+                val mDialog = mBuilder.create()
+                mDialog.show()
+            }
         }
-        book_button.setOnClickListener {
+            book_button.setOnClickListener {
             if(edittextPurpose.text.isEmpty()) {
                 Toast.makeText(this@BookingActivity,"Please Enter the purpose of meeting.",Toast.LENGTH_LONG).show()
             }else {
@@ -212,5 +196,23 @@ class BookingActivity: AppCompatActivity() {
             }
         })
         return code1
+    }
+    fun getEmployeeList(): List<EmployeeList>? {
+        var emplist: List<EmployeeList>? = null
+        var servicebuilder = Servicebuilder.buildService(ConferenceService::class.java)
+        var requestCall = servicebuilder.getEmployees()
+        requestCall.enqueue(object : Callback<List<EmployeeList>> {
+            override fun onFailure(call: Call<List<EmployeeList>>, t: Throwable) {
+                Toast.makeText(this@BookingActivity, "On failure while Loading the EmployeeList", Toast.LENGTH_LONG).show()
+                return
+            }
+
+            override fun onResponse(call: Call<List<EmployeeList>>, response: Response<List<EmployeeList>>) {
+                if (response.isSuccessful) {
+                     emplist = response.body()
+                }
+            }
+        })
+        return emplist
     }
 }

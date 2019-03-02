@@ -16,6 +16,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.conferencerommapp.Activity.DashBoardActivity
+import com.example.conferencerommapp.Activity.Main2Activity
 import com.example.conferencerommapp.services.ConferenceService
 import com.example.globofly.services.Servicebuilder
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -69,16 +70,16 @@ class SignIn : AppCompatActivity() {
 
     }
 
-    override fun onStart() {
-        val account = GoogleSignIn.getLastSignedInAccount(this)
-        if (account != null) {
-            prefs = getSharedPreferences("myPref", Context.MODE_PRIVATE)
-            connectTOBackend(account.email)
-            //finish()
-        }
-        super.onStart()
-
-    }
+//    override fun onStart() {
+//        val account = GoogleSignIn.getLastSignedInAccount(this)
+//        if (account != null) {
+//            prefs = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+//            connectTOBackend(account.email)
+//            //finish()
+//        }
+//        super.onStart()
+//
+//    }
     override fun onBackPressed() {
         finishAffinity()
         super.onBackPressed()
@@ -86,11 +87,11 @@ class SignIn : AppCompatActivity() {
     fun goAction(code: Int?) {
         when(code) {
             11 -> {
-                startActivity(Intent(this@SignIn, BlockedDashboard::class.java))
+                startActivity(Intent(this@SignIn, Main2Activity::class.java))
                 //finish()
             }
             10 -> {
-                startActivity(Intent(this@SignIn, DashBoardActivity::class.java))
+                startActivity(Intent(this@SignIn, Main2Activity::class.java))
                // finish()
             }
             0 -> {
@@ -98,7 +99,7 @@ class SignIn : AppCompatActivity() {
                // finish()
             }
             2 -> {
-                startActivity(Intent(this@SignIn, DashBoardActivity::class.java))
+                startActivity(Intent(this@SignIn, Main2Activity::class.java))
                 //finish()
             }
             else -> {

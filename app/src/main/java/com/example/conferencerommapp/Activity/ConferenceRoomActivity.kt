@@ -1,6 +1,7 @@
 package com.example.conferencerommapp.Activity
 
 import android.app.AlertDialog
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,19 +15,21 @@ import com.example.conferencerommapp.R
 import com.example.conferencerommapp.services.ConferenceService
 import com.example.globofly.services.Servicebuilder
 import kotlinx.android.synthetic.main.activity_conference_room.*
+import kotlinx.android.synthetic.main.toolbar.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-public class ConferenceRoomActivity : AppCompatActivity() {
+class ConferenceRoomActivity : AppCompatActivity() {
+
+    var progressDialog: ProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conference_room)
 
+        toolbar.setTitle("Available Room")
+        setSupportActionBar(toolbar)
         loadConferenceRoom()
-
-
-
     }
 
     override fun onResume() {
@@ -34,6 +37,13 @@ public class ConferenceRoomActivity : AppCompatActivity() {
       //  loadConferenceRoom()
     }
     public fun loadConferenceRoom() {
+
+        progressDialog = ProgressDialog(this@ConferenceRoomActivity)
+        progressDialog!!.setMessage("Loading....")
+        progressDialog!!.setCancelable(false)
+        progressDialog!!.show()
+
+
 
         val bundle: Bundle = intent.extras
         val from = bundle.get("FromTime").toString()
@@ -56,12 +66,14 @@ public class ConferenceRoomActivity : AppCompatActivity() {
         val requestCall: Call<List<ConferenceRoom>> = conferenceService.getConferenceRoomList(inputs)
         requestCall.enqueue(object: Callback<List<ConferenceRoom>> {
             override fun onFailure(call: Call<List<ConferenceRoom>>, t: Throwable) {
+                progressDialog!!.dismiss()
                 Toast.makeText(applicationContext, "on failure on loading rooms" + t.message, Toast.LENGTH_LONG).show()
 
             }
 
             override fun onResponse(call: Call<List<ConferenceRoom>>, response: Response<List<ConferenceRoom>>) {
 
+                progressDialog!!.dismiss()
                 if(response.isSuccessful) {
                     var conferenceRoomList =  response.body()
                     if(conferenceRoomList!!.size == 0) {

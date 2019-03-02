@@ -6,25 +6,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.NoActionBar"
         tools:context="com.example.conferencerommapp.Activity.BuildingsActivity">
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="100dp"
-                  android:orientation="horizontal"
-                  android:id="@+id/linear1">
-        <TextView
-                android:text="Available Rooms"
-                android:textStyle="normal"
-                android:textSize="30sp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+    <include
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-                android:textColor="#242B53"/>
+    <!--<LinearLayout android:layout_width="match_parent"-->
+                  <!--android:layout_height="100dp"-->
+                  <!--android:orientation="horizontal"-->
+                  <!--android:id="@+id/linear1">-->
+        <!--<TextView-->
+                <!--android:text="Available Rooms"-->
+                <!--android:textStyle="normal"-->
+                <!--android:textSize="30sp"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+
+                <!--android:textColor="#242B53"/>-->
 
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
     <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
@@ -44,8 +50,7 @@
                 android:id="@+id/conference_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="70dp"
-                android:layout_below="@id/linear1"
+                android:layout_marginTop="65dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:context="com.smartherd.globofly.activities.DestinationListActivity"
                 tools:listitem="@layout/list_item_conference_room"/>

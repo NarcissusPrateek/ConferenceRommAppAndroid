@@ -14,6 +14,7 @@ import com.example.conferencerommapp.Model.addBuilding
 import com.example.conferencerommapp.R
 import com.example.conferencerommapp.services.ConferenceService
 import com.example.globofly.services.Servicebuilder
+import kotlinx.android.synthetic.main.app_bar_main2.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,6 +27,8 @@ class AddingBuilding : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_building)
+        setSupportActionBar(toolbar)
+
         val add: Button = findViewById(R.id.addbuilding)
         add.setOnClickListener {
             val bName : TextView = findViewById(R.id.input_buildingName)
@@ -33,11 +36,11 @@ class AddingBuilding : AppCompatActivity() {
             var build = addBuilding()
             build.BName = bName.text.toString()
             build.Place = bplace.text.toString()
-            if(TextUtils.isEmpty(bName.text))
+            if(TextUtils.isEmpty(bName.text.trim()))
             {
                 Toast.makeText(this@AddingBuilding,"Please enter the Building Name!", Toast.LENGTH_LONG).show()
             }
-            else if(TextUtils.isEmpty(bplace.text)) {
+            else if(TextUtils.isEmpty(bplace.text.trim())) {
                 Toast.makeText(this@AddingBuilding,"Please enter the place of building!", Toast.LENGTH_LONG).show()
             }
             else{
