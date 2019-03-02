@@ -25,7 +25,7 @@ class SplashScreen : AppCompatActivity() {
         val logoHandler  : Handler = Handler()
 
         val logoRunnable : Runnable = Runnable {
-            val intent : Intent = Intent(applicationContext,BlockedDashboard::class.java)
+            val intent : Intent = Intent(applicationContext,SignIn::class.java)
                 startActivity(intent)
                 finish()
         }

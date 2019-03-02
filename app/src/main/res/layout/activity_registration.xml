@@ -1,12 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:orientation="vertical"
+        android:padding="10dp"
+        tools:context=".RegistrationActivity">
 
-    <RelativeLayout
+
+    <include layout="@layout/toolbar"></include>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:paddingRight="20dp" >
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signup_input_layout_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp">
+
+            <EditText
+                    android:id="@+id/textView_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:maxLines="1"
+                    android:drawableStart="@drawable/identification1"
+                    android:drawableLeft="@drawable/identification1"
+                    android:drawablePadding="5dp"
+                    android:maxLength="50"
+                    android:hint="Name"/>
+                    <!--android:ellipsize="end"-->
+                    <!--android:singleLine="true"-->
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signup_input_layout_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp">
+            <EditText
+                    android:id="@+id/edittext_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="Employee ID"
+                    android:drawableStart="@drawable/idcard2"
+                    android:drawableLeft="@drawable/idcard2"
+                    android:drawablePadding="5dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <fr.ganfra.materialspinner.MaterialSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner"
+                android:ems="10"
+                app:ms_arrowColor="@color/colorAccent"
+                app:ms_arrowSize="16dp"
+                app:ms_floatingLabelColor="#A9A9A9"
+                app:ms_floatingLabelText="Select Role"
+                app:ms_hint="Please Select Role"
+                app:ms_multiline="true"
+                app:ms_hintColor="#000000"
+                android:layout_marginTop="10dp"
+        ></fr.ganfra.materialspinner.MaterialSpinner>
+
+
+        <Button android:id="@+id/button_add"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="SUBMIT"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="40dp"
+                android:textColor="@android:color/white"/>
+    </LinearLayout>
+</LinearLayout>
+
+
+
+
+
+
+
+<!--<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <TextView
@@ -75,5 +159,4 @@
             android:id="@+id/button_add"
             android:layout_below="@+id/spinner"
             android:layout_centerHorizontal="true"
-    />
-</RelativeLayout>
+    />-->

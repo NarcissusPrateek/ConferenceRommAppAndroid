@@ -16,10 +16,24 @@
     </style>
     <style name="flatbutton" parent="Theme.MaterialComponents.Light">
         <item name="buttonStyle">
-            @style/Widget.AppCompat.Button.Borderless.Colored</item>
-            <item name="colorControlHighlight">
-                @color/colorAccent
+            @style/Widget.AppCompat.Button.Borderless.Colored
+        </item>
+        <item name="colorControlHighlight">
+            @color/colorAccent
         </item>
         <item name="colorAccent">@color/black</item>
+    </style>
+    <style name="NoActionBar" parent="Theme.AppCompat.DayNight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="AppThemeforToolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 </resources>

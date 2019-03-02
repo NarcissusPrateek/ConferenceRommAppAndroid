@@ -56,6 +56,9 @@ class ConferenceDashBoard : AppCompatActivity() {
         getConference(buildingId)
     }
     private fun getConference(buildingId: Int) {
+
+
+
         val conferenceService = Servicebuilder.buildService(ConferenceService::class.java)
         val requestCall : Call<List<ConferenceList>> = conferenceService.conferencelist(buildingId)
         requestCall.enqueue(object :Callback<List<ConferenceList>>{

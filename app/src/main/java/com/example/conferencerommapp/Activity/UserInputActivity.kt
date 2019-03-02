@@ -12,8 +12,8 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.conferencerommapp.R
-import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.activity_user_inputs.*
+import kotlinx.android.synthetic.main.app_bar_main2.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,13 +22,14 @@ class UserInputActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_inputs)
+        setSupportActionBar(toolbar)
 
         val actionbar=supportActionBar
         actionbar!!.setTitle("Booking Details")
 
         var timeFormat = SimpleDateFormat("HH:mm ", Locale.US)
         var dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-        var capacity = 0
+        var capacity = ""
         var date_text: EditText =findViewById(R.id.date)
         var fromtime : EditText =findViewById(R.id.fromTime)
         var totime: EditText = findViewById(R.id.toTime)
@@ -84,27 +85,26 @@ class UserInputActivity : AppCompatActivity() {
         spinner2.adapter = ArrayAdapter<Int>(this,android.R.layout.simple_list_item_1,options)
         spinner2.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                capacity = 2
+                capacity = "2"
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                capacity = options.get(position)
+                capacity = spinner2.getItemAtPosition(position).toString()
             }
         }
-
-
         building_avtivity_button.setOnClickListener {
-           if(TextUtils.isEmpty(fromtime.text) ){
+           if(TextUtils.isEmpty(fromtime.text.trim()) ){
                 Toast.makeText(applicationContext, "Please enter the Date", Toast.LENGTH_SHORT).show()
 
             }
-            else if ( TextUtils.isEmpty(totime.text)){
+            else if ( TextUtils.isEmpty(totime.text.trim())){
                 Toast.makeText(applicationContext, "Please enter the To Time", Toast.LENGTH_SHORT).show()
             }
-            else if ( TextUtils.isEmpty(date_text.text)){
+            else if ( TextUtils.isEmpty(date_text.text.trim())){
                 Toast.makeText(applicationContext, "Please enter the From Time", Toast.LENGTH_SHORT).show()
-            }
+            }else if(capacity.equals("Select Capacity...")) {
+               Toast.makeText(applicationContext, "Please Select Capacity", Toast.LENGTH_SHORT).show()
+           }
             else {
-
                val startTime = fromTime.text.toString()
                val endTime = totime.text.toString()
                try {

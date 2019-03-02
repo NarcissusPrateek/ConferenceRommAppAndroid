@@ -33,6 +33,8 @@ class BlockedDashboard : AppCompatActivity() {
         val actionbar=supportActionBar
         actionbar!!.setTitle("Blocked Rooms")
 
+
+
         val addConferenceRoom: FloatingActionButton = findViewById(R.id.add_conference)
         val maintenance: FloatingActionButton = findViewById(R.id.maintenance)
         val booking_details:FloatingActionButton=findViewById(R.id.booking_detials)
@@ -59,36 +61,9 @@ class BlockedDashboard : AppCompatActivity() {
 
 
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        var id = item!!.itemId
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
-
-        // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
-        when(id) {
-            R.id.Logout -> {
-                mGoogleSignInClient!!.signOut()
-                    .addOnCompleteListener(this) {
-                        Toast.makeText(applicationContext, "Successfully signed out", Toast.LENGTH_LONG).show()
-                        startActivity(Intent(applicationContext, SignIn::class.java))
-                        finish()
-                    }
-            }
-        }
-        return true
-    }
-
     override fun onBackPressed() {
         super.onBackPressed()
-        finishAffinity();
+        //finishAffinity();
         //finish()
 
     }

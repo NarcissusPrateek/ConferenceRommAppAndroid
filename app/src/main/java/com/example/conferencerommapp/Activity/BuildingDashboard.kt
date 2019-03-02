@@ -1,5 +1,6 @@
 package com.example.conferencerommapp.Activity
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +21,7 @@ import retrofit2.Response
 
 class BuildingDashboard : AppCompatActivity() {
 
+    var progressDialog: ProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_building_dashboard)
@@ -40,13 +42,22 @@ class BuildingDashboard : AppCompatActivity() {
     }
 
     fun loadBuildings() {
+
+        progressDialog = ProgressDialog(this@BuildingDashboard)
+        progressDialog!!.setMessage("Loading....")
+        progressDialog!!.setCancelable(false)
+        progressDialog!!.show()
+
+
         val conferenceService = Servicebuilder.buildService(ConferenceService::class.java)
         val requestCall : Call<List<BuildingT>> = conferenceService.getBuildings()
         requestCall.enqueue(object: Callback<List<BuildingT>> {
             override fun onFailure(call: Call<List<BuildingT>>, t: Throwable) {
+                progressDialog!!.dismiss()
                 Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
             }
             override fun onResponse(call: Call<List<BuildingT>>, response: Response<List<BuildingT>>) {
+                progressDialog!!.dismiss()
                 if (response.isSuccessful)
                 {
                     val buildingList: List<BuildingT>? = response.body()
