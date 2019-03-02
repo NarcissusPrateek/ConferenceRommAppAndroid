@@ -20,6 +20,8 @@ class Spinner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_spinner)
+        val actionbar=supportActionBar
+        actionbar!!.setTitle("Select to Block the Room")
         getBuilding()
     }
 

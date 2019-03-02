@@ -23,7 +23,8 @@ class AddingConference : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_conference)
-
+        val actionbar=supportActionBar
+        actionbar!!.setTitle("Add Conference")
         var capacity = 2
         conference_Capacity.adapter = ArrayAdapter<Int>(this@AddingConference,android.R.layout.simple_list_item_1,options1)
         conference_Capacity.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{

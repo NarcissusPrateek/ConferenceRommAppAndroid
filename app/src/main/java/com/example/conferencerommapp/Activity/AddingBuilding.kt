@@ -25,6 +25,8 @@ class AddingBuilding : AppCompatActivity() {
     var progressDialog: ProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val actionbar=supportActionBar
+        actionbar!!.setTitle("Add Building")
         setContentView(R.layout.activity_adding_building)
         val add: Button = findViewById(R.id.addbuilding)
         add.setOnClickListener {

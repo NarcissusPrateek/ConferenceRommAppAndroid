@@ -13,7 +13,7 @@
                   android:orientation="horizontal"
                   android:id="@+id/linear1">
         <TextView
-                android:text="Available Rooms"
+                android:text=""
                 android:textStyle="normal"
                 android:textSize="30sp"
                 android:layout_marginTop="20dp"

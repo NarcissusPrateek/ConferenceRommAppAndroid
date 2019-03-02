@@ -22,6 +22,8 @@ class ConferenceDashBoard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conference_dash_board)
+        val actionbar=supportActionBar
+        actionbar!!.setTitle("Conference Rooms")
         val bundle: Bundle = intent.extras
         val buildingId = bundle.get("BuildingId").toString().toInt()
         var addConference: FloatingActionButton=findViewById(R.id.add_conferenece)

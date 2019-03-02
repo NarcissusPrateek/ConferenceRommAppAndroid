@@ -7,40 +7,53 @@
         android:layout_height="match_parent"
 
         tools:context=".Activity.AddingBuilding">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView
-                android:textStyle="normal"
-                android:textSize="30sp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add Building"
-                android:textColor="#242B53"
-        />
-    </RelativeLayout>
 
-    <EditText
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
             android:layout_marginTop="200dp"
+            android:id="@+id/input_building"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
-            android:hint="Building Name"
-            android:backgroundTint="#242B53"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/input_buildingName"
-            android:singleLine="true"/>
+            android:layout_height="wrap_content"
+            android:hint="Building Name">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+                android:hint="Building Name"
+
+                android:backgroundTint="#242B53"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/input_buildingName"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--<com.google.android.material.textfield.TextInputEditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:layout_marginTop="200dp"-->
+            <!--android:layout_marginLeft="60dp"-->
+            <!--android:layout_marginRight="60dp"-->
+            <!--android:hint="Building Name"-->
+            <!---->
+            <!--android:backgroundTint="#242B53"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:id="@+id/input_buildingName"-->
+            <!--android:singleLine="true"/>-->
 
     <EditText
             android:hint="Building Place"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="47dp"
             android:layout_marginLeft="60dp"
             android:backgroundTint="#242B53"
             android:layout_marginRight="60dp"
-            android:layout_below="@+id/input_buildingName"
+            android:layout_below="@+id/input_building"
             android:id="@+id/input_buildingPlace"
             android:singleLine="true"/>
     <Button

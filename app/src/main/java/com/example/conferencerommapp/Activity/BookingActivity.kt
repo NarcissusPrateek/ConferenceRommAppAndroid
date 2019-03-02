@@ -40,6 +40,8 @@ class BookingActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_booking)
+        val actionbar=supportActionBar
+        actionbar!!.setTitle("Book Summary")
 
         val txv_fromTime: TextView = findViewById(R.id.textView_from_time)
         val txv_toTime: TextView = findViewById(R.id.textView_to_time)

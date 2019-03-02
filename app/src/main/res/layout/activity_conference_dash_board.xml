@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <TextView
-                android:text="Conference Rooms"
+                android:text=""
                 android:textStyle="normal"
                 android:textSize="30sp"
                 android:layout_marginTop="20dp"
@@ -24,7 +24,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 

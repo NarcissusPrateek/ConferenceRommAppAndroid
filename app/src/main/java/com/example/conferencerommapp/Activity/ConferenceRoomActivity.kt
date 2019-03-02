@@ -22,7 +22,8 @@ public class ConferenceRoomActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conference_room)
-
+        val actionbar=supportActionBar
+        actionbar!!.setTitle("Select the Conference Room")
         loadConferenceRoom()
 
 

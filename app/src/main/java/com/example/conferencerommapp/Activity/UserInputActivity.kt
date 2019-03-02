@@ -1,5 +1,6 @@
 package com.example.conferencerommapp.Activity
 
+import android.app.ActionBar
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -22,6 +23,8 @@ class UserInputActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_inputs)
 
+        val actionbar=supportActionBar
+        actionbar!!.setTitle("Booking Details")
 
         var timeFormat = SimpleDateFormat("HH:mm ", Locale.US)
         var dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)

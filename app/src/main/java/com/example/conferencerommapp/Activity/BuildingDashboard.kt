@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
 import com.example.conferencerommapp.BuildingT
 import com.example.conferencerommapp.ConferenceDashBoard
@@ -22,11 +23,17 @@ class BuildingDashboard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_building_dashboard)
+        val actionbar=supportActionBar
+        actionbar!!.setTitle("Building DashBoard")
+
         val addBuilding : FloatingActionButton = findViewById(R.id.add_building)
         addBuilding.setOnClickListener {
             startActivity(Intent(this,AddingBuilding::class.java))
         }
     }
+
+
+
     override fun onResume() {
         super.onResume()
         loadBuildings()

@@ -36,7 +36,8 @@ class DashBoardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
-
+        val actionbar=supportActionBar
+        actionbar!!.setTitle("Bookings")
         val userinputs: FloatingActionButton = findViewById(R.id.userInput)
         userinputs.setOnClickListener {
             startActivity(Intent(this@DashBoardActivity, UserInputActivity::class.java))

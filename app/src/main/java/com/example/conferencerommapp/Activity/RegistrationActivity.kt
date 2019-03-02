@@ -31,6 +31,8 @@ class RegistrationActivity : AppCompatActivity() {
     var progressDialog: ProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val actionbar=supportActionBar
+        actionbar!!.setTitle("Profile Details")
         setContentView(R.layout.activity_registration)
 
         Toast.makeText(applicationContext,"Registration Activity", Toast.LENGTH_LONG).show()

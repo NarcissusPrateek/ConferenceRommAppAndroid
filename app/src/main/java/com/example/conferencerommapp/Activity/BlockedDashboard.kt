@@ -30,6 +30,8 @@ class BlockedDashboard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_blocked_dashboard)
+        val actionbar=supportActionBar
+        actionbar!!.setTitle("Blocked Rooms")
 
         val addConferenceRoom: FloatingActionButton = findViewById(R.id.add_conference)
         val maintenance: FloatingActionButton = findViewById(R.id.maintenance)
